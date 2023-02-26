@@ -42,15 +42,15 @@ $MainMenu = {
             Invoke-Command $365SubMenu
             $365SubSelect = Read-Host
    
-            if ($365SubSelect -eq 1) {$productId = "O365HomePremRetail"}
-            if ($365SubSelect -eq 2) {$productId = "O365HomePremRetail"}
-            if ($365SubSelect -eq 3) {$productId = "O365BusinessRetail"}
-            if ($365SubSelect -eq 4) {$productId = "O365ProPlusRetail"}
+            if ($365SubSelect -eq 1) {$productId = 'O365HomePremRetail'}
+            if ($365SubSelect -eq 2) {$productId = 'O365HomePremRetail'}
+            if ($365SubSelect -eq 3) {$productId = 'O365BusinessRetail'}
+            if ($365SubSelect -eq 4) {$productId = 'O365ProPlusRetail'}
    
             $o365 = {
                $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
                Set-Location $env:temp\c2r
-               $fileName = "configuration.xml" 
+               $fileName = 'configuration.xml'
                New-Item $fileName -ItemType File -Force | Out-Null
                Add-Content $fileName '<Configuration>'
                Add-content $fileName '<Add OfficeClientEdition="64">'
@@ -64,9 +64,11 @@ $MainMenu = {
                Write-Host "Installing $productId...."
                Write-Host ============================================================
                Write-Host
-               $Download = join-path $env:temp\c2r setup.exe
-               (New-Object System.Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/Files/7/setup.exe',$Download)
+
+               $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
+               Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue | Out-Null
                .\setup.exe /configure .\configuration.xml
+               
                # Cleanup
                Set-Location "$env:temp"
                Remove-Item $env:temp\c2r -Recurse -Force
