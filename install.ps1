@@ -60,7 +60,7 @@ $MainMenu = {
                Add-Content $fileName -Value '</Configuration>'
    
                Write-Host "Installing $productId............"
-               $null = Invoke-WebRequest -Uri "https://github.com/o365365/office365-win7/raw/main/setup.exe" -OutFile "setup.exe" -ErrorAction:SilentlyContinue
+               $null = Invoke-WebRequest -Uri "https://github.com/bonben365/office365-win7/raw/main/setup.exe" -OutFile "setup.exe" -ErrorAction:SilentlyContinue
                .\setup.exe /configure .\congiguration.xml
            }
        
