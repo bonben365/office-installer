@@ -139,8 +139,8 @@ $MainMenu = {
                .\setup.exe /configure .\configuration.xml
                
                # Cleanup
-               Set-Location "$env:temp"
-               Remove-Item $env:temp\c2r -Recurse -Force
+               #Set-Location "$env:temp"
+               #Remove-Item $env:temp\c2r -Recurse -Force
            }
        
            Switch ($SubSelect)
