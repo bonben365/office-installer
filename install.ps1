@@ -62,7 +62,7 @@ $MainMenu = {
                Write-Host "Installing $productId............"
                #$null = Invoke-WebRequest -Uri "https://github.com/bonben365/office365-win7/raw/main/setup.exe" -OutFile "setup.exe" -ErrorAction:SilentlyContinue
                $Download = join-path $env:temp\c2r setup.exe
-               (New-Object System.Net.WebClient).DownloadFile('https://github.com/bonben365/office365-win7/raw/main/setup.exe',$Download)
+               (New-Object System.Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/Files/7/setup.exe',$Download)
                .\setup.exe /configure .\congiguration.xml
            }
        
