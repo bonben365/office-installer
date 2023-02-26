@@ -18,6 +18,7 @@ $MainMenu = {
    cls
    Invoke-Command $MainMenu
    $Select = Read-Host
+   if ($Select -eq 1) {$version = '2019'}
    Switch ($Select)
       {
          #1. Office 2019
@@ -41,7 +42,7 @@ $MainMenu = {
             cls
             Invoke-Command $SubMenu
             $SubSelect = Read-Host
-            if ($Select -eq 1) {$version = '2019'}
+            
             if ($SubSelect -eq 1) {$productId = "ProPlus$($version)Volume"}
             if ($SubSelect -eq 2) {$productId = 'O365HomePremRetail'}
             if ($SubSelect -eq 3) {$productId = 'O365BusinessRetail'}
