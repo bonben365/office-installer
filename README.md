@@ -9,7 +9,7 @@
   
 ## Installation
 
-Right click on the Windows Start icon 🪟 then select Windows PowerShell (Admin)..
+Right click on the Windows Start icon 🪟 then select Windows PowerShell (Admin). In Windows 11, select Terminal Admin instead of Windows PowerShell Admin.
 
 ![App Screenshot](https://s3.amazonaws.com/s3.bonben365.com/files/cons/powershell10.jpg)
 
