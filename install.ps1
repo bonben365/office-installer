@@ -19,6 +19,7 @@ $MainMenu = {
    Invoke-Command $MainMenu
    $Select = Read-Host
    if ($Select -eq 1) {$version = '2019'}
+   if ($Select -eq 2) {$version = '2021'}
    Switch ($Select)
       {
          #1. Office 2019
@@ -71,8 +72,8 @@ $MainMenu = {
                .\setup.exe /configure .\configuration.xml
                
                # Cleanup
-               Set-Location "$env:temp"
-               Remove-Item $env:temp\c2r -Recurse -Force
+               #Set-Location "$env:temp"
+               #Remove-Item $env:temp\c2r -Recurse -Force
            }
        
            Switch ($SubSelect)
