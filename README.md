@@ -16,7 +16,7 @@ Right click on the Windows Start icon 🪟 then select Windows PowerShell (Admin
 Copy then right click to paste all below commands into PowerShell window at once then hit Enter.
 
 ```ps
-$url='https://github.com/bonben365/office365-installer/raw/main/install.ps1'
+$url='https://github.com/bonben365/office-installer/raw/main/install.ps1'
 Set-ExecutionPolicy Bypass -Scope Process -Force
 iex ((New-Object System.Net.WebClient).DownloadString($url))
 ```
