@@ -1,12 +1,11 @@
 
-# Download and Install Office 365 on Windows 7
+# Download and Install Office 365 on Windows 7/10/11
 
 
 
 
-## Install Office 365 on Windows 7
+## Install Office 365 on Windows 7/10/11
 
-The latest version of Office 365 apps which will run on Windows 7 is version 2002 and the latest version of Office Deployment Tool (ODT) seems no longer works in Windows 7.
   
 ## Installation
 
