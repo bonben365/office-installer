@@ -55,7 +55,7 @@ $MainMenu = {
                $fileName = 'configuration.xml'
                New-Item $fileName -ItemType File -Force | Out-Null
                Add-Content $fileName -Value '<Configuration>'
-               Add-content $fileName -Value '<Add OfficeClientEdition="64"'
+               Add-content $fileName -Value '<Add OfficeClientEdition="64">'
                Add-content $fileName -Value "<Product ID=`"$productId`">"
                Add-content $fileName -Value '<Language ID="en-us" />'
                Add-Content $fileName -Value '</Product>'
