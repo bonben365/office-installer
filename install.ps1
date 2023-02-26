@@ -50,23 +50,28 @@ $MainMenu = {
             $o365 = {
                $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
                Set-Location $env:temp\c2r
-               $fileName = "configuration.xml"
-               New-Item $fileName -ItemType File -Force
+               $fileName = "configuration.xml" 
+               New-Item $fileName -ItemType File -Force | Out-Null
                Add-Content $fileName '<Configuration>'
-               Add-content $fileName '<Add OfficeClientEdition="64" Channel="BetaChannel">'
+               Add-content $fileName '<Add OfficeClientEdition="64">'
                Add-content $fileName "<Product ID=`"$productId`">"
+               Add-content $fileName '<Language ID="en-us" />'
                Add-Content $fileName -Value '</Product>'
                Add-Content $fileName -Value '</Add>'
                Add-Content $fileName -Value '</Configuration>'
-   
-               Write-Host "Installing $productId............"
-               #$null = Invoke-WebRequest -Uri "https://github.com/bonben365/office365-win7/raw/main/setup.exe" -OutFile "setup.exe" -ErrorAction:SilentlyContinue
+               Write-Host
+               Write-Host ============================================================
+               Write-Host "Installing $productId...."
+               Write-Host ============================================================
+               Write-Host
                $Download = join-path $env:temp\c2r setup.exe
                (New-Object System.Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/Files/7/setup.exe',$Download)
-               .\setup.exe /configure .\congiguration.xml
+               .\setup.exe /configure .\configuration.xml
+               # Cleanup
+               Set-Location "$env:temp"
+               Remove-Item $env:temp\c2r -Recurse -Force
            }
        
-   
            Switch ($365SubSelect)
            {
                 1 { Invoke-Command $o365 }
