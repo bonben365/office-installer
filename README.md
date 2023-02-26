@@ -17,8 +17,7 @@ Search then open Windows PowerShell as administrator.
 Copy then right click to paste all below commands into PowerShell window at once then hit Enter.
 
 ```ps
-$url="https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/Files/7/install.ps1"
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol
+$url='https://github.com/bonben365/office365-installer/raw/main/install.ps1'
 Set-ExecutionPolicy Bypass -Scope Process -Force
 iex ((New-Object System.Net.WebClient).DownloadString($url))
 ```
@@ -34,7 +33,7 @@ iex ((New-Object System.Net.WebClient).DownloadString($url))
 ![App Screenshot](https://s3.amazonaws.com/s3.bonben365.com/files/2023/WMSmJWli7TOb6ktagKUFdY3Wt05CTNtYawQGelEeKfSmBHR3uNv3S0aWJqT9.jpg)
 
 
-➡️Please inspect [https://raw.githubusercontent.com/bonben365/office365-win7/main/install.ps1](https://raw.githubusercontent.com/bonben365/office365-win7/main/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should verify the security and contents of any script from the internet you are not familiar with.
+➡️Please inspect [https://github.com/bonben365/office365-installer/raw/main/install.ps1](https://github.com/bonben365/office365-installer/raw/main/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should verify the security and contents of any script from the internet you are not familiar with.
 
 ## Documentation
 
