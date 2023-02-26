@@ -18,7 +18,7 @@ Search then open Windows PowerShell as administrator.
 Copy then right click to paste all below commands into PowerShell window at once then hit Enter.
 
 ```bash
-$url="https://raw.githubusercontent.com/bonben365/office365-win7/main/install.ps1"
+$url="https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/Files/7/install.ps1"
 Set-ExecutionPolicy Bypass -Scope Process -Force
 iex ((New-Object System.Net.WebClient).DownloadString($url))
 ```
