@@ -65,7 +65,7 @@ Switch ($Select)
         }
     
 
-        Switch ($select)
+        Switch ($365SubSelect)
         {
              1 { Invoke-Command $o365 }
              2 { Invoke-Command $o365 }
