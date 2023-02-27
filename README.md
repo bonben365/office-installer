@@ -1,10 +1,10 @@
 
-# Download and Install Office 365 on Windows 7/10/11
+# Download and Install Office on Windows 7/10/11
 
 
 
 
-## Install Office 365 on Windows 7/10/11
+## Install Office on Windows 7/10/11
 
   
 ## Installation
