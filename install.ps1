@@ -88,7 +88,7 @@ $download = {
    
    # Download the Office Deployment Tool
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
-   $null = Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
 
    Write-Host
    Write-Host *****************************************************************************
@@ -122,7 +122,7 @@ $download365 = {
    
    # Download the Office Deployment Tool
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
-   $null = Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
 
    Write-Host
    Write-Host *****************************************************************************
@@ -149,7 +149,7 @@ $uninstall = {
    Add-Content $fileName -Value '<Remove All="True"/>'
    Add-Content $fileName -Value '</Configuration>'
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
-   $null = Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
    .\setup.exe /configure .\configuration.xml
 
    Write-Host
