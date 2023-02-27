@@ -16,8 +16,7 @@ $Menu = {
    Write-Host "  - Nowadays, almost computers run Windows 64-bit."
    Write-Host
    Write-Host " Select an option and press Enter: "  -nonewline
-   }
-   cls
+}
    
 $Menu1 = {
    Write-Host " *******************************************"
@@ -98,7 +97,14 @@ $download = {
    Write-Host *****************************************************************************
    Write-Host
 
-   .\setup.exe /configure "configuration-x$arch.xml" 
+   .\setup.exe /configure "configuration-x$arch.xml"
+
+   Start-Sleep -Seconds 10
+   
+   # Cleanup
+   Set-Location $env:temp
+   Remove-Item "~\Desktop\$productName" -Recurse -Force
+   Start-Sleep -Seconds 10
 }
 
 $download365 = {
@@ -126,6 +132,12 @@ $download365 = {
    Write-Host
 
    .\setup.exe /configure "configuration-x$arch.xml" 
+   Start-Sleep -Seconds 10
+   
+   # Cleanup
+   Set-Location $env:temp
+   Remove-Item "~\Desktop\$productName" -Recurse -Force
+   Start-Sleep -Seconds 10
 }
 
 $uninstall = {
