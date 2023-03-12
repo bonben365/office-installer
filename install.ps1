@@ -73,9 +73,9 @@ $Menu365 = {
    Write-Host " Select an option and press Enter: "  -nonewline
 }
    
-$download = {
-   $null = New-Item -Path "~\Desktop\$productName" -ItemType Directory -Force
-   Set-Location "~\Desktop\$productName"
+$install = {
+   $null = New-Item -Path "$env:temp\c2r" -ItemType Directory -Force
+   Set-Location "$env:temp\c2r"
    $fileName = "configuration-x$arch.xml"
    $null = New-Item $fileName -ItemType File -Force
    Add-Content $fileName -Value '<Configuration>'
@@ -88,7 +88,7 @@ $download = {
    
    # Download the Office Deployment Tool
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
-   Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
 
    Write-Host
    Write-Host *****************************************************************************
@@ -103,13 +103,13 @@ $download = {
    
    # Cleanup
    Set-Location $env:temp
-   Remove-Item "~\Desktop\$productName" -Recurse -Force
+   Remove-Item $env:temp\c2r -Recurse -Force
    Start-Sleep -Seconds 10
 }
 
-$download365 = {
-   $null = New-Item -Path "~\Desktop\$productName" -ItemType Directory -Force
-   Set-Location "~\Desktop\$productName"
+$install365 = {
+   $null = New-Item -Path "$env:temp\c2r" -ItemType Directory -Force
+   Set-Location "$env:temp\c2r"
    $fileName = "configuration-x$arch.xml"
    $null = New-Item $fileName -ItemType File -Force
    Add-Content $fileName -Value '<Configuration>'
@@ -122,7 +122,7 @@ $download365 = {
    
    # Download the Office Deployment Tool
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
-   Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
 
    Write-Host
    Write-Host *****************************************************************************
@@ -136,20 +136,20 @@ $download365 = {
    
    # Cleanup
    Set-Location $env:temp
-   Remove-Item "~\Desktop\$productName" -Recurse -Force
+   Remove-Item $env:temp\c2r -Recurse -Force
    Start-Sleep -Seconds 10
 }
 
 $uninstall = {
-   $null = New-Item -Path $env:temp\uninstall -ItemType Directory -Force
-   Set-Location $env:temp\uninstall
+   $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
+   Set-Location $env:temp\c2r
    $fileName = 'configuration.xml'
    $null = New-Item $fileName -ItemType File -Force
    Add-Content $fileName -Value '<Configuration>'
    Add-Content $fileName -Value '<Remove All="True"/>'
    Add-Content $fileName -Value '</Configuration>'
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
-   Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
    .\setup.exe /configure .\configuration.xml
 
    Write-Host
@@ -167,7 +167,7 @@ $uninstall = {
 
    # Cleanup
    Set-Location $env:temp
-   Remove-Item $env:temp\uninstall -Recurse -Force
+   Remove-Item $env:temp\c2r -Recurse -Force
    Start-Sleep -Seconds 5
 }
  
@@ -217,18 +217,18 @@ $uninstall = {
                               if ($select2 -eq 12) {$productId = "Access$($version)Volume";$productName = "Access $version"}
       
                         Switch ($select2) {
-                              1 {Invoke-Command $download}
-                              2 {Invoke-Command $download}
-                              3 {Invoke-Command $download}
-                              4 {Invoke-Command $download}
-                              5 {Invoke-Command $download}
-                              6 {Invoke-Command $download}
-                              7 {Invoke-Command $download}
-                              8 {Invoke-Command $download}
-                              9 {Invoke-Command $download}
-                              10 {Invoke-Command $download}
-                              11 {Invoke-Command $download}
-                              12 {Invoke-Command $download}
+                              1 {Invoke-Command $install}
+                              2 {Invoke-Command $install}
+                              3 {Invoke-Command $install}
+                              4 {Invoke-Command $install}
+                              5 {Invoke-Command $install}
+                              6 {Invoke-Command $install}
+                              7 {Invoke-Command $install}
+                              8 {Invoke-Command $install}
+                              9 {Invoke-Command $install}
+                              10 {Invoke-Command $install}
+                              11 {Invoke-Command $install}
+                              12 {Invoke-Command $install}
                            }
                         }
                         While ($select2 -ne 13)
@@ -256,18 +256,18 @@ $uninstall = {
                            if ($select2 -eq 12) {$productId = "Access$($version)Volume";$productName = "Access $version LTSC"}
       
                         Switch ($select2) {
-                              1 {Invoke-Command $download}
-                              2 {Invoke-Command $download}
-                              3 {Invoke-Command $download}
-                              4 {Invoke-Command $download}
-                              5 {Invoke-Command $download}
-                              6 {Invoke-Command $download}
-                              7 {Invoke-Command $download}
-                              8 {Invoke-Command $download}
-                              9 {Invoke-Command $download}
-                              10 {Invoke-Command $download}
-                              11 {Invoke-Command $download}
-                              12 {Invoke-Command $download}
+                              1 {Invoke-Command $install}
+                              2 {Invoke-Command $install}
+                              3 {Invoke-Command $install}
+                              4 {Invoke-Command $install}
+                              5 {Invoke-Command $install}
+                              6 {Invoke-Command $install}
+                              7 {Invoke-Command $install}
+                              8 {Invoke-Command $install}
+                              9 {Invoke-Command $install}
+                              10 {Invoke-Command $install}
+                              11 {Invoke-Command $install}
+                              12 {Invoke-Command $install}
                            }
                         }
                         While ($select2 -ne 13)
@@ -286,9 +286,9 @@ $uninstall = {
                            if ($select2 -eq 3) {$productId = "O365ProPlusRetail";$productName = "Microsoft $version Apps for Enterprise"}
       
                         Switch ($select2) {
-                              1 {Invoke-Command $download365}
-                              2 {Invoke-Command $download365}
-                              3 {Invoke-Command $download365}
+                              1 {Invoke-Command $install365}
+                              2 {Invoke-Command $install365}
+                              3 {Invoke-Command $install365}
                            }
                         }   
                         While ($select2 -ne 4)
@@ -337,18 +337,18 @@ $uninstall = {
 
                         Switch ($select2)
                            {
-                           1 {Invoke-Command $download}
-                           2 {Invoke-Command $download}
-                           3 {Invoke-Command $download}
-                           4 {Invoke-Command $download}
-                           5 {Invoke-Command $download}
-                           6 {Invoke-Command $download}
-                           7 {Invoke-Command $download}
-                           8 {Invoke-Command $download}
-                           9 {Invoke-Command $download}
-                           10 {Invoke-Command $download}
-                           11 {Invoke-Command $download}
-                           12 {Invoke-Command $download}
+                           1 {Invoke-Command $install}
+                           2 {Invoke-Command $install}
+                           3 {Invoke-Command $install}
+                           4 {Invoke-Command $install}
+                           5 {Invoke-Command $install}
+                           6 {Invoke-Command $install}
+                           7 {Invoke-Command $install}
+                           8 {Invoke-Command $install}
+                           9 {Invoke-Command $install}
+                           10 {Invoke-Command $install}
+                           11 {Invoke-Command $install}
+                           12 {Invoke-Command $install}
       
                            }
                         }
@@ -379,18 +379,18 @@ $uninstall = {
 
                         Switch ($select2)
                            {
-                              1 {Invoke-Command $download}
-                              2 {Invoke-Command $download}
-                              3 {Invoke-Command $download}
-                              4 {Invoke-Command $download}
-                              5 {Invoke-Command $download}
-                              6 {Invoke-Command $download}
-                              7 {Invoke-Command $download}
-                              8 {Invoke-Command $download}
-                              9 {Invoke-Command $download}
-                              10 {Invoke-Command $download}
-                              11 {Invoke-Command $download}
-                              12 {Invoke-Command $download}
+                              1 {Invoke-Command $install}
+                              2 {Invoke-Command $install}
+                              3 {Invoke-Command $install}
+                              4 {Invoke-Command $install}
+                              5 {Invoke-Command $install}
+                              6 {Invoke-Command $install}
+                              7 {Invoke-Command $install}
+                              8 {Invoke-Command $install}
+                              9 {Invoke-Command $install}
+                              10 {Invoke-Command $install}
+                              11 {Invoke-Command $install}
+                              12 {Invoke-Command $install}
       
                            }
                         }
@@ -412,26 +412,20 @@ $uninstall = {
 
                         Switch ($select2)
                            {
-                           1 {Invoke-Command $download365}
-                           2 {Invoke-Command $download365}
-                           3 {Invoke-Command $download365}
-      
+                           1 {Invoke-Command $install365}
+                           2 {Invoke-Command $install365}
+                           3 {Invoke-Command $install365}    
                            }
                         }
-
                         While ($select2 -ne 4)
                         cls
                      }
                   }
             }
-
             While ($select1 -ne 4)
             cls
-
          }
-
-         3 {Invoke-Command $uninstall}
-       
+         3 {Invoke-Command $uninstall}    
       }
    }
    
