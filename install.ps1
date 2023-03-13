@@ -1,76 +1,76 @@
 $Menu = {
-   Write-Host " *******************************************"
-   Write-Host " *                  Menu                   *" 
-   Write-Host " *******************************************" 
+   Write-Host " *******************************************" -ForegroundColor Yellow
+   Write-Host " *                  Menu                   *" -ForegroundColor Yellow
+   Write-Host " *******************************************" -ForegroundColor Yellow
    Write-Host 
-   Write-Host " 1. Install Office 64-bit" 
-   Write-Host " 2. Install Office 32-bit"
-   Write-Host " 3. Uninstall All Previous Versions of Microsoft Office"
-   Write-Host " 4. Quit"
+   Write-Host " 1. Install Office 64-bit" -ForegroundColor Yellow
+   Write-Host " 2. Install Office 32-bit" -ForegroundColor Yellow
+   Write-Host " 3. Uninstall All Previous Versions of Microsoft Office" -ForegroundColor Yellow
+   Write-Host " 4. Quit" -ForegroundColor Yellow
    Write-Host
    Write-Host
-   Write-Host " Information:"
+   Write-Host " Information:" -ForegroundColor Yellow
    Write-Host 
-   Write-Host "  - Office 32-bit can run on both Windows 10 32 and 64-bit."
-   Write-Host "  - Office 64-bit can run on Windows 10 64-bit only."
-   Write-Host "  - Nowadays, almost computers run Windows 64-bit."
+   Write-Host "  - Office 32-bit can run on both Windows 10 32 and 64-bit." -ForegroundColor Yellow
+   Write-Host "  - Office 64-bit can run on Windows 10 64-bit only." -ForegroundColor Yellow
+   Write-Host "  - Nowadays, almost computers run Windows 64-bit." -ForegroundColor Yellow
    Write-Host
-   Write-Host " Select an option and press Enter: "  -nonewline
+   Write-Host " Select an option and press Enter: "  -nonewline -ForegroundColor Green
 }
    
 $Menu1 = {
-   Write-Host " *******************************************"
-   Write-Host " *                  Menu                   *" 
-   Write-Host " *******************************************" 
+   Write-Host " *******************************************" -ForegroundColor Yellow
+   Write-Host " *                  Menu                   *" -ForegroundColor Yellow
+   Write-Host " *******************************************" -ForegroundColor Yellow
    Write-Host 
-   Write-Host " 1. Microsoft Office 2019" 
-   Write-Host " 2. Microsoft Office 2021" 
-   Write-Host " 3. Microsoft Office 365" 
-   Write-Host " 4. Quit"
+   Write-Host " 1. Microsoft Office 2019" -ForegroundColor Yellow
+   Write-Host " 2. Microsoft Office 2021" -ForegroundColor Yellow
+   Write-Host " 3. Microsoft Office 365" -ForegroundColor Yellow
+   Write-Host " 4. Quit" -ForegroundColor Yellow
    Write-Host 
-   Write-Host " Select an option and press Enter: "  -nonewline
+   Write-Host " Select an option and press Enter: "  -nonewline -ForegroundColor Green
 }
    
 $Menu2 = {
-   Write-Host " *******************************************"
-   Write-Host " *                  Menu                   *" 
-   Write-Host " *******************************************" 
+   Write-Host " *******************************************" -ForegroundColor Yellow
+   Write-Host " *                  Menu                   *" -ForegroundColor Yellow
+   Write-Host " *******************************************" -ForegroundColor Yellow
    Write-Host 
-   Write-Host " 1.  Office $version Professional Plus" 
-   Write-Host " 2.  Office $version Standard"
-   Write-Host " 3.  Project Professional $version" 
-   Write-Host " 4.  Project Standard $version" 
-   Write-Host " 5.  Visio Professional $version" 
-   Write-Host " 6.  Visio Standard $version" 
-   Write-Host " 7.  Word $version" 
-   Write-Host " 8.  Excel $version" 
-   Write-Host " 9.  PowerPoint $version" 
-   Write-Host " 10. Outlook $version" 
-   Write-Host " 11. Publisher $version" 
-   Write-Host " 12. Access $version" 
-   Write-Host " 13. Go Back"
+   Write-Host " 1.  Office $version Professional Plus" -ForegroundColor Yellow
+   Write-Host " 2.  Office $version Standard" -ForegroundColor Yellow
+   Write-Host " 3.  Project Professional $version" -ForegroundColor Yellow
+   Write-Host " 4.  Project Standard $version" -ForegroundColor Yellow
+   Write-Host " 5.  Visio Professional $version" -ForegroundColor Yellow
+   Write-Host " 6.  Visio Standard $version" -ForegroundColor Yellow
+   Write-Host " 7.  Word $version" -ForegroundColor Yellow
+   Write-Host " 8.  Excel $version" -ForegroundColor Yellow
+   Write-Host " 9.  PowerPoint $version" -ForegroundColor Yellow
+   Write-Host " 10. Outlook $version" -ForegroundColor Yellow
+   Write-Host " 11. Publisher $version" -ForegroundColor Yellow
+   Write-Host " 12. Access $version" -ForegroundColor Yellow
+   Write-Host " 13. Go Back" -ForegroundColor Yellow
    Write-Host 
-   Write-Host " Select an option and press Enter: "  -nonewline
+   Write-Host " Select an option and press Enter: "  -nonewline -ForegroundColor Green
 }
 
 $Menu365 = {
-   Write-Host " ********************************************"
-   Write-Host " *                  Menu                    *" 
-   Write-Host " ********************************************" 
+   Write-Host " ********************************************" -ForegroundColor Yellow
+   Write-Host " *                  Menu                    *" -ForegroundColor Yellow
+   Write-Host " ********************************************" -ForegroundColor Yellow
    Write-Host 
-   Write-Host " 1. Office $version Home and Personal"   
-   Write-Host " 2. Office $version App for Business"
-   Write-Host " 3. Microsoft $version Apps for Enterprise"
-   Write-Host " 4. Quit"
+   Write-Host " 1. Office $version Home and Personal" -ForegroundColor Yellow 
+   Write-Host " 2. Office $version App for Business" -ForegroundColor Yellow
+   Write-Host " 3. Microsoft $version Apps for Enterprise" -ForegroundColor Yellow
+   Write-Host " 4. Quit" -ForegroundColor Yellow
    Write-Host
    Write-Host
-   Write-Host " Information:"
+   Write-Host " Information:" -ForegroundColor Yellow
    Write-Host 
-   Write-Host "  - Office 365 Home and Personal using the same package."
-   Write-Host "  - Microsoft 365 Apps for Business known as Office 365 Business ."
-   Write-Host "  - Microsoft 365 Apps for Enterprise knows as Office 365 ProPlus."
+   Write-Host "  - Office 365 Home and Personal using the same package." -ForegroundColor Yellow
+   Write-Host "  - Microsoft 365 Apps for Business known as Office 365 Business ." -ForegroundColor Yellow
+   Write-Host "  - Microsoft 365 Apps for Enterprise knows as Office 365 ProPlus." -ForegroundColor Yellow
    Write-Host
-   Write-Host " Select an option and press Enter: "  -nonewline
+   Write-Host " Select an option and press Enter: "  -nonewline -ForegroundColor Green
 }
    
 $install = {
@@ -92,8 +92,8 @@ $install = {
 
    Write-Host
    Write-Host *****************************************************************************
-   Write-Host "- Installing $productName $($arch) bit...."
-   Write-Host "- Once done, it will go back to the menu automatically. Please be patient!"
+   Write-Host "- Installing $productName $($arch) bit...." -ForegroundColor Green
+   Write-Host "- Once done, it will go back to the menu automatically. Please be patient!" -ForegroundColor Green
    Write-Host *****************************************************************************
    Write-Host
 
@@ -126,8 +126,8 @@ $install365 = {
 
    Write-Host
    Write-Host *****************************************************************************
-   Write-Host "- Downloading $productName $($arch) bit...."                               
-   Write-Host "- Once done, it will go back to the menu automatically. Please be patient!"
+   Write-Host "- Downloading $productName $($arch) bit...."  -ForegroundColor Green                     
+   Write-Host "- Once done, it will go back to the menu automatically. Please be patient!" -ForegroundColor Green
    Write-Host *****************************************************************************
    Write-Host
 
@@ -154,13 +154,13 @@ $uninstall = {
 
    Write-Host
    Write-Host ============================================================
-   Write-Host "Unnstalling...."
+   Write-Host "Unnstalling...." -ForegroundColor Green
    Write-Host ============================================================
    Write-Host
 
    Write-Host
    Write-Host ============================================================
-   Write-Host "Done...."
+   Write-Host "Done...." -ForegroundColor Green
    Write-Host ============================================================
    Write-Host
    Start-Sleep -Seconds 10
