@@ -30,7 +30,7 @@ $install = {
    Add-Content $fileName -Value '</Add>'
    Add-Content $fileName -Value '</Configuration>'
 
-   $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
+   $uri = 'https://github.com/bonben365/office-installer/raw/main/setup.exe'
    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
    .\setup.exe /configure .\$fileName
 }
@@ -49,7 +49,7 @@ $install2013 = {
    Add-Content $fileName -Value '</Add>'
    Add-Content $fileName -Value '</Configuration>'
 
-   $uri = 'https://github.com/bonben365/office365-installer/raw/main/bin2013.exe'
+   $uri = 'https://github.com/bonben365/office-installer/raw/main/bin2013.exe'
    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\bin2013.exe")
    .\setup.exe /configure .\$fileName
 }
@@ -62,7 +62,7 @@ $uninstall = {
    Add-Content $fileName -Value '<Configuration>'
    Add-Content $fileName -Value '<Remove All="True"/>'
    Add-Content $fileName -Value '</Configuration>'
-   $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
+   $uri = 'https://github.com/bonben365/office-installer/raw/main/setup.exe'
    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
    .\setup.exe /configure .\configuration.xml
 }
