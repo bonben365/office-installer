@@ -4,7 +4,7 @@
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
 
 $Form = New-Object System.Windows.Forms.Form    
-$Form.Size = New-Object System.Drawing.Size(750,450)
+$Form.Size = New-Object System.Drawing.Size(785,450)
 $Form.StartPosition = "CenterScreen" #loads the window in the center of the screen
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow #modifies the window border
 $Form.Text = "Microsoft Office Installation Toool - www.bonguides.com" #window description
