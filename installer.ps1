@@ -191,14 +191,14 @@ $uninstall = {
 
 ############################################## Start Arch checkboxes
 
-   $arch64 = New-Object System.Windows.Forms.checkbox
+   $arch64 = New-Object System.Windows.Forms.RadioButton
    $arch64.Location = New-Object System.Drawing.Size(10,20)
    $arch64.Size = New-Object System.Drawing.Size(100,20)
    $arch64.Checked = $true
    $arch64.Text = "64 bit"
    $arch.Controls.Add($arch64)
 
-   $arch32 = New-Object System.Windows.Forms.checkbox
+   $arch32 = New-Object System.Windows.Forms.RadioButton
    $arch32.Location = New-Object System.Drawing.Size(10,40)
    $arch32.Size = New-Object System.Drawing.Size(100,20)
    $arch32.Checked = $false
@@ -209,44 +209,44 @@ $uninstall = {
 
 ############################################## Start Arch checkboxes
 
-   $English = New-Object System.Windows.Forms.checkbox
+   $English = New-Object System.Windows.Forms.RadioButton
    $English.Location = New-Object System.Drawing.Size(10,20)
    $English.Size = New-Object System.Drawing.Size(100,20)
    $English.Checked = $true
    $English.Text = "English"
    $language.Controls.Add($English)
 
-   $Japanese = New-Object System.Windows.Forms.checkbox
+   $Japanese = New-Object System.Windows.Forms.RadioButton
    $Japanese.Location = New-Object System.Drawing.Size(10,40)
    $Japanese.Size = New-Object System.Drawing.Size(100,20)
    $Japanese.Text = "Japanese"
    $language.Controls.Add($Japanese)
 
-   $Korean = New-Object System.Windows.Forms.checkbox
+   $Korean = New-Object System.Windows.Forms.RadioButton
    $Korean.Location = New-Object System.Drawing.Size(10,60)
    $Korean.Size = New-Object System.Drawing.Size(100,20)
    $Korean.Text = "Korean"
    $language.Controls.Add($Korean)
 
-   $Chinese = New-Object System.Windows.Forms.checkbox
+   $Chinese = New-Object System.Windows.Forms.RadioButton
    $Chinese.Location = New-Object System.Drawing.Size(10,80)
    $Chinese.Size = New-Object System.Drawing.Size(100,20)
    $Chinese.Text = "Chinese"
    $language.Controls.Add($Chinese)
 
-   $French = New-Object System.Windows.Forms.checkbox
+   $French = New-Object System.Windows.Forms.RadioButton
    $French.Location = New-Object System.Drawing.Size(10,100)
    $French.Size = New-Object System.Drawing.Size(100,20)
    $French.Text = "French"
    $language.Controls.Add($French)
 
-   $Spanish = New-Object System.Windows.Forms.checkbox
+   $Spanish = New-Object System.Windows.Forms.RadioButton
    $Spanish.Location = New-Object System.Drawing.Size(10,120)
    $Spanish.Size = New-Object System.Drawing.Size(100,20)
    $Spanish.Text = "Spanish"
    $language.Controls.Add($Spanish)
 
-   $Vietnamese = New-Object System.Windows.Forms.checkbox
+   $Vietnamese = New-Object System.Windows.Forms.RadioButton
    $Vietnamese.Location = New-Object System.Drawing.Size(10,140)
    $Vietnamese.Size = New-Object System.Drawing.Size(100,20)
    $Vietnamese.Text = "Vietnamese"
@@ -255,20 +255,20 @@ $uninstall = {
 ############################################## End Arch checkboxes 
 
 ############################################## Start Microsoft 365 checkboxes
-   $m365Home = New-Object System.Windows.Forms.checkbox
+   $m365Home = New-Object System.Windows.Forms.RadioButton
    $m365Home.Location = New-Object System.Drawing.Size(10,20)
    $m365Home.Size = New-Object System.Drawing.Size(100,20)
    $m365Home.Checked = $false
    $m365Home.Text = "Home"
    $groupBox365.Controls.Add($m365Home)
 
-   $m365Business = New-Object System.Windows.Forms.checkbox
+   $m365Business = New-Object System.Windows.Forms.RadioButton
    $m365Business.Location = New-Object System.Drawing.Size(10,40)
    $m365Business.Size = New-Object System.Drawing.Size(100,20)
    $m365Business.Text = "Business"
    $groupBox365.Controls.Add($m365Business)
 
-   $m365Enterprise = New-Object System.Windows.Forms.checkbox
+   $m365Enterprise = New-Object System.Windows.Forms.RadioButton
    $m365Enterprise.Location = New-Object System.Drawing.Size(10,60)
    $m365Enterprise.Size = New-Object System.Drawing.Size(100,20)
    $m365Enterprise.Text = "Enterprise"
@@ -276,87 +276,87 @@ $uninstall = {
 ############################################## End Microsoft 365 checkboxes
 
 ############################################## Start Office 2021 checkboxes
-   $2021Pro = New-Object System.Windows.Forms.checkbox
+   $2021Pro = New-Object System.Windows.Forms.RadioButton
    $2021Pro.Location = New-Object System.Drawing.Size(10,20)
    $2021Pro.Size = New-Object System.Drawing.Size(100,20)
    $2021Pro.Checked = $false
    $2021Pro.Text = "Professional"
    $groupBox2021.Controls.Add($2021Pro)
 
-   $2021Std = New-Object System.Windows.Forms.checkbox
+   $2021Std = New-Object System.Windows.Forms.RadioButton
    $2021Std.Location = New-Object System.Drawing.Size(10,40)
    $2021Std.Size = New-Object System.Drawing.Size(100,20)
    $2021Std.Text = "Standard"
    $groupBox2021.Controls.Add($2021Std)
 
-   $2021ProjectPro = New-Object System.Windows.Forms.checkbox
+   $2021ProjectPro = New-Object System.Windows.Forms.RadioButton
    $2021ProjectPro.Location = New-Object System.Drawing.Size(10,60)
    $2021ProjectPro.Size = New-Object System.Drawing.Size(100,20)
    $2021ProjectPro.Text = "Project Pro"
    $groupBox2021.Controls.Add($2021ProjectPro)
 
-   $2021ProjectStd = New-Object System.Windows.Forms.checkbox
+   $2021ProjectStd = New-Object System.Windows.Forms.RadioButton
    $2021ProjectStd.Location = New-Object System.Drawing.Size(10,80)
    $2021ProjectStd.Size = New-Object System.Drawing.Size(100,20)
    $2021ProjectStd.AutoSize = $true
    $2021ProjectStd.Text = "Project Standard"
    $groupBox2021.Controls.Add($2021ProjectStd)
 
-   $2021VisioPro = New-Object System.Windows.Forms.checkbox
+   $2021VisioPro = New-Object System.Windows.Forms.RadioButton
    $2021VisioPro.Location = New-Object System.Drawing.Size(10,100)
    $2021VisioPro.Size = New-Object System.Drawing.Size(100,20)
    $2021VisioPro.Text = "Visio Pro"
    $groupBox2021.Controls.Add($2021VisioPro)
 
-   $2021VisioStd = New-Object System.Windows.Forms.checkbox
+   $2021VisioStd = New-Object System.Windows.Forms.RadioButton
    $2021VisioStd.Location = New-Object System.Drawing.Size(10,120)
    $2021VisioStd.Size = New-Object System.Drawing.Size(100,20)
    $2021VisioStd.Text = "Standard"
    $groupBox2021.Controls.Add($2021VisioStd)
 
-   $2021Word = New-Object System.Windows.Forms.checkbox
+   $2021Word = New-Object System.Windows.Forms.RadioButton
    $2021Word.Location = New-Object System.Drawing.Size(10,140)
    $2021Word.Size = New-Object System.Drawing.Size(100,20)
    $2021Word.Text = "Word"
    $groupBox2021.Controls.Add($2021Word)
 
-   $2021Excel = New-Object System.Windows.Forms.checkbox
+   $2021Excel = New-Object System.Windows.Forms.RadioButton
    $2021Excel.Location = New-Object System.Drawing.Size(10,160)
    $2021Excel.Size = New-Object System.Drawing.Size(100,20)
    $2021Excel.Text = "Excel"
    $groupBox2021.Controls.Add($2021Excel)
 
-   $2021PowerPoint = New-Object System.Windows.Forms.checkbox
+   $2021PowerPoint = New-Object System.Windows.Forms.RadioButton
    $2021PowerPoint.Location = New-Object System.Drawing.Size(10,180)
    $2021PowerPoint.Size = New-Object System.Drawing.Size(100,20)
    $2021PowerPoint.Text = "PowerPoint"
    $groupBox2021.Controls.Add($2021PowerPoint)
 
-   $2021Outlook = New-Object System.Windows.Forms.checkbox
+   $2021Outlook = New-Object System.Windows.Forms.RadioButton
    $2021Outlook.Location = New-Object System.Drawing.Size(10,200)
    $2021Outlook.Size = New-Object System.Drawing.Size(100,20)
    $2021Outlook.Text = "Outlook"
    $groupBox2021.Controls.Add($2021Outlook)
 
-   $2021Publisher = New-Object System.Windows.Forms.checkbox
+   $2021Publisher = New-Object System.Windows.Forms.RadioButton
    $2021Publisher.Location = New-Object System.Drawing.Size(10,220)
    $2021Publisher.Size = New-Object System.Drawing.Size(100,20)
    $2021Publisher.Text = "Publisher"
    $groupBox2021.Controls.Add($2021Publisher)
 
-   $2021Access = New-Object System.Windows.Forms.checkbox
+   $2021Access = New-Object System.Windows.Forms.RadioButton
    $2021Access.Location = New-Object System.Drawing.Size(10,240)
    $2021Access.Size = New-Object System.Drawing.Size(100,20)
    $2021Access.Text = "Access"
    $groupBox2021.Controls.Add($2021Access)
 
-   $2021HomeBusiness = New-Object System.Windows.Forms.checkbox
+   $2021HomeBusiness = New-Object System.Windows.Forms.RadioButton
    $2021HomeBusiness.Location = New-Object System.Drawing.Size(10,260)
    $2021HomeBusiness.Size = New-Object System.Drawing.Size(100,20)
    $2021HomeBusiness.Text = "HomeBusiness"
    $groupBox2021.Controls.Add($2021HomeBusiness)
 
-   $2021HomeStudent = New-Object System.Windows.Forms.checkbox
+   $2021HomeStudent = New-Object System.Windows.Forms.RadioButton
    $2021HomeStudent.Location = New-Object System.Drawing.Size(10,280)
    $2021HomeStudent.Size = New-Object System.Drawing.Size(100,20)
    $2021HomeStudent.Text = "HomeStudent"
@@ -364,87 +364,87 @@ $uninstall = {
 ############################################## End Office 2021 checkboxes
 
 ############################################## Start Office 2019 checkboxes
-   $2019Pro = New-Object System.Windows.Forms.checkbox
+   $2019Pro = New-Object System.Windows.Forms.RadioButton
    $2019Pro.Location = New-Object System.Drawing.Size(10,20)
    $2019Pro.Size = New-Object System.Drawing.Size(100,20)
    $2019Pro.Checked = $false
    $2019Pro.Text = "Professional"
    $groupBox2019.Controls.Add($2019Pro)
 
-   $2019Std = New-Object System.Windows.Forms.checkbox
+   $2019Std = New-Object System.Windows.Forms.RadioButton
    $2019Std.Location = New-Object System.Drawing.Size(10,40)
    $2019Std.Size = New-Object System.Drawing.Size(100,20)
    $2019Std.Text = "Standard"
    $groupBox2019.Controls.Add($2019Std)
 
-   $2019ProjectPro = New-Object System.Windows.Forms.checkbox
+   $2019ProjectPro = New-Object System.Windows.Forms.RadioButton
    $2019ProjectPro.Location = New-Object System.Drawing.Size(10,60)
    $2019ProjectPro.Size = New-Object System.Drawing.Size(100,20)
    $2019ProjectPro.Text = "Project Pro"
    $groupBox2019.Controls.Add($2019ProjectPro)
 
-   $2019ProjectStd = New-Object System.Windows.Forms.checkbox
+   $2019ProjectStd = New-Object System.Windows.Forms.RadioButton
    $2019ProjectStd.Location = New-Object System.Drawing.Size(10,80)
    $2019ProjectStd.Size = New-Object System.Drawing.Size(100,20)
    $2019ProjectStd.Text = "Project Standard"
    $2019ProjectStd.AutoSize = $true
    $groupBox2019.Controls.Add($2019ProjectStd)
 
-   $2019VisioPro = New-Object System.Windows.Forms.checkbox
+   $2019VisioPro = New-Object System.Windows.Forms.RadioButton
    $2019VisioPro.Location = New-Object System.Drawing.Size(10,100)
    $2019VisioPro.Size = New-Object System.Drawing.Size(100,20)
    $2019VisioPro.Text = "Visio Pro"
    $groupBox2019.Controls.Add($2019VisioPro)
 
-   $2019VisioStd = New-Object System.Windows.Forms.checkbox
+   $2019VisioStd = New-Object System.Windows.Forms.RadioButton
    $2019VisioStd.Location = New-Object System.Drawing.Size(10,120)
    $2019VisioStd.Size = New-Object System.Drawing.Size(100,20)
    $2019VisioStd.Text = "Standard"
    $groupBox2019.Controls.Add($2019VisioStd)
 
-   $2019Word = New-Object System.Windows.Forms.checkbox
+   $2019Word = New-Object System.Windows.Forms.RadioButton
    $2019Word.Location = New-Object System.Drawing.Size(10,140)
    $2019Word.Size = New-Object System.Drawing.Size(100,20)
    $2019Word.Text = "Word"
    $groupBox2019.Controls.Add($2019Word)
 
-   $2019Excel = New-Object System.Windows.Forms.checkbox
+   $2019Excel = New-Object System.Windows.Forms.RadioButton
    $2019Excel.Location = New-Object System.Drawing.Size(10,160)
    $2019Excel.Size = New-Object System.Drawing.Size(100,20)
    $2019Excel.Text = "Excel"
    $groupBox2019.Controls.Add($2019Excel)
 
-   $2019PowerPoint = New-Object System.Windows.Forms.checkbox
+   $2019PowerPoint = New-Object System.Windows.Forms.RadioButton
    $2019PowerPoint.Location = New-Object System.Drawing.Size(10,180)
    $2019PowerPoint.Size = New-Object System.Drawing.Size(100,20)
    $2019PowerPoint.Text = "PowerPoint"
    $groupBox2019.Controls.Add($2019PowerPoint)
 
-   $2019Outlook = New-Object System.Windows.Forms.checkbox
+   $2019Outlook = New-Object System.Windows.Forms.RadioButton
    $2019Outlook.Location = New-Object System.Drawing.Size(10,200)
    $2019Outlook.Size = New-Object System.Drawing.Size(100,20)
    $2019Outlook.Text = "Outlook"
    $groupBox2019.Controls.Add($2019Outlook)
 
-   $2019Publisher = New-Object System.Windows.Forms.checkbox
+   $2019Publisher = New-Object System.Windows.Forms.RadioButton
    $2019Publisher.Location = New-Object System.Drawing.Size(10,220)
    $2019Publisher.Size = New-Object System.Drawing.Size(100,20)
    $2019Publisher.Text = "Publisher"
    $groupBox2019.Controls.Add($2019Publisher)
 
-   $2019Access = New-Object System.Windows.Forms.checkbox
+   $2019Access = New-Object System.Windows.Forms.RadioButton
    $2019Access.Location = New-Object System.Drawing.Size(10,240)
    $2019Access.Size = New-Object System.Drawing.Size(100,20)
    $2019Access.Text = "Access"
    $groupBox2019.Controls.Add($2019Access)
 
-   $2019HomeBusiness = New-Object System.Windows.Forms.checkbox
+   $2019HomeBusiness = New-Object System.Windows.Forms.RadioButton
    $2019HomeBusiness.Location = New-Object System.Drawing.Size(10,260)
    $2019HomeBusiness.Size = New-Object System.Drawing.Size(100,20)
    $2019HomeBusiness.Text = "HomeBusiness"
    $groupBox2019.Controls.Add($2019HomeBusiness)
 
-   $2019HomeStudent = New-Object System.Windows.Forms.checkbox
+   $2019HomeStudent = New-Object System.Windows.Forms.RadioButton
    $2019HomeStudent.Location = New-Object System.Drawing.Size(10,280)
    $2019HomeStudent.Size = New-Object System.Drawing.Size(100,20)
    $2019HomeStudent.Text = "HomeStudent"
@@ -453,26 +453,26 @@ $uninstall = {
 
 
 ############################################## Start Office 2016 checkboxes
-   $2016Pro = New-Object System.Windows.Forms.checkbox
+   $2016Pro = New-Object System.Windows.Forms.RadioButton
    $2016Pro.Location = New-Object System.Drawing.Size(10,20)
    $2016Pro.Size = New-Object System.Drawing.Size(100,20)
    $2016Pro.Checked = $false
    $2016Pro.Text = "Professional"
    $groupBox2016.Controls.Add($2016Pro)
 
-   $2016Std = New-Object System.Windows.Forms.checkbox
+   $2016Std = New-Object System.Windows.Forms.RadioButton
    $2016Std.Location = New-Object System.Drawing.Size(10,40)
    $2016Std.Size = New-Object System.Drawing.Size(100,20)
    $2016Std.Text = "Standard"
    $groupBox2016.Controls.Add($2016Std)
 
-   $2016ProjectPro = New-Object System.Windows.Forms.checkbox
+   $2016ProjectPro = New-Object System.Windows.Forms.RadioButton
    $2016ProjectPro.Location = New-Object System.Drawing.Size(10,60)
    $2016ProjectPro.Size = New-Object System.Drawing.Size(100,20)
    $2016ProjectPro.Text = "Project Pro"
    $groupBox2016.Controls.Add($2016ProjectPro)
 
-   $2016VisioPro = New-Object System.Windows.Forms.checkbox
+   $2016VisioPro = New-Object System.Windows.Forms.RadioButton
    $2016VisioPro.Location = New-Object System.Drawing.Size(10,80)
    $2016VisioPro.Size = New-Object System.Drawing.Size(100,20)
    $2016VisioPro.Text = "Visio Pro"
@@ -481,26 +481,26 @@ $uninstall = {
 ############################################## End Office 2016 checkboxes
 
 ############################################## Start Office 2013 checkboxes
-   $2013Pro = New-Object System.Windows.Forms.checkbox
+   $2013Pro = New-Object System.Windows.Forms.RadioButton
    $2013Pro.Location = New-Object System.Drawing.Size(10,20)
    $2013Pro.Size = New-Object System.Drawing.Size(100,20)
    $2013Pro.Checked = $false
    $2013Pro.Text = "Professional"
    $groupBox2013.Controls.Add($2013Pro)
 
-   $2013Std = New-Object System.Windows.Forms.checkbox
+   $2013Std = New-Object System.Windows.Forms.RadioButton
    $2013Std.Location = New-Object System.Drawing.Size(10,40)
    $2013Std.Size = New-Object System.Drawing.Size(100,20)
    $2013Std.Text = "Standard"
    $groupBox2013.Controls.Add($2013Std)
 
-   $2013ProjectPro = New-Object System.Windows.Forms.checkbox
+   $2013ProjectPro = New-Object System.Windows.Forms.RadioButton
    $2013ProjectPro.Location = New-Object System.Drawing.Size(10,60)
    $2013ProjectPro.Size = New-Object System.Drawing.Size(100,20)
    $2013ProjectPro.Text = "Project Pro"
    $groupBox2013.Controls.Add($2013ProjectPro)
 
-   $2013VisioPro = New-Object System.Windows.Forms.checkbox
+   $2013VisioPro = New-Object System.Windows.Forms.RadioButton
    $2013VisioPro.Location = New-Object System.Drawing.Size(10,80)
    $2013VisioPro.Size = New-Object System.Drawing.Size(100,20)
    $2013VisioPro.Text = "Visio Pro"
@@ -510,7 +510,7 @@ $uninstall = {
 
 
 ############################################## Start uninstall checkbox
-   $uninstallcb = New-Object System.Windows.Forms.checkbox
+   $uninstallcb = New-Object System.Windows.Forms.RadioButton
    $uninstallcb.Location = New-Object System.Drawing.Size(10,20)
    $uninstallcb.Size = New-Object System.Drawing.Size(200,20)
    $uninstallcb.Text = "I Agree (Be careful)"
