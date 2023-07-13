@@ -51,7 +51,7 @@ $install2013 = {
 
    $uri = 'https://github.com/bonben365/office-installer/raw/main/bin2013.exe'
    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\bin2013.exe")
-   .\setup.exe /configure .\$fileName
+   .\bin2013.exe /configure .\$fileName
 }
 
 $uninstall = {
