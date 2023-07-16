@@ -121,6 +121,8 @@ $uninstall = {
    if ($2016Std.Checked -eq $true) {$productId = 'StandardRetail';Invoke-Command $install}
    if ($2016ProjectPro.Checked -eq $true) {$productId = 'VisioProRetail';Invoke-Command $install}
    if ($2016VisioPro.Checked -eq $true) {$productId = 'ProjectProRetail';Invoke-Command $install}
+   if ($2016OneNote.Checked -eq $true) {$productId = 'OneNoteRetail';Invoke-Command $install}
+
 
    if ($2013Pro.Checked -eq $true) {$productId = 'ProfessionalRetail';Invoke-Command $install2013}
    if ($2013Std.Checked -eq $true) {$productId = 'StandardRetail';Invoke-Command $install2013}
@@ -171,12 +173,12 @@ $uninstall = {
 
    $groupBox2016 = New-Object System.Windows.Forms.GroupBox
    $groupBox2016.Location = New-Object System.Drawing.Size(570,10) 
-   $groupBox2016.size = New-Object System.Drawing.Size(130,110) 
+   $groupBox2016.size = New-Object System.Drawing.Size(130,130) 
    $groupBox2016.text = "Office 2016 Apps:"
    $Form.Controls.Add($groupBox2016)
 
    $groupBox2013 = New-Object System.Windows.Forms.GroupBox
-   $groupBox2013.Location = New-Object System.Drawing.Size(570,130) 
+   $groupBox2013.Location = New-Object System.Drawing.Size(570,150) 
    $groupBox2013.size = New-Object System.Drawing.Size(130,110) 
    $groupBox2013.text = "Office 2013 Apps:"
    $Form.Controls.Add($groupBox2013)
@@ -477,6 +479,12 @@ $uninstall = {
    $2016VisioPro.Size = New-Object System.Drawing.Size(100,20)
    $2016VisioPro.Text = "Visio Pro"
    $groupBox2016.Controls.Add($2016VisioPro)
+
+   $2016OneNote = New-Object System.Windows.Forms.RadioButton
+   $2016OneNote.Location = New-Object System.Drawing.Size(10,100)
+   $2016OneNote.Size = New-Object System.Drawing.Size(100,20)
+   $2016OneNote.Text = "OneNote"
+   $groupBox2016.Controls.Add($2016OneNote)
 
 ############################################## End Office 2016 checkboxes
 
