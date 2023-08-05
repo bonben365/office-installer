@@ -33,7 +33,6 @@ $install = {
    Add-content $fileName -Value "<Language ID=`"$languageId`"/>"
    Add-Content $fileName -Value '</Product>'
    Add-Content $fileName -Value '</Add>'
-   Add-Content $fileName -Value '<Display Level="None" AcceptEULA="TRUE" />'
    Add-Content $fileName -Value '</Configuration>'
 
    $uri = 'https://github.com/bonben365/office-installer/raw/main/setup.exe'
