@@ -28,13 +28,13 @@ $install = {
    Add-content $fileName -Value "<Language ID=`"$languageId`"/>"
    Add-Content $fileName -Value '</Product>'
    Add-Content $fileName -Value '</Add>'
+   Add-Content $fileName -Value '<Display Level="None" AcceptEULA="TRUE" />'
    Add-Content $fileName -Value '</Configuration>'
 
    $uri = 'https://github.com/bonben365/office-installer/raw/main/setup.exe'
    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
    .\setup.exe /configure .\$fileName
 }
-
 
 $install2013 = { 
    New-Item -Path $env:temp\c2r -ItemType Directory -Force
