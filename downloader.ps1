@@ -68,6 +68,8 @@ $download2013 = {
    Add-Content $configurationFile -Value "</Configuration>"
 
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\desktop\$productId\bin2013.exe")
+   Write-Host
+   Write-Host "Downloading $productId to $env:userprofile\desktop\$productId" -ForegroundColor Cyan
    .\bin2013.exe /download .\$configurationFile
 
    Write-Host
