@@ -7,7 +7,6 @@ $Confirm= Read-Host Are you sure you want to uninstall all Office apps? [Y] Yes 
 if($Confirm -match "[yY]") {
     $null = New-Item -Path $env:temp\SaRA -ItemType Directory -Force
     Set-Location $env:temp\SaRA
-    ii $env:temp\SaRA
     Write-Host
     Write-Host 'Downloading Microsoft Support and Recovery Assistant........' -ForegroundColor Green
     #$null = Invoke-WebRequest -Uri "https://aka.ms/SaRA_EnterpriseVersionFiles" -OutFile $env:temp\SaRA\SaRAcmd.zip
