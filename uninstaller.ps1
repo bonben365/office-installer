@@ -19,6 +19,6 @@ if($Confirm -match "[yY]") {
     $closingApps = Get-Process -ProcessName lync, winword, excel, msaccess, mstore, infopath, setlang, msouc, ois, onenote, outlook, powerpnt, mspub, groove, visio, winproj, graph, teams -ErrorAction SilentlyContinue
     $closingApps | Stop-Process -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
     .\SaRAcmd.exe -S OfficeScrubScenario -AcceptEula -Officeversion All
-    Write-Host
     Write-Host 'Done........' -ForegroundColor Green
+    Write-Host
 }
