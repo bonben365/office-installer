@@ -16,125 +16,129 @@ $Form.Text = "Microsoft Office Installation Toool - www.bonguides.com" #window d
 $Form.ShowInTaskbar = $True
 $Form.KeyPreview = $True
 $Form.AutoSize = $True
-$Form.FormBorderStyle = 'Fixed3D'
+$Form.FormBorderStyle = "Fixed3D"
 $Form.MaximizeBox = $False
 $Form.MinimizeBox = $False
 $Form.ControlBox = $True
 $Form.Icon = $Icon
 
-$install = { 
-   New-Item -Path $env:temp\c2r -ItemType Directory -Force
-   Set-Location $env:temp\c2r
-   $fileName = "configuration-x$arch.xml"
-   New-Item $fileName -ItemType File -Force | Out-Null
-   Add-Content $fileName -Value '<Configuration>'
-   Add-content $fileName -Value "<Add OfficeClientEdition=`"$arch`">"
-   Add-content $fileName -Value "<Product ID=`"$productId`">"
-   Add-content $fileName -Value "<Language ID=`"$languageId`"/>"
-   Add-Content $fileName -Value '</Product>'
-   Add-Content $fileName -Value '</Add>'
-   Add-Content $fileName -Value '</Configuration>'
 
-   $uri = 'https://github.com/bonben365/office-installer/raw/main/setup.exe'
-   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
-   .\setup.exe /configure .\$fileName
+$uri = "https://github.com/bonben365/office-installer/raw/main/setup.exe"
+$uri2013 = "https://github.com/bonben365/office-installer/raw/main/bin2013.exe"
+
+$download = { 
+   New-Item -Path $env:userprofile\desktop\$productId -ItemType Directory -Force
+   Set-Location $env:userprofile\desktop\$productId
+   Invoke-Item $env:userprofile\desktop\$productId
+   $configurationFile = "configuration-x$arch.xml"
+   New-Item $configurationFile -ItemType File -Force | Out-Null
+   Add-Content $configurationFile -Value "<Configuration>"
+   Add-content $configurationFile -Value "<Add OfficeClientEdition=`"$arch`">"
+   Add-content $configurationFile -Value "<Product ID=`"$productId`">"
+   Add-content $configurationFile -Value "<Language ID=`"$languageId`"/>"
+   Add-Content $configurationFile -Value "</Product>"
+   Add-Content $configurationFile -Value "</Add>"
+   Add-Content $configurationFile -Value "</Configuration>"
+
+   $batchFile = "Install-x$arch.bat"
+   New-Item $batchFile -ItemType File -Force | Out-Null
+   Add-content $batchFile -Value "setup.exe /configure $configurationFile"
+
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\desktop\$productId\setup.exe")
+   Write-Host
+   Write-Host "Downloading $productId to $env:userprofile\desktop\$productId" -ForegroundColor Cyan
+   .\setup.exe /download .\$configurationFile
+   Write-Host
+   Write-Host "Complete, the downloaded files saved in $env:userprofile\desktop\$productId" -ForegroundColor Green
+   Write-Host "You can close PowerShell window now." -ForegroundColor Green
+   Write-Host
 }
 
-$install2013 = { 
-   New-Item -Path $env:temp\c2r -ItemType Directory -Force
-   Set-Location $env:temp\c2r
-   $fileName = "configuration-x$arch.xml"
-   New-Item $fileName -ItemType File -Force | Out-Null
-   Add-Content $fileName -Value '<Configuration>'
-   Add-content $fileName -Value "<Add OfficeClientEdition=`"$arch`">"
-   Add-content $fileName -Value "<Product ID=`"$productId`">"
-   Add-content $fileName -Value "<Language ID=`"$languageId`"/>"
-   Add-Content $fileName -Value '</Product>'
-   Add-Content $fileName -Value '</Add>'
-   Add-Content $fileName -Value '</Configuration>'
+$download2013 = { 
+   New-Item -Path $env:userprofile\desktop\$productId -ItemType Directory -Force
+   Set-Location $env:userprofile\desktop\$productId
+   $configurationFile = "configuration-x$arch.xml"
+   New-Item $configurationFile -ItemType File -Force | Out-Null
+   Add-Content $configurationFile -Value "<Configuration>"
+   Add-content $configurationFile -Value "<Add OfficeClientEdition=`"$arch`">"
+   Add-content $configurationFile -Value "<Product ID=`"$productId`">"
+   Add-content $configurationFile -Value "<Language ID=`"$languageId`"/>"
+   Add-Content $configurationFile -Value "</Product>"
+   Add-Content $configurationFile -Value "</Add>"
+   Add-Content $configurationFile -Value "</Configuration>"
 
-   $uri = 'https://github.com/bonben365/office-installer/raw/main/bin2013.exe'
-   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\bin2013.exe")
-   .\bin2013.exe /configure .\$fileName
-}
+   (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\desktop\$productId\bin2013.exe")
+   .\bin2013.exe /configure .\$configurationFile
 
-$uninstall = {
-   New-Item -Path $env:temp\c2r -ItemType Directory -Force
-   Set-Location $env:temp\c2r
-   $fileName = 'configuration.xml'
-   New-Item $fileName -ItemType File -Force
-   Add-Content $fileName -Value '<Configuration>'
-   Add-Content $fileName -Value '<Remove All="True"/>'
-   Add-Content $fileName -Value '</Configuration>'
-   $uri = 'https://github.com/bonben365/office-installer/raw/main/setup.exe'
-   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
-   .\setup.exe /configure .\configuration.xml
+   Write-Host
+   Write-Host "Complete, the downloaded files saved in $env:userprofile\desktop\$productId" -ForegroundColor Green
+   Write-Host "You can close PowerShell window now." -ForegroundColor Green
+   Write-Host
 }
 
 ############################################## Start functions
 
    function microsoftInstaller {
    try {
-   if ($arch32.Checked -eq $true) {$arch='32'}
-   if ($arch64.Checked -eq $true) {$arch='64'}
+   if ($arch32.Checked -eq $true) {$arch="32"}
+   if ($arch64.Checked -eq $true) {$arch="64"}
 
-   if ($English.Checked -eq $true) {$languageId='en-US'}
-   if ($Japanese.Checked -eq $true) {$languageId='ja-JP'}
-   if ($Korean.Checked -eq $true) {$languageId='ko-KR'}
-   if ($Chinese.Checked -eq $true) {$languageId='zh-TW'}
-   if ($French.Checked -eq $true) {$languageId='fr-FR'}
-   if ($Spanish.Checked -eq $true) {$languageId='es-ES'}
-   if ($Vietnamese.Checked -eq $true) {$languageId='vi-VN'}
+   if ($licenseTypeVolume.Checked -eq $true) {$licType="Volume"}
+   if ($licenseTypeRetail.Checked -eq $true) {$licType="Retail"}
 
-
-   if ($m365Home.Checked -eq $true) {$productId = 'O365HomePremRetail'; Invoke-Command $install}
-   if ($m365Business.Checked -eq $true) {$productId = 'O365BusinessRetail'; Invoke-Command $install}
-   if ($m365Enterprise.Checked -eq $true) {$productId = 'O365ProPlusRetail'; Invoke-Command $install}
-
-   if ($2021Pro.Checked -eq $true) {$productId = 'ProPlus2021Volume'; Invoke-Command $install}
-   if ($2021Std.Checked -eq $true) {$productId = 'Standard2021Volume';Invoke-Command $install}
-   if ($2021ProjectPro.Checked -eq $true) {$productId = 'ProjectPro2021Volume'; Invoke-Command $install}
-   if ($2021ProjectStd.Checked -eq $true) {$productId = 'ProjectStd2021Volume'; Invoke-Command $install}
-   if ($2021VisioPro.Checked -eq $true) {$productId = 'VisioPro2021Volume'; Invoke-Command $install}
-   if ($2021VisioStd.Checked -eq $true) {$productId = 'VisioStd2021Volume'; Invoke-Command $install}
-   if ($2021Word.Checked -eq $true) {$productId = 'Word2021Volume';Invoke-Command $install}
-   if ($2021Excel.Checked -eq $true) {$productId = 'Excel2021Volume';Invoke-Command $install}
-   if ($2021PowerPoint.Checked -eq $true) {$productId = 'PowerPoint2021Volume'; Invoke-Command $install}
-   if ($2021Outlook.Checked -eq $true) {$productId = 'Outlook2021Volume'; Invoke-Command $install}
-   if ($2021Publisher.Checked -eq $true) {$productId = 'Publisher2021Volume';Invoke-Command $install}
-   if ($2021Access.Checked -eq $true) {$productId = 'Access2021Volume'; Invoke-Command $install}
-   if ($2021HomeBusiness.Checked -eq $true) {$productId = 'HomeBusiness2021Retail';Invoke-Command $install}
-   if ($2021HomeStudent.Checked -eq $true) {$productId = 'HomeStudent2021Retail'; Invoke-Command $install}
-
-   if ($2019Pro.Checked -eq $true) {$productId = 'ProPlus2019Volume';Invoke-Command $install}
-   if ($2019Std.Checked -eq $true) {$productId = 'Standard2019Volume';Invoke-Command $install}
-   if ($2019ProjectPro.Checked -eq $true) {$productId = 'ProjectPro2019Volume';Invoke-Command $install}
-   if ($2019ProjectStd.Checked -eq $true) {$productId = 'ProjectStd2019Volume';Invoke-Command $install}
-   if ($2019VisioPro.Checked -eq $true) {$productId = 'VisioPro2019Volume';Invoke-Command $install}
-   if ($2019VisioStd.Checked -eq $true) {$productId = 'VisioStd2019Volume';Invoke-Command $install}
-   if ($2019Word.Checked -eq $true) {$productId = 'Word2019Volume';Invoke-Command $install}
-   if ($2019Excel.Checked -eq $true) {$productId = 'Excel2019Volume';Invoke-Command $install}
-   if ($2019PowerPoint.Checked -eq $true) {$productId = 'PowerPoint2019Volume';Invoke-Command $install}
-   if ($2019Outlook.Checked -eq $true) {$productId = 'Outlook2019Volume';Invoke-Command $install}
-   if ($2019Publisher.Checked -eq $true) {$productId = 'Publisher2019Volume';Invoke-Command $install}
-   if ($2019Access.Checked -eq $true) {$productId = 'Access2019Volume';Invoke-Command $install}
-   if ($2019HomeBusiness.Checked -eq $true) {$productId = 'HomeBusiness2019Retail';Invoke-Command $install}
-   if ($2019HomeStudent.Checked -eq $true) {$productId = 'HomeStudent2019Retail'; Invoke-Command $install}
-
-   if ($2016Pro.Checked -eq $true) {$productId = 'ProfessionalRetail';Invoke-Command $install}
-   if ($2016Std.Checked -eq $true) {$productId = 'StandardRetail';Invoke-Command $install}
-   if ($2016ProjectPro.Checked -eq $true) {$productId = 'VisioProRetail';Invoke-Command $install}
-   if ($2016VisioPro.Checked -eq $true) {$productId = 'ProjectProRetail';Invoke-Command $install}
-   if ($2016OneNote.Checked -eq $true) {$productId = 'OneNoteRetail';Invoke-Command $install}
+   if ($English.Checked -eq $true) {$languageId="en-US"}
+   if ($Japanese.Checked -eq $true) {$languageId="ja-JP"}
+   if ($Korean.Checked -eq $true) {$languageId="ko-KR"}
+   if ($Chinese.Checked -eq $true) {$languageId="zh-TW"}
+   if ($French.Checked -eq $true) {$languageId="fr-FR"}
+   if ($Spanish.Checked -eq $true) {$languageId="es-ES"}
+   if ($Vietnamese.Checked -eq $true) {$languageId="vi-VN"}
 
 
-   if ($2013Pro.Checked -eq $true) {$productId = 'ProfessionalRetail';Invoke-Command $install2013}
-   if ($2013Std.Checked -eq $true) {$productId = 'StandardRetail';Invoke-Command $install2013}
-   if ($2013ProjectPro.Checked -eq $true) {$productId = 'VisioProRetail';Invoke-Command $install2013}
-   if ($2013VisioPro.Checked -eq $true) {$productId = 'ProjectProRetail';Invoke-Command $install2013}
+   if ($m365Home.Checked -eq $true) {$productId = "O365HomePremRetail"; Invoke-Command $download}
+   if ($m365Business.Checked -eq $true) {$productId = "O365BusinessRetail"; Invoke-Command $download}
+   if ($m365Enterprise.Checked -eq $true) {$productId = "O365ProPlusRetail"; Invoke-Command $download}
 
-   if ($uninstallcb.Checked -eq $true) {Invoke-Command $uninstall}
+   if ($2021Pro.Checked -eq $true) {$productId = "ProPlus2021$licType"; Invoke-Command $download}
+   if ($2021Std.Checked -eq $true) {$productId = "Standard2021$licType"; Invoke-Command $download}
+   if ($2021ProjectPro.Checked -eq $true) {$productId = "ProjectPro2021$licType"; Invoke-Command $download}
+   if ($2021ProjectStd.Checked -eq $true) {$productId = "ProjectStd2021$licType"; Invoke-Command $download}
+   if ($2021VisioPro.Checked -eq $true) {$productId = "VisioPro2021$licType"; Invoke-Command $download}
+   if ($2021VisioStd.Checked -eq $true) {$productId = "VisioStd2021$licType"; Invoke-Command $download}
+   if ($2021Word.Checked -eq $true) {$productId = "Word2021$licType"; Invoke-Command $download}
+   if ($2021Excel.Checked -eq $true) {$productId = "Excel2021$licType"; Invoke-Command $download}
+   if ($2021PowerPoint.Checked -eq $true) {$productId = "PowerPoint2021$licType"; Invoke-Command $download}
+   if ($2021Outlook.Checked -eq $true) {$productId = "Outlook2021$licType"; Invoke-Command $download}
+   if ($2021Publisher.Checked -eq $true) {$productId = "Publisher2021$licType";Invoke-Command $download}
+   if ($2021Access.Checked -eq $true) {$productId = "Access2021$licType"; Invoke-Command $download}
+   if ($2021HomeBusiness.Checked -eq $true) {$productId = "HomeBusiness2021Retail"; Invoke-Command $download}
+   if ($2021HomeStudent.Checked -eq $true) {$productId = "HomeStudent2021Retail"; Invoke-Command $download}
 
+   if ($2019Pro.Checked -eq $true) {$productId = "ProPlus2019$licType"; Invoke-Command $download}
+   if ($2019Std.Checked -eq $true) {$productId = "Standard2019$licType"; Invoke-Command $download}
+   if ($2019ProjectPro.Checked -eq $true) {$productId = "ProjectPro2019$licType"; Invoke-Command $download}
+   if ($2019ProjectStd.Checked -eq $true) {$productId = "ProjectStd2019$licType"; Invoke-Command $download}
+   if ($2019VisioPro.Checked -eq $true) {$productId = "VisioPro2019$licType"; Invoke-Command $download}
+   if ($2019VisioStd.Checked -eq $true) {$productId = "VisioStd2019$licType"; Invoke-Command $download}
+   if ($2019Word.Checked -eq $true) {$productId = "Word2019$licType"; Invoke-Command $download}
+   if ($2019Excel.Checked -eq $true) {$productId = "Excel2019$licType"; Invoke-Command $download}
+   if ($2019PowerPoint.Checked -eq $true) {$productId = "PowerPoint2019$licType"; Invoke-Command $download}
+   if ($2019Outlook.Checked -eq $true) {$productId = "Outlook2019$licType"; Invoke-Command $download}
+   if ($2019Publisher.Checked -eq $true) {$productId = "Publisher2019$licType"; Invoke-Command $download}
+   if ($2019Access.Checked -eq $true) {$productId = "Access2019$licType"; Invoke-Command $download}
+   if ($2019HomeBusiness.Checked -eq $true) {$productId = "HomeBusiness2019Retail"; Invoke-Command $download}
+   if ($2019HomeStudent.Checked -eq $true) {$productId = "HomeStudent2019Retail"; Invoke-Command $download}
+
+   if ($2016Pro.Checked -eq $true) {$productId = "ProfessionalRetail"; Invoke-Command $download}
+   if ($2016Std.Checked -eq $true) {$productId = "StandardRetail"; Invoke-Command $download}
+   if ($2016ProjectPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download}
+   if ($2016VisioPro.Checked -eq $true) {$productId = "ProjectProRetail"; Invoke-Command $download}
+   if ($2016OneNote.Checked -eq $true) {$productId = "OneNoteRetail"; Invoke-Command $download}
+
+   if ($2013Pro.Checked -eq $true) {$productId = "ProfessionalRetail"; Invoke-Command $download2013}
+   if ($2013Std.Checked -eq $true) {$productId = "StandardRetail"; Invoke-Command $download2013}
+   if ($2013ProjectPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download2013}
+   if ($2013VisioPro.Checked -eq $true) {$productId = "ProjectProRetail"; Invoke-Command $download2013}
 
    } #end try
 
@@ -149,10 +153,16 @@ $uninstall = {
    $arch.Location = New-Object System.Drawing.Size(10,10) 
    $arch.size = New-Object System.Drawing.Size(130,70) 
    $arch.text = "Arch:"
-   $Form.Controls.Add($arch) 
+   $Form.Controls.Add($arch)
+
+   $licenseType = New-Object System.Windows.Forms.GroupBox
+   $licenseType.Location = New-Object System.Drawing.Size(10,90) 
+   $licenseType.size = New-Object System.Drawing.Size(130,70) 
+   $licenseType.text = "License Type:"
+   $Form.Controls.Add($licenseType) 
 
    $language = New-Object System.Windows.Forms.GroupBox
-   $language.Location = New-Object System.Drawing.Size(10,90) 
+   $language.Location = New-Object System.Drawing.Size(10,170) 
    $language.size = New-Object System.Drawing.Size(130,170) 
    $language.text = "Language:"
    $Form.Controls.Add($language) 
@@ -187,12 +197,6 @@ $uninstall = {
    $groupBox2013.text = "Office 2013 Apps:"
    $Form.Controls.Add($groupBox2013)
 
-   $groupBoxUninstall = New-Object System.Windows.Forms.GroupBox
-   $groupBoxUninstall.Location = New-Object System.Drawing.Size(290,330) 
-   $groupBoxUninstall.size = New-Object System.Drawing.Size(280,50) 
-   $groupBoxUninstall.text = "Remove All Office Apps:"
-   $Form.Controls.Add($groupBoxUninstall)
-
 ############################################## end group boxes
 
 ############################################## Start Arch checkboxes
@@ -211,7 +215,21 @@ $uninstall = {
    $arch32.Text = "32 bit"
    $arch.Controls.Add($arch32)
 
-############################################## End Arch checkboxes 
+############################################## Start LicenseType checkboxes
+
+   $licenseTypeVolume = New-Object System.Windows.Forms.RadioButton
+   $licenseTypeVolume.Location = New-Object System.Drawing.Size(10,20)
+   $licenseTypeVolume.Size = New-Object System.Drawing.Size(100,20)
+   $licenseTypeVolume.Checked = $true
+   $licenseTypeVolume.Text = "Volume"
+   $licenseType.Controls.Add($licenseTypeVolume)
+
+   $licenseTypeRetail = New-Object System.Windows.Forms.RadioButton
+   $licenseTypeRetail.Location = New-Object System.Drawing.Size(10,40)
+   $licenseTypeRetail.Size = New-Object System.Drawing.Size(100,20)
+   $licenseTypeRetail.Checked = $false
+   $licenseTypeRetail.Text = "Retail"
+   $licenseType.Controls.Add($licenseTypeRetail)
 
 ############################################## Start Arch checkboxes
 
@@ -520,21 +538,12 @@ $uninstall = {
 
 ############################################## End Office 2013 checkboxes
 
-
-############################################## Start uninstall checkbox
-   $uninstallcb = New-Object System.Windows.Forms.RadioButton
-   $uninstallcb.Location = New-Object System.Drawing.Size(10,20)
-   $uninstallcb.Size = New-Object System.Drawing.Size(200,20)
-   $uninstallcb.Text = "I Agree (Be careful)"
-   $groupBoxUninstall.Controls.Add($uninstallcb)
-############################################## End uninstall checkbox
-
 ############################################## Start buttons
 
    $submitButton = New-Object System.Windows.Forms.Button 
    $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
    $submitButton.BackColor = [System.Drawing.Color]::LightGreen
-   $submitButton.Location = New-Object System.Drawing.Size(10,280) 
+   $submitButton.Location = New-Object System.Drawing.Size(10,380) 
    $submitButton.Size = New-Object System.Drawing.Size(110,40) 
    $submitButton.Text = "Submit" 
    $submitButton.Add_Click({microsoftInstaller}) 
