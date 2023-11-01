@@ -337,7 +337,7 @@ $download2013 = {
    $2021VisioStd = New-Object System.Windows.Forms.RadioButton
    $2021VisioStd.Location = New-Object System.Drawing.Size(10,120)
    $2021VisioStd.Size = New-Object System.Drawing.Size(100,20)
-   $2021VisioStd.Text = "Standard"
+   $2021VisioStd.Text = "Visio Standard"
    $groupBox2021.Controls.Add($2021VisioStd)
 
    $2021Word = New-Object System.Windows.Forms.RadioButton
@@ -425,7 +425,7 @@ $download2013 = {
    $2019VisioStd = New-Object System.Windows.Forms.RadioButton
    $2019VisioStd.Location = New-Object System.Drawing.Size(10,120)
    $2019VisioStd.Size = New-Object System.Drawing.Size(100,20)
-   $2019VisioStd.Text = "Standard"
+   $2019VisioStd.Text = "Visio Standard"
    $groupBox2019.Controls.Add($2019VisioStd)
 
    $2019Word = New-Object System.Windows.Forms.RadioButton
