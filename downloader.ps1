@@ -110,7 +110,7 @@ $download2013 = {
    if ($m365Enterprise.Checked -eq $true) {$productId = "O365ProPlusRetail"; $downloadId = 'Microsoft 365 Apps for Enterprise'; Invoke-Command $download}
 
    if ($2021Pro.Checked -eq $true) {$productId = "ProPlus2021$licType"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
-   if ($2021Std.Checked -eq $true) {$productId = "Standard2021$licType"; $downloadId = 'Microsoft 365 Home'; Invoke-Command $download}
+   if ($2021Std.Checked -eq $true) {$productId = "Standard2021$licType"; $downloadId = 'Office 2021 Standard LTSC'; Invoke-Command $download}
    if ($2021ProjectPro.Checked -eq $true) {$productId = "ProjectPro2021$licType"; Invoke-Command $download}
    if ($2021ProjectStd.Checked -eq $true) {$productId = "ProjectStd2021$licType"; Invoke-Command $download}
    if ($2021VisioPro.Checked -eq $true) {$productId = "VisioPro2021$licType"; Invoke-Command $download}
