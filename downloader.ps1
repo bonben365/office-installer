@@ -124,20 +124,20 @@ $download2013 = {
    if ($2021HomeBusiness.Checked -eq $true) {$productId = "HomeBusiness2021Retail"; $downloadId = 'Office HomeBusiness 2021'; Invoke-Command $download}
    if ($2021HomeStudent.Checked -eq $true) {$productId = "HomeStudent2021Retail"; $downloadId = 'Office HomeStudent LTSC 2021'; Invoke-Command $download}
 
-   if ($2019Pro.Checked -eq $true) {$productId = "ProPlus2019$licType"; Invoke-Command $download}
-   if ($2019Std.Checked -eq $true) {$productId = "Standard2019$licType"; Invoke-Command $download}
-   if ($2019ProjectPro.Checked -eq $true) {$productId = "ProjectPro2019$licType"; Invoke-Command $download}
-   if ($2019ProjectStd.Checked -eq $true) {$productId = "ProjectStd2019$licType"; Invoke-Command $download}
-   if ($2019VisioPro.Checked -eq $true) {$productId = "VisioPro2019$licType"; Invoke-Command $download}
-   if ($2019VisioStd.Checked -eq $true) {$productId = "VisioStd2019$licType"; Invoke-Command $download}
-   if ($2019Word.Checked -eq $true) {$productId = "Word2019$licType"; Invoke-Command $download}
-   if ($2019Excel.Checked -eq $true) {$productId = "Excel2019$licType"; Invoke-Command $download}
-   if ($2019PowerPoint.Checked -eq $true) {$productId = "PowerPoint2019$licType"; Invoke-Command $download}
-   if ($2019Outlook.Checked -eq $true) {$productId = "Outlook2019$licType"; Invoke-Command $download}
-   if ($2019Publisher.Checked -eq $true) {$productId = "Publisher2019$licType"; Invoke-Command $download}
-   if ($2019Access.Checked -eq $true) {$productId = "Access2019$licType"; Invoke-Command $download}
-   if ($2019HomeBusiness.Checked -eq $true) {$productId = "HomeBusiness2019Retail"; Invoke-Command $download}
-   if ($2019HomeStudent.Checked -eq $true) {$productId = "HomeStudent2019Retail"; Invoke-Command $download}
+   if ($2019Pro.Checked -eq $true) {$productId = "ProPlus2019$licType"; $downloadId = 'Office 2019 Professional Plus'; Invoke-Command $download}
+   if ($2019Std.Checked -eq $true) {$productId = "Standard2019$licType"; $downloadId = 'Office 201 Standard'; Invoke-Command $download}
+   if ($2019ProjectPro.Checked -eq $true) {$productId = "ProjectPro2019$licType"; $downloadId = 'Project Pro 2019'; Invoke-Command $download}
+   if ($2019ProjectStd.Checked -eq $true) {$productId = "ProjectStd2019$licType"; $downloadId = 'Project Standard 2019'; Invoke-Command $download}
+   if ($2019VisioPro.Checked -eq $true) {$productId = "VisioPro2019$licType"; $downloadId = 'Visio Pro 2019'; Invoke-Command $download}
+   if ($2019VisioStd.Checked -eq $true) {$productId = "VisioStd2019$licType"; $downloadId = 'Visio Standard 2019'; Invoke-Command $download}
+   if ($2019Word.Checked -eq $true) {$productId = "Word2019$licType"; $downloadId = 'Microsoft Word 2019'; Invoke-Command $download}
+   if ($2019Excel.Checked -eq $true) {$productId = "Excel2019$licType"; $downloadId = 'Microsoft Excel 2019'; Invoke-Command $download}
+   if ($2019PowerPoint.Checked -eq $true) {$productId = "PowerPoint2019$licType"; $downloadId = 'Microsoft PowerPoint 201p'; Invoke-Command $download}
+   if ($2019Outlook.Checked -eq $true) {$productId = "Outlook2019$licType"; $downloadId = 'Microsoft Outlook 2019'; Invoke-Command $download}
+   if ($2019Publisher.Checked -eq $true) {$productId = "Publisher2019$licType"; $downloadId = 'Microsoft Publisher 2019'; Invoke-Command $download}
+   if ($2019Access.Checked -eq $true) {$productId = "Access2019$licType"; $downloadId = 'Microsoft Access 2019'; Invoke-Command $download}
+   if ($2019HomeBusiness.Checked -eq $true) {$productId = "HomeBusiness2019Retail"; $downloadId = 'Office HomeBusiness 2019'; Invoke-Command $download}
+   if ($2019HomeStudent.Checked -eq $true) {$productId = "HomeStudent2019Retail"; $downloadId = 'Office HomeStudent 2019'; Invoke-Command $download}
 
    if ($2016Pro.Checked -eq $true) {$productId = "ProfessionalRetail"; $downloadId = 'Office 2016 Professional Plus'; Invoke-Command $download}
    if ($2016Std.Checked -eq $true) {$productId = "StandardRetail"; $downloadId = 'Office 2016 Professional Plus'; Invoke-Command $download}
