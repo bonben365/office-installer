@@ -111,18 +111,18 @@ $download2013 = {
 
    if ($2021Pro.Checked -eq $true) {$productId = "ProPlus2021$licType"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
    if ($2021Std.Checked -eq $true) {$productId = "Standard2021$licType"; $downloadId = 'Office 2021 Standard LTSC'; Invoke-Command $download}
-   if ($2021ProjectPro.Checked -eq $true) {$productId = "ProjectPro2021$licType"; Invoke-Command $download}
-   if ($2021ProjectStd.Checked -eq $true) {$productId = "ProjectStd2021$licType"; Invoke-Command $download}
-   if ($2021VisioPro.Checked -eq $true) {$productId = "VisioPro2021$licType"; Invoke-Command $download}
-   if ($2021VisioStd.Checked -eq $true) {$productId = "VisioStd2021$licType"; Invoke-Command $download}
-   if ($2021Word.Checked -eq $true) {$productId = "Word2021$licType"; Invoke-Command $download}
-   if ($2021Excel.Checked -eq $true) {$productId = "Excel2021$licType"; Invoke-Command $download}
-   if ($2021PowerPoint.Checked -eq $true) {$productId = "PowerPoint2021$licType"; Invoke-Command $download}
-   if ($2021Outlook.Checked -eq $true) {$productId = "Outlook2021$licType"; Invoke-Command $download}
-   if ($2021Publisher.Checked -eq $true) {$productId = "Publisher2021$licType";Invoke-Command $download}
-   if ($2021Access.Checked -eq $true) {$productId = "Access2021$licType"; Invoke-Command $download}
-   if ($2021HomeBusiness.Checked -eq $true) {$productId = "HomeBusiness2021Retail"; Invoke-Command $download}
-   if ($2021HomeStudent.Checked -eq $true) {$productId = "HomeStudent2021Retail"; Invoke-Command $download}
+   if ($2021ProjectPro.Checked -eq $true) {$productId = "ProjectPro2021$licType"; $downloadId = 'Project Pro 2021'; Invoke-Command $download}
+   if ($2021ProjectStd.Checked -eq $true) {$productId = "ProjectStd2021$licType"; $downloadId = 'Project Standard 2021'; Invoke-Command $download}
+   if ($2021VisioPro.Checked -eq $true) {$productId = "VisioPro2021$licType"; $downloadId = 'Visio Pro 2021'; Invoke-Command $download}
+   if ($2021VisioStd.Checked -eq $true) {$productId = "VisioStd2021$licType"; $downloadId = 'Visio Standard 2021'; Invoke-Command $download}
+   if ($2021Word.Checked -eq $true) {$productId = "Word2021$licType"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
+   if ($2021Excel.Checked -eq $true) {$productId = "Excel2021$licType"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
+   if ($2021PowerPoint.Checked -eq $true) {$productId = "PowerPoint2021$licType"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
+   if ($2021Outlook.Checked -eq $true) {$productId = "Outlook2021$licType"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
+   if ($2021Publisher.Checked -eq $true) {$productId = "Publisher2021$licType"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
+   if ($2021Access.Checked -eq $true) {$productId = "Access2021$licType"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
+   if ($2021HomeBusiness.Checked -eq $true) {$productId = "HomeBusiness2021Retail"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
+   if ($2021HomeStudent.Checked -eq $true) {$productId = "HomeStudent2021Retail"; $downloadId = 'Office 2021 Professional LTSC 2021'; Invoke-Command $download}
 
    if ($2019Pro.Checked -eq $true) {$productId = "ProPlus2019$licType"; Invoke-Command $download}
    if ($2019Std.Checked -eq $true) {$productId = "Standard2019$licType"; Invoke-Command $download}
