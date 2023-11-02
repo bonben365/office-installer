@@ -69,7 +69,7 @@ $download2013 = {
 
    $batchFile = "Install-x$arch.bat"
    New-Item $batchFile -ItemType File -Force | Out-Null
-   Add-content $batchFile -Value "setup.exe /configure $configurationFile"
+   Add-content $batchFile -Value "bin2013.exe /configure $configurationFile"
 
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
    Write-Host
