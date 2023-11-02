@@ -153,18 +153,18 @@ $download2013 = {
    if ($2016Access.Checked -eq $true) {$productId = "AccessRetail"; Invoke-Command $download}
    if ($2016OneNote.Checked -eq $true) {$productId = "OneNoteRetail"; Invoke-Command $download}
 
-   if ($2013Pro.Checked -eq $true) {$productId = "ProfessionalRetail"; Invoke-Command $download2013}
-   if ($2013Std.Checked -eq $true) {$productId = "StandardRetail"; Invoke-Command $download2013}
-   if ($2013ProjectPro.Checked -eq $true) {$productId = "ProjectProRetail"; Invoke-Command $download2013}
-   if ($2013ProjectStd.Checked -eq $true) {$productId = "ProjectStdRetail"; Invoke-Command $download2013}
-   if ($2013VisioPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download2013}
-   if ($2013VisioStd.Checked -eq $true) {$productId = "VisioStdRetail"; Invoke-Command $download2013}
-   if ($2013Word.Checked -eq $true) {$productId = "WordRetail"; Invoke-Command $download2013}
-   if ($2013Excel.Checked -eq $true) {$productId = "ExcelRetail"; Invoke-Command $download2013}
-   if ($2013PowerPoint.Checked -eq $true) {$productId = "PowerPointRetail"; Invoke-Command $download2013}
-   if ($2013Outlook.Checked -eq $true) {$productId = "OutlookRetail"; Invoke-Command $download2013}
-   if ($2013Publisher.Checked -eq $true) {$productId = "PublisherRetail"; Invoke-Command $download2013}
-   if ($2013Access.Checked -eq $true) {$productId = "AccessRetail"; Invoke-Command $download2013}
+   if ($2013Pro.Checked -eq $true) {$productId = "ProfessionalRetail"; $downloadId = 'Office 2013 Professional Plus'; Invoke-Command $download2013}
+   if ($2013Std.Checked -eq $true) {$productId = "StandardRetail"; $downloadId = 'Office 2013 Standard'; Invoke-Command $download2013}
+   if ($2013ProjectPro.Checked -eq $true) {$productId = "ProjectProRetail"; $downloadId = 'Microsoft Project Pro 2013'; Invoke-Command $download2013}
+   if ($2013ProjectStd.Checked -eq $true) {$productId = "ProjectStdRetail"; $downloadId = 'Microsoft Project Standard 2013'; Invoke-Command $download2013}
+   if ($2013VisioPro.Checked -eq $true) {$productId = "VisioProRetail"; $downloadId = 'Office HomeStudent LTSC 2021'; Invoke-Command $download2013}
+   if ($2013VisioStd.Checked -eq $true) {$productId = "VisioStdRetail"; $downloadId = 'Office HomeStudent LTSC 2021'; Invoke-Command $download2013}
+   if ($2013Word.Checked -eq $true) {$productId = "WordRetail"; $downloadId = 'Office HomeStudent LTSC 2021'; Invoke-Command $download2013}
+   if ($2013Excel.Checked -eq $true) {$productId = "ExcelRetail"; $downloadId = 'Office HomeStudent LTSC 2021'; Invoke-Command $download2013}
+   if ($2013PowerPoint.Checked -eq $true) {$productId = "PowerPointRetail"; $downloadId = 'Office HomeStudent LTSC 2021'; Invoke-Command $download2013}
+   if ($2013Outlook.Checked -eq $true) {$productId = "OutlookRetail"; $downloadId = 'Office HomeStudent LTSC 2021'; Invoke-Command $download2013}
+   if ($2013Publisher.Checked -eq $true) {$productId = "PublisherRetail"; $downloadId = 'Office HomeStudent LTSC 2021'; Invoke-Command $download2013}
+   if ($2013Access.Checked -eq $true) {$productId = "AccessRetail"; $downloadId = 'Microsoft Access 2013'; Invoke-Command $download2013}
 
    }
    catch {}
