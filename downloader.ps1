@@ -140,7 +140,7 @@ $download2013 = {
    if ($2019HomeStudent.Checked -eq $true) {$productId = "HomeStudent2019Retail"; $downloadId = 'Office HomeStudent 2019'; Invoke-Command $download}
 
    if ($2016Pro.Checked -eq $true) {$productId = "ProfessionalRetail"; $downloadId = 'Office 2016 Professional Plus'; Invoke-Command $download}
-   if ($2016Std.Checked -eq $true) {$productId = "StandardRetail"; $downloadId = 'Office 2016 Professional Plus'; Invoke-Command $download}
+   if ($2016Std.Checked -eq $true) {$productId = "StandardRetail"; $downloadId = 'Office 2016 Standard'; Invoke-Command $download}
    if ($2016ProjectPro.Checked -eq $true) {$productId = "ProjectProRetail"; $downloadId = 'Microsoft Project Pro 2016'; Invoke-Command $download}
    if ($2016ProjectStd.Checked -eq $true) {$productId = "ProjectStdRetail"; $downloadId = 'Microsoft Project Standard 2016'; Invoke-Command $download}
    if ($2016VisioPro.Checked -eq $true) {$productId = "VisioProRetail"; $downloadId = 'Microsoft Visio Pro 2016'; Invoke-Command $download}
