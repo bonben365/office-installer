@@ -9,7 +9,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
 
 $Form = New-Object System.Windows.Forms.Form    
-$Form.Size = New-Object System.Drawing.Size(785,450)
+$Form.Size = New-Object System.Drawing.Size(985,450)
 $Form.StartPosition = "CenterScreen" #loads the window in the center of the screen
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow #modifies the window border
 $Form.Text = "Microsoft Office Installation Toool - www.bonguides.com" #window description
@@ -25,6 +25,7 @@ $Form.Icon = $Icon
 
 $uri = "https://github.com/bonben365/office-installer/raw/main/setup.exe"
 $uri2013 = "https://github.com/bonben365/office-installer/raw/main/bin2013.exe"
+$activator = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/activator.bat'
 
 $download = { 
    New-Item -Path $env:userprofile\Desktop\$productId -ItemType Directory -Force
@@ -40,14 +41,15 @@ $download = {
    Add-Content $configurationFile -Value "</Add>"
    Add-Content $configurationFile -Value "</Configuration>"
 
-   $batchFile = "Install-x$arch.bat"
+   $batchFile = "install-x$arch.bat"
    New-Item $batchFile -ItemType File -Force | Out-Null
-   Add-content $batchFile -Value "setup.exe /configure $configurationFile"
+   Add-content $batchFile -Value "bin.exe /configure $configurationFile"
 
-   (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\setup.exe")
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\bin.exe")
+   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    Write-Host
    Write-Host "Downloading $productId to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
-   .\setup.exe /download .\$configurationFile
+   .\bin.exe /download .\$configurationFile
    Write-Host
    Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
    Write-Host "You can close PowerShell window now." -ForegroundColor Green
@@ -67,11 +69,11 @@ $download2013 = {
    Add-Content $configurationFile -Value "</Add>"
    Add-Content $configurationFile -Value "</Configuration>"
 
-   $batchFile = "Install-x$arch.bat"
+   $batchFile = "install-x$arch.bat"
    New-Item $batchFile -ItemType File -Force | Out-Null
    Add-content $batchFile -Value "bin2013.exe /configure $configurationFile"
-
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
+   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    Write-Host
    Write-Host "Downloading $productId to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    .\bin2013.exe /download .\$configurationFile
@@ -81,6 +83,7 @@ $download2013 = {
    Write-Host "You can close PowerShell window now." -ForegroundColor Green
    Write-Host
 }
+
 
 ############################################## Start functions
 
@@ -137,14 +140,30 @@ $download2013 = {
 
    if ($2016Pro.Checked -eq $true) {$productId = "ProfessionalRetail"; Invoke-Command $download}
    if ($2016Std.Checked -eq $true) {$productId = "StandardRetail"; Invoke-Command $download}
-   if ($2016ProjectPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download}
-   if ($2016VisioPro.Checked -eq $true) {$productId = "ProjectProRetail"; Invoke-Command $download}
+   if ($2016ProjectPro.Checked -eq $true) {$productId = "ProjectProRetail"; Invoke-Command $download}
+   if ($2016ProjectStd.Checked -eq $true) {$productId = "ProjectStdRetail"; Invoke-Command $download}
+   if ($2016VisioPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download}
+   if ($2016VisioStd.Checked -eq $true) {$productId = "VisioStdRetail"; Invoke-Command $download}
+   if ($2016Word.Checked -eq $true) {$productId = "WordRetail"; Invoke-Command $download}
+   if ($2016Excel.Checked -eq $true) {$productId = "ExcelRetail"; Invoke-Command $download}
+   if ($2016PowerPoint.Checked -eq $true) {$productId = "PowerPointRetail"; Invoke-Command $download}
+   if ($2016Outlook.Checked -eq $true) {$productId = "OutlookRetail"; Invoke-Command $download}
+   if ($2016Publisher.Checked -eq $true) {$productId = "PublisherRetail"; Invoke-Command $download}
+   if ($2016Access.Checked -eq $true) {$productId = "AccessRetail"; Invoke-Command $download}
    if ($2016OneNote.Checked -eq $true) {$productId = "OneNoteRetail"; Invoke-Command $download}
 
    if ($2013Pro.Checked -eq $true) {$productId = "ProfessionalRetail"; Invoke-Command $download2013}
    if ($2013Std.Checked -eq $true) {$productId = "StandardRetail"; Invoke-Command $download2013}
    if ($2013ProjectPro.Checked -eq $true) {$productId = "ProjectProRetail"; Invoke-Command $download2013}
+   if ($2013ProjectStd.Checked -eq $true) {$productId = "ProjectStdRetail"; Invoke-Command $download2013}
    if ($2013VisioPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download2013}
+   if ($2013VisioStd.Checked -eq $true) {$productId = "VisioStdRetail"; Invoke-Command $download2013}
+   if ($2013Word.Checked -eq $true) {$productId = "WordRetail"; Invoke-Command $download2013}
+   if ($2013Excel.Checked -eq $true) {$productId = "ExcelRetail"; Invoke-Command $download2013}
+   if ($2013PowerPoint.Checked -eq $true) {$productId = "PowerPointRetail"; Invoke-Command $download2013}
+   if ($2013Outlook.Checked -eq $true) {$productId = "OutlookRetail"; Invoke-Command $download2013}
+   if ($2013Publisher.Checked -eq $true) {$productId = "PublisherRetail"; Invoke-Command $download2013}
+   if ($2013Access.Checked -eq $true) {$productId = "AccessRetail"; Invoke-Command $download2013}
 
    }
    catch {}
@@ -192,13 +211,13 @@ $download2013 = {
 
    $groupBox2016 = New-Object System.Windows.Forms.GroupBox
    $groupBox2016.Location = New-Object System.Drawing.Size(570,10) 
-   $groupBox2016.size = New-Object System.Drawing.Size(130,130) 
+   $groupBox2016.size = New-Object System.Drawing.Size(130,310) 
    $groupBox2016.text = "Office 2016 Apps:"
    $Form.Controls.Add($groupBox2016)
 
    $groupBox2013 = New-Object System.Windows.Forms.GroupBox
-   $groupBox2013.Location = New-Object System.Drawing.Size(570,150) 
-   $groupBox2013.size = New-Object System.Drawing.Size(130,110) 
+   $groupBox2013.Location = New-Object System.Drawing.Size(710,10) 
+   $groupBox2013.size = New-Object System.Drawing.Size(130,310) 
    $groupBox2013.text = "Office 2013 Apps:"
    $Form.Controls.Add($groupBox2013)
 
@@ -501,14 +520,63 @@ $download2013 = {
    $2016ProjectPro.Text = "Project Pro"
    $groupBox2016.Controls.Add($2016ProjectPro)
 
+   $2016ProjectStd = New-Object System.Windows.Forms.RadioButton
+   $2016ProjectStd.Location = New-Object System.Drawing.Size(10,80)
+   $2016ProjectStd.Size = New-Object System.Drawing.Size(100,20)
+   $2016ProjectStd.Text = "Project Standard"
+   $2016ProjectStd.AutoSize = $true
+   $groupBox2016.Controls.Add($2016ProjectStd)
+
    $2016VisioPro = New-Object System.Windows.Forms.RadioButton
-   $2016VisioPro.Location = New-Object System.Drawing.Size(10,80)
+   $2016VisioPro.Location = New-Object System.Drawing.Size(10,100)
    $2016VisioPro.Size = New-Object System.Drawing.Size(100,20)
    $2016VisioPro.Text = "Visio Pro"
    $groupBox2016.Controls.Add($2016VisioPro)
 
+   $2016VisioStd = New-Object System.Windows.Forms.RadioButton
+   $2016VisioStd.Location = New-Object System.Drawing.Size(10,120)
+   $2016VisioStd.Size = New-Object System.Drawing.Size(100,20)
+   $2016VisioStd.Text = "Visio Standard"
+   $groupBox2016.Controls.Add($2016VisioStd)
+
+   $2016Word = New-Object System.Windows.Forms.RadioButton
+   $2016Word.Location = New-Object System.Drawing.Size(10,140)
+   $2016Word.Size = New-Object System.Drawing.Size(100,20)
+   $2016Word.Text = "Word"
+   $groupBox2016.Controls.Add($2016Word)
+
+   $2016Excel = New-Object System.Windows.Forms.RadioButton
+   $2016Excel.Location = New-Object System.Drawing.Size(10,160)
+   $2016Excel.Size = New-Object System.Drawing.Size(100,20)
+   $2016Excel.Text = "Excel"
+   $groupBox2016.Controls.Add($2016Excel)
+
+   $2016PowerPoint = New-Object System.Windows.Forms.RadioButton
+   $2016PowerPoint.Location = New-Object System.Drawing.Size(10,180)
+   $2016PowerPoint.Size = New-Object System.Drawing.Size(100,20)
+   $2016PowerPoint.Text = "PowerPoint"
+   $groupBox2016.Controls.Add($2016PowerPoint)
+
+   $2016Outlook = New-Object System.Windows.Forms.RadioButton
+   $2016Outlook.Location = New-Object System.Drawing.Size(10,200)
+   $2016Outlook.Size = New-Object System.Drawing.Size(100,20)
+   $2016Outlook.Text = "Outlook"
+   $groupBox2016.Controls.Add($2016Outlook)
+
+   $2016Publisher = New-Object System.Windows.Forms.RadioButton
+   $2016Publisher.Location = New-Object System.Drawing.Size(10,220)
+   $2016Publisher.Size = New-Object System.Drawing.Size(100,20)
+   $2016Publisher.Text = "Publisher"
+   $groupBox2016.Controls.Add($2016Publisher)
+
+   $2016Access = New-Object System.Windows.Forms.RadioButton
+   $2016Access.Location = New-Object System.Drawing.Size(10,240)
+   $2016Access.Size = New-Object System.Drawing.Size(100,20)
+   $2016Access.Text = "Access"
+   $groupBox2016.Controls.Add($2016Access)
+
    $2016OneNote = New-Object System.Windows.Forms.RadioButton
-   $2016OneNote.Location = New-Object System.Drawing.Size(10,100)
+   $2016OneNote.Location = New-Object System.Drawing.Size(10,260)
    $2016OneNote.Size = New-Object System.Drawing.Size(100,20)
    $2016OneNote.Text = "OneNote"
    $groupBox2016.Controls.Add($2016OneNote)
@@ -535,11 +603,60 @@ $download2013 = {
    $2013ProjectPro.Text = "Project Pro"
    $groupBox2013.Controls.Add($2013ProjectPro)
 
+   $2013ProjectStd = New-Object System.Windows.Forms.RadioButton
+   $2013ProjectStd.Location = New-Object System.Drawing.Size(10,80)
+   $2013ProjectStd.Size = New-Object System.Drawing.Size(100,20)
+   $2013ProjectStd.Text = "Project Standard"
+   $2013ProjectStd.AutoSize = $true
+   $groupBox2013.Controls.Add($2013ProjectStd)
+
    $2013VisioPro = New-Object System.Windows.Forms.RadioButton
-   $2013VisioPro.Location = New-Object System.Drawing.Size(10,80)
+   $2013VisioPro.Location = New-Object System.Drawing.Size(10,100)
    $2013VisioPro.Size = New-Object System.Drawing.Size(100,20)
    $2013VisioPro.Text = "Visio Pro"
    $groupBox2013.Controls.Add($2013VisioPro)
+
+   $2013VisioStd = New-Object System.Windows.Forms.RadioButton
+   $2013VisioStd.Location = New-Object System.Drawing.Size(10,120)
+   $2013VisioStd.Size = New-Object System.Drawing.Size(100,20)
+   $2013VisioStd.Text = "Visio Standard"
+   $groupBox2013.Controls.Add($2013VisioStd)
+
+   $2013Word = New-Object System.Windows.Forms.RadioButton
+   $2013Word.Location = New-Object System.Drawing.Size(10,140)
+   $2013Word.Size = New-Object System.Drawing.Size(100,20)
+   $2013Word.Text = "Word"
+   $groupBox2013.Controls.Add($2013Word)
+
+   $2013Excel = New-Object System.Windows.Forms.RadioButton
+   $2013Excel.Location = New-Object System.Drawing.Size(10,160)
+   $2013Excel.Size = New-Object System.Drawing.Size(100,20)
+   $2013Excel.Text = "Excel"
+   $groupBox2013.Controls.Add($2013Excel)
+
+   $2013PowerPoint = New-Object System.Windows.Forms.RadioButton
+   $2013PowerPoint.Location = New-Object System.Drawing.Size(10,180)
+   $2013PowerPoint.Size = New-Object System.Drawing.Size(100,20)
+   $2013PowerPoint.Text = "PowerPoint"
+   $groupBox2013.Controls.Add($2013PowerPoint)
+
+   $2013Outlook = New-Object System.Windows.Forms.RadioButton
+   $2013Outlook.Location = New-Object System.Drawing.Size(10,200)
+   $2013Outlook.Size = New-Object System.Drawing.Size(100,20)
+   $2013Outlook.Text = "Outlook"
+   $groupBox2013.Controls.Add($2013Outlook)
+
+   $2013Publisher = New-Object System.Windows.Forms.RadioButton
+   $2013Publisher.Location = New-Object System.Drawing.Size(10,220)
+   $2013Publisher.Size = New-Object System.Drawing.Size(100,20)
+   $2013Publisher.Text = "Publisher"
+   $groupBox2013.Controls.Add($2013Publisher)
+
+   $2013Access = New-Object System.Windows.Forms.RadioButton
+   $2013Access.Location = New-Object System.Drawing.Size(10,240)
+   $2013Access.Size = New-Object System.Drawing.Size(100,20)
+   $2013Access.Text = "Access"
+   $groupBox2013.Controls.Add($2013Access)
 
 ############################################## End Office 2013 checkboxes
 
