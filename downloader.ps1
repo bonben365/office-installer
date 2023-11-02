@@ -139,8 +139,8 @@ $download2013 = {
 
    if ($2013Pro.Checked -eq $true) {$productId = "ProfessionalRetail"; Invoke-Command $download2013}
    if ($2013Std.Checked -eq $true) {$productId = "StandardRetail"; Invoke-Command $download2013}
-   if ($2013ProjectPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download2013}
-   if ($2013VisioPro.Checked -eq $true) {$productId = "ProjectProRetail"; Invoke-Command $download2013}
+   if ($2013ProjectPro.Checked -eq $true) {$productId = "ProjectProRetail"; Invoke-Command $download2013}
+   if ($2013VisioPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download2013}
 
    } #end try
 
