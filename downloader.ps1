@@ -48,7 +48,7 @@ $download = {
    (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\bin.exe")
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    Write-Host
-   Write-Host "Downloading $productId to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
+   Write-Host "Downloading $downloadId to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    .\bin.exe /download .\$configurationFile
    Write-Host
    Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
@@ -76,7 +76,7 @@ $download2013 = {
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    Write-Host
-   Write-Host "Downloading $productId to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
+   Write-Host "Downloading $downloadId to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    .\bin2013.exe /download .\$configurationFile
 
    Write-Host
@@ -105,9 +105,9 @@ $download2013 = {
    if ($Vietnamese.Checked -eq $true) {$languageId="vi-VN"}
 
 
-   if ($m365Home.Checked -eq $true) {$productId = "O365HomePremRetail"; Invoke-Command $download}
-   if ($m365Business.Checked -eq $true) {$productId = "O365BusinessRetail"; Invoke-Command $download}
-   if ($m365Enterprise.Checked -eq $true) {$productId = "O365ProPlusRetail"; Invoke-Command $download}
+   if ($m365Home.Checked -eq $true) {$productId = "O365HomePremRetail"; $downloadId = 'Microsoft 365 Home'; Invoke-Command $download}
+   if ($m365Business.Checked -eq $true) {$productId = "O365BusinessRetail"; $downloadId = 'Microsoft 365 Apps for Business'; Invoke-Command $download}
+   if ($m365Enterprise.Checked -eq $true) {$productId = "O365ProPlusRetail"; $downloadId = 'Microsoft 365 Apps for Enterprise'; Invoke-Command $download}
 
    if ($2021Pro.Checked -eq $true) {$productId = "ProPlus2021$licType"; Invoke-Command $download}
    if ($2021Std.Checked -eq $true) {$productId = "Standard2021$licType"; Invoke-Command $download}
