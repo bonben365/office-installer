@@ -59,6 +59,7 @@ $download = {
 $download2013 = { 
    New-Item -Path $env:userprofile\Desktop\$productId -ItemType Directory -Force
    Set-Location $env:userprofile\Desktop\$productId
+   Invoke-Item $env:userprofile\Desktop\$productId
    $configurationFile = "configuration-x$arch.xml"
    New-Item $configurationFile -ItemType File -Force | Out-Null
    Add-Content $configurationFile -Value "<Configuration>"
