@@ -27,9 +27,9 @@ $uri = "https://github.com/bonben365/office-installer/raw/main/setup.exe"
 $uri2013 = "https://github.com/bonben365/office-installer/raw/main/bin2013.exe"
 
 $download = { 
-   New-Item -Path $env:userprofile\desktop\$productId -ItemType Directory -Force
-   Set-Location $env:userprofile\desktop\$productId
-   Invoke-Item $env:userprofile\desktop\$productId
+   New-Item -Path $env:userprofile\Desktop\$productId -ItemType Directory -Force
+   Set-Location $env:userprofile\Desktop\$productId
+   Invoke-Item $env:userprofile\Desktop\$productId
    $configurationFile = "configuration-x$arch.xml"
    New-Item $configurationFile -ItemType File -Force | Out-Null
    Add-Content $configurationFile -Value "<Configuration>"
@@ -44,19 +44,19 @@ $download = {
    New-Item $batchFile -ItemType File -Force | Out-Null
    Add-content $batchFile -Value "setup.exe /configure $configurationFile"
 
-   (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\desktop\$productId\setup.exe")
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\setup.exe")
    Write-Host
-   Write-Host "Downloading $productId to $env:userprofile\desktop\$productId" -ForegroundColor Cyan
+   Write-Host "Downloading $productId to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    .\setup.exe /download .\$configurationFile
    Write-Host
-   Write-Host "Complete, the downloaded files saved in $env:userprofile\desktop\$productId" -ForegroundColor Green
+   Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
    Write-Host "You can close PowerShell window now." -ForegroundColor Green
    Write-Host
 }
 
 $download2013 = { 
-   New-Item -Path $env:userprofile\desktop\$productId -ItemType Directory -Force
-   Set-Location $env:userprofile\desktop\$productId
+   New-Item -Path $env:userprofile\Desktop\$productId -ItemType Directory -Force
+   Set-Location $env:userprofile\Desktop\$productId
    $configurationFile = "configuration-x$arch.xml"
    New-Item $configurationFile -ItemType File -Force | Out-Null
    Add-Content $configurationFile -Value "<Configuration>"
@@ -71,13 +71,13 @@ $download2013 = {
    New-Item $batchFile -ItemType File -Force | Out-Null
    Add-content $batchFile -Value "setup.exe /configure $configurationFile"
 
-   (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\desktop\$productId\bin2013.exe")
+   (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
    Write-Host
-   Write-Host "Downloading $productId to $env:userprofile\desktop\$productId" -ForegroundColor Cyan
+   Write-Host "Downloading $productId to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    .\bin2013.exe /download .\$configurationFile
 
    Write-Host
-   Write-Host "Complete, the downloaded files saved in $env:userprofile\desktop\$productId" -ForegroundColor Green
+   Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
    Write-Host "You can close PowerShell window now." -ForegroundColor Green
    Write-Host
 }
