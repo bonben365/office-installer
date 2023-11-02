@@ -147,9 +147,7 @@ $download2013 = {
    if ($2013VisioPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download2013}
 
    }
-   catch {
-      $outputBox.text = "`nOperation could not be completed"
-   }
+   catch {}
 
 } 
 ############################################## end functions
