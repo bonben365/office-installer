@@ -146,9 +146,10 @@ $download2013 = {
    if ($2013ProjectPro.Checked -eq $true) {$productId = "ProjectProRetail"; Invoke-Command $download2013}
    if ($2013VisioPro.Checked -eq $true) {$productId = "VisioProRetail"; Invoke-Command $download2013}
 
-   } #end try
-
-   catch {$outputBox.text = "`nOperation could not be completed"}
+   }
+   catch {
+      $outputBox.text = "`nOperation could not be completed"
+   }
 
 } 
 ############################################## end functions
