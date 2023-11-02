@@ -48,7 +48,7 @@ $download = {
    (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\bin.exe")
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    Write-Host
-   Write-Host "Downloading $downloadId-"$arch"bit to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
+   Write-Host "Downloading $downloadId $arch bit to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    .\bin.exe /download .\$configurationFile
    Write-Host
    Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
@@ -76,7 +76,7 @@ $download2013 = {
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    Write-Host
-   Write-Host "Downloading $downloadId-"$arch"bit to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
+   Write-Host "Downloading $downloadId $arch bit to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    .\bin2013.exe /download .\$configurationFile
 
    Write-Host
