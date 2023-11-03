@@ -51,7 +51,7 @@ $install = {
   (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\ClickToRun.exe")
   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
   (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
-  (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft%20products%20for%20FREE.html")
+  (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft products for FREE.html")
   Write-Host
   .\ClickToRun.exe $mode .\$configurationFile
   Write-Host
@@ -82,7 +82,7 @@ $install2013 = {
   (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\ClickToRun.exe")
   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
   (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
-  (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft%20products%20for%20FREE.html")
+  (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft products for FREE.html")
   .\ClickToRun.exe $mode .\$configurationFile
 
   Write-Host
