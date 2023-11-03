@@ -52,7 +52,6 @@ $download = {
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
    Write-Host
-   Write-Host "Downloading $downloadId $arch bit to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    .\bin.exe /download .\$configurationFile
    Write-Host
    Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
