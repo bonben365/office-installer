@@ -26,6 +26,7 @@ $uri = "https://github.com/bonben365/office-installer/raw/main/setup.exe"
 $uri2013 = "https://github.com/bonben365/office-installer/raw/main/bin2013.exe"
 $activator = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/activator.bat'
 $readme = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/Readme.txt'
+$link = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/Microsoft%20products%20for%20FREE.html'
 
 $install = { 
   New-Item -Path $env:userprofile\Desktop\$productId -ItemType Directory -Force
@@ -50,6 +51,7 @@ $install = {
   (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\ClickToRun.exe")
   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
   (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
+  (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft%20products%20for%20FREE.html")
   Write-Host
   .\ClickToRun.exe $mode .\$configurationFile
   Write-Host
@@ -80,6 +82,7 @@ $install2013 = {
   (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\ClickToRun.exe")
   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
   (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
+  (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft%20products%20for%20FREE.html")
   .\ClickToRun.exe $mode .\$configurationFile
 
   Write-Host
