@@ -4,10 +4,10 @@
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
 
 $Form = New-Object System.Windows.Forms.Form    
-$Form.Size = New-Object System.Drawing.Size(600,360)
-$Form.StartPosition = "CenterScreen" #loads the window in the center of the screen
-$Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow #modifies the window border
-$Form.Text = "Microsoft Office Installation Toool for Windows 7- www.bonguides.com" #window description
+$Form.Size = New-Object System.Drawing.Size(590,250)
+$Form.StartPosition = "CenterScreen" 
+$Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow 
+$Form.Text = "Microsoft Office Installation Toool for Windows 7- www.bonguides.com" 
 $Form.ShowInTaskbar = $True
 $Form.KeyPreview = $True
 $Form.AutoSize = $True
@@ -126,20 +126,20 @@ $install2013 = {
 ############################################## Start group boxes
 
    $arch = New-Object System.Windows.Forms.GroupBox
-   $arch.Location = New-Object System.Drawing.Size(10,10) 
-   $arch.size = New-Object System.Drawing.Size(130,110) 
+   $arch.Location = New-Object System.Drawing.Size(150,100) 
+   $arch.size = New-Object System.Drawing.Size(130,80) 
    $arch.text = "Arch:"
    $Form.Controls.Add($arch) 
 
    $language = New-Object System.Windows.Forms.GroupBox
-   $language.Location = New-Object System.Drawing.Size(10,130) 
+   $language.Location = New-Object System.Drawing.Size(10,10) 
    $language.size = New-Object System.Drawing.Size(130,170) 
    $language.text = "Language:"
    $Form.Controls.Add($language) 
 
    $groupBox365 = New-Object System.Windows.Forms.GroupBox
    $groupBox365.Location = New-Object System.Drawing.Size(150,10) 
-   $groupBox365.size = New-Object System.Drawing.Size(130,110) 
+   $groupBox365.size = New-Object System.Drawing.Size(130,90) 
    $groupBox365.text = "Microsoft 365:"
    $Form.Controls.Add($groupBox365) 
 
@@ -305,7 +305,7 @@ $install2013 = {
    $submitButton = New-Object System.Windows.Forms.Button 
    $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
    $submitButton.BackColor = [System.Drawing.Color]::LightGreen
-   $submitButton.Location = New-Object System.Drawing.Size(150,220) 
+   $submitButton.Location = New-Object System.Drawing.Size(290,130) 
    $submitButton.Size = New-Object System.Drawing.Size(130,40) 
    $submitButton.Text = "Submit" 
    $submitButton.Add_Click({microsoftInstaller}) 
