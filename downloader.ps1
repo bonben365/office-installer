@@ -32,6 +32,8 @@ $download = {
    New-Item -Path $env:userprofile\Desktop\$productId -ItemType Directory -Force
    Set-Location $env:userprofile\Desktop\$productId
    Invoke-Item $env:userprofile\Desktop\$productId
+   Write-Host
+   Write-Host "Downloading $downloadId $arch bit to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    $configurationFile = "configuration-x$arch.xml"
    New-Item $configurationFile -ItemType File -Force | Out-Null
    Add-Content $configurationFile -Value "<Configuration>"
@@ -63,6 +65,8 @@ $download2013 = {
    New-Item -Path $env:userprofile\Desktop\$productId -ItemType Directory -Force
    Set-Location $env:userprofile\Desktop\$productId
    Invoke-Item $env:userprofile\Desktop\$productId
+   Write-Host
+   Write-Host "Downloading $downloadId $arch bit to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    $configurationFile = "configuration-x$arch.xml"
    New-Item $configurationFile -ItemType File -Force | Out-Null
    Add-Content $configurationFile -Value "<Configuration>"
@@ -79,8 +83,6 @@ $download2013 = {
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
-   Write-Host
-   Write-Host "Downloading $downloadId $arch bit to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    .\bin2013.exe /download .\$configurationFile
 
    Write-Host
