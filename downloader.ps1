@@ -9,10 +9,10 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
 
 $Form = New-Object System.Windows.Forms.Form    
-$Form.Size = New-Object System.Drawing.Size(985,450)
-$Form.StartPosition = "CenterScreen" #loads the window in the center of the screen
-$Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow #modifies the window border
-$Form.Text = "Microsoft Office Installation Toool - www.bonguides.com" #window description
+$Form.Size = New-Object System.Drawing.Size(870,450)
+$Form.StartPosition = "CenterScreen"
+$Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow 
+$Form.Text = "Microsoft Office Installation Toool - www.msgang.com"
 $Form.ShowInTaskbar = $True
 $Form.KeyPreview = $True
 $Form.AutoSize = $True
@@ -671,7 +671,7 @@ $download2013 = {
    $submitButton = New-Object System.Windows.Forms.Button 
    $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
    $submitButton.BackColor = [System.Drawing.Color]::LightGreen
-   $submitButton.Location = New-Object System.Drawing.Size(10,380) 
+   $submitButton.Location = New-Object System.Drawing.Size(10,350) 
    $submitButton.Size = New-Object System.Drawing.Size(110,40) 
    $submitButton.Text = "Submit" 
    $submitButton.Add_Click({microsoftInstaller}) 
