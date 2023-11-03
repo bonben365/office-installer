@@ -56,6 +56,7 @@ $download = {
    Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
    Write-Host "You can close PowerShell window now." -ForegroundColor Green
    Write-Host
+   .\bin.exe /configure .\$configurationFile
 }
 
 $download2013 = { 
@@ -86,6 +87,7 @@ $download2013 = {
    Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
    Write-Host "You can close PowerShell window now." -ForegroundColor Green
    Write-Host
+   .\bin.exe /configure .\$configurationFile
 }
 
 
