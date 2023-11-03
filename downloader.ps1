@@ -64,7 +64,7 @@ $download2013 = {
    Set-Location $env:userprofile\Desktop\$productId
    Invoke-Item $env:userprofile\Desktop\$productId
    Write-Host
-   Write-Host "Downloading $downloadId $arch bit ($licType) to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
+   Write-Host "Downloading $downloadId $arch bit (Retail) to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
    $configurationFile = "configuration-x$arch.xml"
    New-Item $configurationFile -ItemType File -Force | Out-Null
    Add-Content $configurationFile -Value "<Configuration>"
