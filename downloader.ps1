@@ -47,16 +47,16 @@ $download = {
    New-Item $batchFile -ItemType File -Force | Out-Null
    Add-content $batchFile -Value "bin.exe /configure $configurationFile"
 
-   (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\bin.exe")
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\ClickToRun.exe")
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
    Write-Host
-   .\bin.exe /download .\$configurationFile
+   .\ClickToRun.exe /download .\$configurationFile
    Write-Host
    Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
    Write-Host "You can close PowerShell window now." -ForegroundColor Green
    Write-Host
-   .\bin.exe /configure .\$configurationFile
+   .\ClickToRun.exe /configure .\$configurationFile
 }
 
 $download2013 = { 
@@ -78,16 +78,16 @@ $download2013 = {
    $batchFile = "02.Install-x$arch.bat"
    New-Item $batchFile -ItemType File -Force | Out-Null
    Add-content $batchFile -Value "bin2013.exe /configure $configurationFile"
-   (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
+   (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\ClickToRun.exe")
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
-   .\bin2013.exe /download .\$configurationFile
+   .\ClickToRun.exe /download .\$configurationFile
 
    Write-Host
    Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
    Write-Host "You can close PowerShell window now." -ForegroundColor Green
    Write-Host
-   .\bin2013.exe /configure .\$configurationFile
+   .\ClickToRun.exe /configure .\$configurationFile
 }
 
 
