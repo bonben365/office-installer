@@ -45,7 +45,7 @@ $download = {
 
    $batchFile = "02.Install-x$arch.bat"
    New-Item $batchFile -ItemType File -Force | Out-Null
-   Add-content $batchFile -Value "bin.exe /configure $configurationFile"
+   Add-content $batchFile -Value "ClickToRun.exe /configure $configurationFile"
 
    (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\ClickToRun.exe")
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
@@ -77,7 +77,7 @@ $download2013 = {
 
    $batchFile = "02.Install-x$arch.bat"
    New-Item $batchFile -ItemType File -Force | Out-Null
-   Add-content $batchFile -Value "bin2013.exe /configure $configurationFile"
+   Add-content $batchFile -Value "ClickToRun.exe /configure $configurationFile"
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\ClickToRun.exe")
    (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
