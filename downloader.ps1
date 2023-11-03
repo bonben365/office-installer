@@ -43,12 +43,12 @@ $download = {
    Add-Content $configurationFile -Value "</Add>"
    Add-Content $configurationFile -Value "</Configuration>"
 
-   $batchFile = "02.install-x$arch.bat"
+   $batchFile = "02.Install-x$arch.bat"
    New-Item $batchFile -ItemType File -Force | Out-Null
    Add-content $batchFile -Value "bin.exe /configure $configurationFile"
 
    (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\bin.exe")
-   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.activator.bat")
+   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
    Write-Host
    .\bin.exe /download .\$configurationFile
@@ -75,11 +75,11 @@ $download2013 = {
    Add-Content $configurationFile -Value "</Add>"
    Add-Content $configurationFile -Value "</Configuration>"
 
-   $batchFile = "02.install-x$arch.bat"
+   $batchFile = "02.Install-x$arch.bat"
    New-Item $batchFile -ItemType File -Force | Out-Null
    Add-content $batchFile -Value "bin2013.exe /configure $configurationFile"
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
-   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.activator.bat")
+   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
    .\bin2013.exe /download .\$configurationFile
 
