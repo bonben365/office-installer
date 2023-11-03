@@ -49,7 +49,7 @@ $download = {
    Add-content $batchFile -Value "bin.exe /configure $configurationFile"
 
    (New-Object Net.WebClient).DownloadFile($uri, "$env:userprofile\Desktop\$productId\bin.exe")
-   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\02.activator.bat")
+   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
    Write-Host
    .\bin.exe /download .\$configurationFile
@@ -80,7 +80,7 @@ $download2013 = {
    New-Item $batchFile -ItemType File -Force | Out-Null
    Add-content $batchFile -Value "bin2013.exe /configure $configurationFile"
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
-   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\02.activator.bat")
+   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
    .\bin2013.exe /download .\$configurationFile
 
