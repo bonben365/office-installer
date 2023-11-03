@@ -22,7 +22,6 @@ $Form.MinimizeBox = $False
 $Form.ControlBox = $True
 $Form.Icon = $Icon
 
-
 $uri = "https://github.com/bonben365/office-installer/raw/main/setup.exe"
 $uri2013 = "https://github.com/bonben365/office-installer/raw/main/bin2013.exe"
 $activator = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/activator.bat'
