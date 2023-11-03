@@ -75,11 +75,11 @@ $download2013 = {
    Add-Content $configurationFile -Value "</Add>"
    Add-Content $configurationFile -Value "</Configuration>"
 
-   $batchFile = "install-x$arch.bat"
+   $batchFile = "02.install-x$arch.bat"
    New-Item $batchFile -ItemType File -Force | Out-Null
    Add-content $batchFile -Value "bin2013.exe /configure $configurationFile"
    (New-Object Net.WebClient).DownloadFile($uri2013, "$env:userprofile\Desktop\$productId\bin2013.exe")
-   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\activator.bat")
+   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.activator.bat")
    (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
    .\bin2013.exe /download .\$configurationFile
 
