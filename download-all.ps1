@@ -1,3 +1,8 @@
+if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
+    break
+ }
+
 $uri = "https://github.com/bonben365/office-installer/raw/main/setup.exe"
 $uri2013 = "https://github.com/bonben365/office-installer/raw/main/bin2013.exe"
 $activator = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/activator.bat'
@@ -125,4 +130,3 @@ if ($edition -match '365'){
         }
     }
 }
-
