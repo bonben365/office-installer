@@ -7,7 +7,6 @@ $link = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/Micros
 $edition = $(Write-Host -NoNewLine) + $(Write-Host "Please enter the Office edition (2013/2016/2019/2021/365):" -ForegroundColor Green -NoNewLine; Read-Host)
 $licType = $(Write-Host -NoNewLine) + $(Write-Host "Please enter the license type (Volume/Retail):" -ForegroundColor Green -NoNewLine; Read-Host)
 
-$edition = '365'
 $archs = @('32';'64')
 $languageId = 'en-US'
 $mode = '/download'
@@ -41,7 +40,6 @@ function Install-Office {
 function Install-OfficeX {
     New-Item -Path $env:userprofile\Desktop\Source\$productId$edition-x$arch -ItemType Directory -Force | Out-Null
     Set-Location $env:userprofile\Desktop\Source\$productId$edition-x$arch
-    #Invoke-Item $env:userprofile\Desktop\Source\$productId$edition-x$arch
     $totalItems = ($productIds.Count)*2
     Write-Host "($i\$totalItems) Downloading $productId $arch bit to $env:userprofile\Desktop\Source\$productId$edition-x$arch" -ForegroundColor Cyan
     $configurationFile = "configuration-x$arch.xml"
