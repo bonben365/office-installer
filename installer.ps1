@@ -275,12 +275,26 @@ $activate = {
   $Form.Controls.Add($groupBox2013)
 
   $groupBoxUninstall = New-Object System.Windows.Forms.GroupBox
-  $groupBoxUninstall.Location = New-Object System.Drawing.Size(290,330) 
-  $groupBoxUninstall.size = New-Object System.Drawing.Size(270,50) 
+  $groupBoxUninstall.Location = New-Object System.Drawing.Size(300,330) 
+  $groupBoxUninstall.size = New-Object System.Drawing.Size(275,50) 
   $groupBoxUninstall.text = "Remove All Office Apps:"
   $groupBoxUninstall.Font = New-Object System.Drawing.Font("Roboto",8,[System.Drawing.FontStyle]::Bold)
   $groupBoxUninstall.ForeColor = [System.Drawing.Color]::Red
   $Form.Controls.Add($groupBoxUninstall)
+
+  ############################################## Start buttons
+
+  $submitButton = New-Object System.Windows.Forms.Button 
+  $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
+  $submitButton.Location = New-Object System.Drawing.Size(10,300) 
+  $submitButton.Size = New-Object System.Drawing.Size(110,40) 
+  $submitButton.Text = "Submit"
+  $submitButton.BackColor = [System.Drawing.Color]::DarkOrange
+  $submitButton.ForeColor = [System.Drawing.Color]::White
+  $submitButton.Font = New-Object System.Drawing.Font("Roboto",11,[System.Drawing.FontStyle]::Bold)
+  $submitButton.Add_Click({microsoftInstaller})
+  $Form.Controls.Add($submitButton)
+
 
 ############################################## end group boxes
 
@@ -749,20 +763,6 @@ $uninstallcb.Location = New-Object System.Drawing.Size(10,20)
 $uninstallcb.Size = New-Object System.Drawing.Size(200,20)
 $uninstallcb.Text = "I Agree (Be careful)"
 $groupBoxUninstall.Controls.Add($uninstallcb)
-
-############################################## Start buttons
-
-$submitButton = New-Object System.Windows.Forms.Button 
-$submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
-$submitButton.Location = New-Object System.Drawing.Size(90,300) 
-$submitButton.Size = New-Object System.Drawing.Size(110,40) 
-$submitButton.Text = "Submit"
-$submitButton.BackColor = [System.Drawing.Color]::DarkOrange
-$submitButton.ForeColor = [System.Drawing.Color]::White
-$submitButton.Font = New-Object System.Drawing.Font("Roboto",11,[System.Drawing.FontStyle]::Bold)
-$submitButton.Add_Click({microsoftInstaller})
-$Form.Controls.Add($submitButton)
-
 
 ############################################## end buttons
 
