@@ -138,7 +138,7 @@ $uninstall = {
    $arch.Location = New-Object System.Drawing.Size(10,10) 
    $arch.size = New-Object System.Drawing.Size(130,90)
    $arch.text = "Arch:"
-   $arch.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $arch.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
    $arch.ForeColor = [System.Drawing.Color]::DarkBlue
    $Form.Controls.Add($arch) 
 
@@ -146,7 +146,7 @@ $uninstall = {
    $language.Location = New-Object System.Drawing.Size(10,110) 
    $language.size = New-Object System.Drawing.Size(130,170) 
    $language.text = "Language:"
-   $language.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $language.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
    $language.ForeColor = [System.Drawing.Color]::DarkBlue
    $Form.Controls.Add($language) 
 
@@ -154,7 +154,7 @@ $uninstall = {
    $groupBox365.Location = New-Object System.Drawing.Size(150,10) 
    $groupBox365.size = New-Object System.Drawing.Size(140,90) 
    $groupBox365.text = "Microsoft 365:"
-   $groupBox365.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBox365.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
    $groupBox365.ForeColor = [System.Drawing.Color]::DarkRed
    $Form.Controls.Add($groupBox365)
 
@@ -162,7 +162,7 @@ $uninstall = {
    $groupBox2016.Location = New-Object System.Drawing.Size(150,110) 
    $groupBox2016.size = New-Object System.Drawing.Size(140,170) 
    $groupBox2016.text = "Office 2016 Apps:"
-   $groupBox2016.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBox2016.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
    $groupBox2016.ForeColor = [System.Drawing.Color]::DarkRed
    $Form.Controls.Add($groupBox2016)
 
@@ -170,7 +170,7 @@ $uninstall = {
    $groupBox2021.Location = New-Object System.Drawing.Size(300,10) 
    $groupBox2021.size = New-Object System.Drawing.Size(150,310) 
    $groupBox2021.text = "Office 2021 Apps:"
-   $groupBox2021.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBox2021.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
    $groupBox2021.ForeColor = [System.Drawing.Color]::DarkRed
    $Form.Controls.Add($groupBox2021)
 
@@ -178,7 +178,7 @@ $uninstall = {
    $groupBox2019.Location = New-Object System.Drawing.Size(460,10) 
    $groupBox2019.size = New-Object System.Drawing.Size(150,310) 
    $groupBox2019.text = "Office 2019 Apps:"
-   $groupBox2019.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBox2019.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
    $groupBox2019.ForeColor = [System.Drawing.Color]::DarkRed
    $Form.Controls.Add($groupBox2019)
 
@@ -186,7 +186,7 @@ $uninstall = {
    $groupBoxUninstall.Location = New-Object System.Drawing.Size(290,330) 
    $groupBoxUninstall.size = New-Object System.Drawing.Size(320,50) 
    $groupBoxUninstall.text = "Remove All Office Apps:"
-   $groupBoxUninstall.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBoxUninstall.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
    $groupBoxUninstall.ForeColor = [System.Drawing.Color]::Red
    $Form.Controls.Add($groupBoxUninstall)
 
