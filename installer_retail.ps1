@@ -70,9 +70,7 @@ $uninstall = {
    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
    .\setup.exe /configure .\configuration.xml
 }
-
 ############################################## Start functions
-
    function microsoftInstaller {
    try {
    if ($arch32.Checked -eq $true) {$arch='32'}
@@ -206,7 +204,6 @@ $uninstall = {
    $AboutLabel.Location = New-Object System.Drawing.Size(10,350)
    $AboutLabel.Size = New-Object System.Drawing.Size(260,20) 
    $AboutLabel.Text = "(*)This tool installs the RETAIL version only."
-   #$AboutLabel.Font = New-Object System.Drawing.Font("Arial",8,[System.Drawing.FontStyle]::Bold)
    $Form.Controls.Add($AboutLabel)
 
 ########################################
@@ -215,7 +212,6 @@ $uninstall = {
       AutoSize = $true
    }
    $linklabel.Location = New-Object System.Drawing.Size(10,370) 
-   $linklabel.Size = New-Object System.Drawing.Size(110,20)
    $form.Controls.Add($linklabel)
 
    #Sample hyperlinks to add to the text of the link label control.
@@ -230,10 +226,10 @@ $uninstall = {
    }
    #Register a handler for when the user clicks a link.
    $linklabel.add_LinkClicked({
-            param($evtSender, $evtArgs)
-            #Launch the default browser with the target URL.
-            Start-Process $evtArgs.Link.LinkData
-      })
+      param($evtSender, $evtArgs)
+      #Launch the default browser with the target URL.
+      Start-Process $evtArgs.Link.LinkData
+   })
 
 ############################################## end group boxes
 
