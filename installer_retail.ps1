@@ -9,7 +9,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
 
 $Form = New-Object System.Windows.Forms.Form    
-$Form.Size = New-Object System.Drawing.Size(785,450)
+$Form.Size = New-Object System.Drawing.Size(650,450)
 $Form.StartPosition = "CenterScreen" #loads the window in the center of the screen
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow #modifies the window border
 $Form.Text = "Microsoft Office Installation Toool - www.bonguides.com" #window description
@@ -129,9 +129,7 @@ $uninstall = {
 
    if ($uninstallcb.Checked -eq $true) {Invoke-Command $uninstall}
 
-
    } catch {}
-
 } 
 
 ############################################## Start group boxes
@@ -140,44 +138,56 @@ $uninstall = {
    $arch.Location = New-Object System.Drawing.Size(10,10) 
    $arch.size = New-Object System.Drawing.Size(130,90)
    $arch.text = "Arch:"
-   $arch.Font = New-Object System.Drawing.Font("Tahoma",8,[System.Drawing.FontStyle]::Bold)
-   $arch.ForeColor = [System.Drawing.Color]::DarkRed
+   $arch.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $arch.ForeColor = [System.Drawing.Color]::DarkBlue
    $Form.Controls.Add($arch) 
 
    $language = New-Object System.Windows.Forms.GroupBox
    $language.Location = New-Object System.Drawing.Size(10,110) 
    $language.size = New-Object System.Drawing.Size(130,170) 
    $language.text = "Language:"
+   $language.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $language.ForeColor = [System.Drawing.Color]::DarkBlue
    $Form.Controls.Add($language) 
 
    $groupBox365 = New-Object System.Windows.Forms.GroupBox
    $groupBox365.Location = New-Object System.Drawing.Size(150,10) 
-   $groupBox365.size = New-Object System.Drawing.Size(130,90) 
+   $groupBox365.size = New-Object System.Drawing.Size(140,90) 
    $groupBox365.text = "Microsoft 365:"
-   $Form.Controls.Add($groupBox365) 
-
-   $groupBox2021 = New-Object System.Windows.Forms.GroupBox
-   $groupBox2021.Location = New-Object System.Drawing.Size(290,10) 
-   $groupBox2021.size = New-Object System.Drawing.Size(130,310) 
-   $groupBox2021.text = "Office 2021 Apps:"
-   $Form.Controls.Add($groupBox2021)
-
-   $groupBox2019 = New-Object System.Windows.Forms.GroupBox
-   $groupBox2019.Location = New-Object System.Drawing.Size(430,10) 
-   $groupBox2019.size = New-Object System.Drawing.Size(130,310) 
-   $groupBox2019.text = "Office 2019 Apps:"
-   $Form.Controls.Add($groupBox2019)
+   $groupBox365.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBox365.ForeColor = [System.Drawing.Color]::DarkRed
+   $Form.Controls.Add($groupBox365)
 
    $groupBox2016 = New-Object System.Windows.Forms.GroupBox
    $groupBox2016.Location = New-Object System.Drawing.Size(150,110) 
-   $groupBox2016.size = New-Object System.Drawing.Size(130,170) 
+   $groupBox2016.size = New-Object System.Drawing.Size(140,170) 
    $groupBox2016.text = "Office 2016 Apps:"
+   $groupBox2016.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBox2016.ForeColor = [System.Drawing.Color]::DarkRed
    $Form.Controls.Add($groupBox2016)
+
+   $groupBox2021 = New-Object System.Windows.Forms.GroupBox
+   $groupBox2021.Location = New-Object System.Drawing.Size(300,10) 
+   $groupBox2021.size = New-Object System.Drawing.Size(150,310) 
+   $groupBox2021.text = "Office 2021 Apps:"
+   $groupBox2021.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBox2021.ForeColor = [System.Drawing.Color]::DarkRed
+   $Form.Controls.Add($groupBox2021)
+
+   $groupBox2019 = New-Object System.Windows.Forms.GroupBox
+   $groupBox2019.Location = New-Object System.Drawing.Size(460,10) 
+   $groupBox2019.size = New-Object System.Drawing.Size(150,310) 
+   $groupBox2019.text = "Office 2019 Apps:"
+   $groupBox2019.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBox2019.ForeColor = [System.Drawing.Color]::DarkRed
+   $Form.Controls.Add($groupBox2019)
 
    $groupBoxUninstall = New-Object System.Windows.Forms.GroupBox
    $groupBoxUninstall.Location = New-Object System.Drawing.Size(290,330) 
-   $groupBoxUninstall.size = New-Object System.Drawing.Size(280,50) 
+   $groupBoxUninstall.size = New-Object System.Drawing.Size(320,50) 
    $groupBoxUninstall.text = "Remove All Office Apps:"
+   $groupBoxUninstall.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+   $groupBoxUninstall.ForeColor = [System.Drawing.Color]::Red
    $Form.Controls.Add($groupBoxUninstall)
 
    $submitButton = New-Object System.Windows.Forms.Button 
@@ -188,9 +198,42 @@ $uninstall = {
    $submitButton.Text = "Submit" 
    $submitButton.BackColor = [System.Drawing.Color]::DarkOrange
    $submitButton.ForeColor = [System.Drawing.Color]::White
-   $submitButton.Font = New-Object System.Drawing.Font("Roboto",11,[System.Drawing.FontStyle]::Bold)
+   $submitButton.Font = New-Object System.Drawing.Font("Consolas",11,[System.Drawing.FontStyle]::Bold)
    $submitButton.Add_Click({microsoftInstaller}) 
-   $Form.Controls.Add($submitButton) 
+   $Form.Controls.Add($submitButton)
+
+   $AboutLabel = New-Object System.Windows.Forms.Label
+   $AboutLabel.Location = New-Object System.Drawing.Size(10,350)
+   $AboutLabel.Size = New-Object System.Drawing.Size(260,20) 
+   $AboutLabel.Text = "(*)This tool installs the RETAIL version only."
+   #$AboutLabel.Font = New-Object System.Drawing.Font("Arial",8,[System.Drawing.FontStyle]::Bold)
+   $Form.Controls.Add($AboutLabel)
+
+########################################
+   $linklabel = [LinkLabel] @{
+      Text     = '(*)For more: https://bonguides.com'
+      AutoSize = $true
+   }
+   $linklabel.Location = New-Object System.Drawing.Size(10,370) 
+   $linklabel.Size = New-Object System.Drawing.Size(110,20)
+   $form.Controls.Add($linklabel)
+
+   #Sample hyperlinks to add to the text of the link label control.
+   $URLInfo = [pscustomobject]@{
+      StartPos = 0;
+      LinkLength = 45;
+      Url = 'http://bonguides.com'
+   }
+   #Add them.
+   foreach ($URL in $URLinfo) {
+      $null = $linklabel.Links.Add($URL.StartPos, $URL.LinkLength, $URL.URL)
+   }
+   #Register a handler for when the user clicks a link.
+   $linklabel.add_LinkClicked({
+            param($evtSender, $evtArgs)
+            #Launch the default browser with the target URL.
+            Start-Process $evtArgs.Link.LinkData
+      })
 
 ############################################## end group boxes
 

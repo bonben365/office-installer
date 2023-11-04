@@ -212,7 +212,7 @@ $activate = {
   $arch.size = New-Object System.Drawing.Size(130,70) 
   $arch.text = "Arch:"
   $arch.Font = New-Object System.Drawing.Font("Roboto",8,[System.Drawing.FontStyle]::Regular)
-  $arch.ForeColor = [System.Drawing.Color]::DarkRed
+  $arch.ForeColor = [System.Drawing.Color]::DarkBlue
   $Form.Controls.Add($arch)
 
   $licenseType = New-Object System.Windows.Forms.GroupBox
@@ -220,7 +220,7 @@ $activate = {
   $licenseType.size = New-Object System.Drawing.Size(130,70) 
   $licenseType.text = "License Type:"
   $licenseType.Font = New-Object System.Drawing.Font("Roboto",8,[System.Drawing.FontStyle]::Regular)
-  $licenseType.ForeColor = [System.Drawing.Color]::DarkRed
+  $licenseType.ForeColor = [System.Drawing.Color]::DarkBlue
   $Form.Controls.Add($licenseType)
 
   $installMode = New-Object System.Windows.Forms.GroupBox
@@ -228,14 +228,14 @@ $activate = {
   $installMode.size = New-Object System.Drawing.Size(130,110) 
   $installMode.text = "Mode:"
   $installMode.Font = New-Object System.Drawing.Font("Roboto",8,[System.Drawing.FontStyle]::Regular)
-  $installMode.ForeColor = [System.Drawing.Color]::DarkRed
+  $installMode.ForeColor = [System.Drawing.Color]::DarkBlue
   $Form.Controls.Add($installMode) 
 
   $language = New-Object System.Windows.Forms.GroupBox
   $language.Location = New-Object System.Drawing.Size(155,110) 
   $language.size = New-Object System.Drawing.Size(130,170) 
   $language.text = "Language:"
-  $language.ForeColor = [System.Drawing.Color]::DarkRed
+  $language.ForeColor = [System.Drawing.Color]::DarkBlue
   $language.Font = New-Object System.Drawing.Font("Roboto",8,[System.Drawing.FontStyle]::Regular)
   $Form.Controls.Add($language) 
 
