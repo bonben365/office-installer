@@ -127,33 +127,54 @@ $install2013 = {
 
    $arch = New-Object System.Windows.Forms.GroupBox
    $arch.Location = New-Object System.Drawing.Size(150,100) 
-   $arch.size = New-Object System.Drawing.Size(130,80) 
+   $arch.size = New-Object System.Drawing.Size(130,80)
+   $arch.Font = New-Object System.Drawing.Font("Tahoma",8,[System.Drawing.FontStyle]::Bold)
+   $arch.ForeColor = [System.Drawing.Color]::DarkRed
    $arch.text = "Arch:"
    $Form.Controls.Add($arch) 
 
    $language = New-Object System.Windows.Forms.GroupBox
    $language.Location = New-Object System.Drawing.Size(10,10) 
-   $language.size = New-Object System.Drawing.Size(130,170) 
+   $language.size = New-Object System.Drawing.Size(130,170)
+   $language.Font = New-Object System.Drawing.Font("Tahoma",8,[System.Drawing.FontStyle]::Bold)
+   $language.ForeColor = [System.Drawing.Color]::DarkRed
    $language.text = "Language:"
    $Form.Controls.Add($language) 
 
    $groupBox365 = New-Object System.Windows.Forms.GroupBox
    $groupBox365.Location = New-Object System.Drawing.Size(150,10) 
-   $groupBox365.size = New-Object System.Drawing.Size(130,90) 
+   $groupBox365.size = New-Object System.Drawing.Size(130,90)
+   $groupBox365.Font = New-Object System.Drawing.Font("Roboto",8,[System.Drawing.FontStyle]::Regular)
+   $groupBox365.ForeColor = [System.Drawing.Color]::DarkRed
    $groupBox365.text = "Microsoft 365:"
    $Form.Controls.Add($groupBox365) 
 
    $groupBox2016 = New-Object System.Windows.Forms.GroupBox
    $groupBox2016.Location = New-Object System.Drawing.Size(290,10) 
-   $groupBox2016.size = New-Object System.Drawing.Size(130,110) 
+   $groupBox2016.size = New-Object System.Drawing.Size(130,110)
+   $groupBox2016.Font = New-Object System.Drawing.Font("Roboto",8,[System.Drawing.FontStyle]::Regular)
+   $groupBox2016.ForeColor = [System.Drawing.Color]::DarkRed
    $groupBox2016.text = "Office 2016 Apps:"
    $Form.Controls.Add($groupBox2016)
 
    $groupBox2013 = New-Object System.Windows.Forms.GroupBox
    $groupBox2013.Location = New-Object System.Drawing.Size(430,10) 
-   $groupBox2013.size = New-Object System.Drawing.Size(130,110) 
+   $groupBox2013.size = New-Object System.Drawing.Size(130,110)
+   $groupBox2013.Font = New-Object System.Drawing.Font("Roboto",8,[System.Drawing.FontStyle]::Regular)
+   $groupBox2013.ForeColor = [System.Drawing.Color]::DarkRed
    $groupBox2013.text = "Office 2013 Apps:"
    $Form.Controls.Add($groupBox2013)
+
+   $submitButton = New-Object System.Windows.Forms.Button 
+   $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
+   $submitButton.Location = New-Object System.Drawing.Size(290,130) 
+   $submitButton.Size = New-Object System.Drawing.Size(130,40) 
+   $submitButton.Text = "Submit"
+   $submitButton.BackColor = [System.Drawing.Color]::DarkOrange
+   $submitButton.ForeColor = [System.Drawing.Color]::White
+   $submitButton.Font = New-Object System.Drawing.Font("Roboto",11,[System.Drawing.FontStyle]::Bold)
+   $submitButton.Add_Click({microsoftInstaller}) 
+   $Form.Controls.Add($submitButton) 
 
 ############################################## end group boxes
 
@@ -299,19 +320,6 @@ $install2013 = {
 
 ############################################## End Office 2013 checkboxes
 
-
-############################################## Start buttons
-
-   $submitButton = New-Object System.Windows.Forms.Button 
-   $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
-   $submitButton.BackColor = [System.Drawing.Color]::LightGreen
-   $submitButton.Location = New-Object System.Drawing.Size(290,130) 
-   $submitButton.Size = New-Object System.Drawing.Size(130,40) 
-   $submitButton.Text = "Submit" 
-   $submitButton.Add_Click({microsoftInstaller}) 
-   $Form.Controls.Add($submitButton) 
-
-############################################## end buttons
 
 $Form.Add_Shown({$Form.Activate()})
 [void] $Form.ShowDialog()

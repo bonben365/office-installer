@@ -754,10 +754,10 @@ $groupBoxUninstall.Controls.Add($uninstallcb)
 
 $submitButton = New-Object System.Windows.Forms.Button 
 $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
-$submitButton.BackColor = [System.Drawing.Color]::DarkOrange
 $submitButton.Location = New-Object System.Drawing.Size(90,300) 
 $submitButton.Size = New-Object System.Drawing.Size(110,40) 
-$submitButton.Text = "Submit" 
+$submitButton.Text = "Submit"
+$submitButton.BackColor = [System.Drawing.Color]::DarkOrange
 $submitButton.ForeColor = [System.Drawing.Color]::White
 $submitButton.Font = New-Object System.Drawing.Font("Roboto",11,[System.Drawing.FontStyle]::Bold)
 $submitButton.Add_Click({microsoftInstaller})

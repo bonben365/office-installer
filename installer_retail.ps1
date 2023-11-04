@@ -127,32 +127,25 @@ $uninstall = {
    if ($2016VisioPro.Checked -eq $true) {$productId = 'ProjectProRetail';Invoke-Command $install}
    if ($2016OneNote.Checked -eq $true) {$productId = 'OneNoteRetail';Invoke-Command $install}
 
-
-   if ($2013Pro.Checked -eq $true) {$productId = 'ProfessionalRetail';Invoke-Command $install2013}
-   if ($2013Std.Checked -eq $true) {$productId = 'StandardRetail';Invoke-Command $install2013}
-   if ($2013ProjectPro.Checked -eq $true) {$productId = 'VisioProRetail';Invoke-Command $install2013}
-   if ($2013VisioPro.Checked -eq $true) {$productId = 'ProjectProRetail';Invoke-Command $install2013}
-
    if ($uninstallcb.Checked -eq $true) {Invoke-Command $uninstall}
 
 
-   } #end try
-
-   catch {$outputBox.text = "`nOperation could not be completed"}
+   } catch {}
 
 } 
-############################################## end functions
 
 ############################################## Start group boxes
 
    $arch = New-Object System.Windows.Forms.GroupBox
    $arch.Location = New-Object System.Drawing.Size(10,10) 
-   $arch.size = New-Object System.Drawing.Size(130,70) 
+   $arch.size = New-Object System.Drawing.Size(130,90)
    $arch.text = "Arch:"
+   $arch.Font = New-Object System.Drawing.Font("Tahoma",8,[System.Drawing.FontStyle]::Bold)
+   $arch.ForeColor = [System.Drawing.Color]::DarkRed
    $Form.Controls.Add($arch) 
 
    $language = New-Object System.Windows.Forms.GroupBox
-   $language.Location = New-Object System.Drawing.Size(10,90) 
+   $language.Location = New-Object System.Drawing.Size(10,110) 
    $language.size = New-Object System.Drawing.Size(130,170) 
    $language.text = "Language:"
    $Form.Controls.Add($language) 
@@ -176,22 +169,28 @@ $uninstall = {
    $Form.Controls.Add($groupBox2019)
 
    $groupBox2016 = New-Object System.Windows.Forms.GroupBox
-   $groupBox2016.Location = New-Object System.Drawing.Size(570,10) 
-   $groupBox2016.size = New-Object System.Drawing.Size(130,130) 
+   $groupBox2016.Location = New-Object System.Drawing.Size(150,110) 
+   $groupBox2016.size = New-Object System.Drawing.Size(130,170) 
    $groupBox2016.text = "Office 2016 Apps:"
    $Form.Controls.Add($groupBox2016)
-
-   $groupBox2013 = New-Object System.Windows.Forms.GroupBox
-   $groupBox2013.Location = New-Object System.Drawing.Size(570,150) 
-   $groupBox2013.size = New-Object System.Drawing.Size(130,110) 
-   $groupBox2013.text = "Office 2013 Apps:"
-   $Form.Controls.Add($groupBox2013)
 
    $groupBoxUninstall = New-Object System.Windows.Forms.GroupBox
    $groupBoxUninstall.Location = New-Object System.Drawing.Size(290,330) 
    $groupBoxUninstall.size = New-Object System.Drawing.Size(280,50) 
    $groupBoxUninstall.text = "Remove All Office Apps:"
    $Form.Controls.Add($groupBoxUninstall)
+
+   $submitButton = New-Object System.Windows.Forms.Button 
+   $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
+   $submitButton.BackColor = [System.Drawing.Color]::LightGreen
+   $submitButton.Location = New-Object System.Drawing.Size(10,290) 
+   $submitButton.Size = New-Object System.Drawing.Size(110,40) 
+   $submitButton.Text = "Submit" 
+   $submitButton.BackColor = [System.Drawing.Color]::DarkOrange
+   $submitButton.ForeColor = [System.Drawing.Color]::White
+   $submitButton.Font = New-Object System.Drawing.Font("Roboto",11,[System.Drawing.FontStyle]::Bold)
+   $submitButton.Add_Click({microsoftInstaller}) 
+   $Form.Controls.Add($submitButton) 
 
 ############################################## end group boxes
 
@@ -211,9 +210,7 @@ $uninstall = {
    $arch32.Text = "32 bit"
    $arch.Controls.Add($arch32)
 
-############################################## End Arch checkboxes 
-
-############################################## Start Arch checkboxes
+############################################## Start Language checkboxes
 
    $English = New-Object System.Windows.Forms.RadioButton
    $English.Location = New-Object System.Drawing.Size(10,20)
@@ -258,8 +255,6 @@ $uninstall = {
    $Vietnamese.Text = "Vietnamese"
    $language.Controls.Add($Vietnamese)
 
-############################################## End Arch checkboxes 
-
 ############################################## Start Microsoft 365 checkboxes
    $m365Home = New-Object System.Windows.Forms.RadioButton
    $m365Home.Location = New-Object System.Drawing.Size(10,20)
@@ -279,9 +274,9 @@ $uninstall = {
    $m365Enterprise.Size = New-Object System.Drawing.Size(100,20)
    $m365Enterprise.Text = "Enterprise"
    $groupBox365.Controls.Add($m365Enterprise)
-############################################## End Microsoft 365 checkboxes
 
 ############################################## Start Office 2021 checkboxes
+
    $2021Pro = New-Object System.Windows.Forms.RadioButton
    $2021Pro.Location = New-Object System.Drawing.Size(10,20)
    $2021Pro.Size = New-Object System.Drawing.Size(100,20)
@@ -367,9 +362,9 @@ $uninstall = {
    $2021HomeStudent.Size = New-Object System.Drawing.Size(100,20)
    $2021HomeStudent.Text = "HomeStudent"
    $groupBox2021.Controls.Add($2021HomeStudent)
-############################################## End Office 2021 checkboxes
 
 ############################################## Start Office 2019 checkboxes
+
    $2019Pro = New-Object System.Windows.Forms.RadioButton
    $2019Pro.Location = New-Object System.Drawing.Size(10,20)
    $2019Pro.Size = New-Object System.Drawing.Size(100,20)
@@ -455,10 +450,9 @@ $uninstall = {
    $2019HomeStudent.Size = New-Object System.Drawing.Size(100,20)
    $2019HomeStudent.Text = "HomeStudent"
    $groupBox2019.Controls.Add($2019HomeStudent)
-############################################## End Office 2019 checkboxes
-
 
 ############################################## Start Office 2016 checkboxes
+
    $2016Pro = New-Object System.Windows.Forms.RadioButton
    $2016Pro.Location = New-Object System.Drawing.Size(10,20)
    $2016Pro.Size = New-Object System.Drawing.Size(100,20)
@@ -490,57 +484,13 @@ $uninstall = {
    $2016OneNote.Text = "OneNote"
    $groupBox2016.Controls.Add($2016OneNote)
 
-############################################## End Office 2016 checkboxes
-
-############################################## Start Office 2013 checkboxes
-   $2013Pro = New-Object System.Windows.Forms.RadioButton
-   $2013Pro.Location = New-Object System.Drawing.Size(10,20)
-   $2013Pro.Size = New-Object System.Drawing.Size(100,20)
-   $2013Pro.Checked = $false
-   $2013Pro.Text = "Professional"
-   $groupBox2013.Controls.Add($2013Pro)
-
-   $2013Std = New-Object System.Windows.Forms.RadioButton
-   $2013Std.Location = New-Object System.Drawing.Size(10,40)
-   $2013Std.Size = New-Object System.Drawing.Size(100,20)
-   $2013Std.Text = "Standard"
-   $groupBox2013.Controls.Add($2013Std)
-
-   $2013ProjectPro = New-Object System.Windows.Forms.RadioButton
-   $2013ProjectPro.Location = New-Object System.Drawing.Size(10,60)
-   $2013ProjectPro.Size = New-Object System.Drawing.Size(100,20)
-   $2013ProjectPro.Text = "Project Pro"
-   $groupBox2013.Controls.Add($2013ProjectPro)
-
-   $2013VisioPro = New-Object System.Windows.Forms.RadioButton
-   $2013VisioPro.Location = New-Object System.Drawing.Size(10,80)
-   $2013VisioPro.Size = New-Object System.Drawing.Size(100,20)
-   $2013VisioPro.Text = "Visio Pro"
-   $groupBox2013.Controls.Add($2013VisioPro)
-
-############################################## End Office 2013 checkboxes
-
-
 ############################################## Start uninstall checkbox
+
    $uninstallcb = New-Object System.Windows.Forms.RadioButton
    $uninstallcb.Location = New-Object System.Drawing.Size(10,20)
    $uninstallcb.Size = New-Object System.Drawing.Size(200,20)
    $uninstallcb.Text = "I Agree (Be careful)"
    $groupBoxUninstall.Controls.Add($uninstallcb)
-############################################## End uninstall checkbox
-
-############################################## Start buttons
-
-   $submitButton = New-Object System.Windows.Forms.Button 
-   $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
-   $submitButton.BackColor = [System.Drawing.Color]::LightGreen
-   $submitButton.Location = New-Object System.Drawing.Size(10,280) 
-   $submitButton.Size = New-Object System.Drawing.Size(110,40) 
-   $submitButton.Text = "Submit" 
-   $submitButton.Add_Click({microsoftInstaller}) 
-   $Form.Controls.Add($submitButton) 
-
-############################################## end buttons
 
 $Form.Add_Shown({$Form.Activate()})
 [void] $Form.ShowDialog()
