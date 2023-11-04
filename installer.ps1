@@ -361,6 +361,11 @@ function Uninstall-AllOffice {
 
   $form.Controls.Add($linklabel)
 
+  $RemoveLable = New-Object System.Windows.Forms.Label
+  $RemoveLable.Location = New-Object System.Drawing.Size(625,395)
+  $RemoveLable.AutoSize = $True 
+  $RemoveLable.Text = "(*) This option removes all installed Office apps."
+  $Form.Controls.Add($RemoveLable)
 
 ############################################## end group boxes
 
