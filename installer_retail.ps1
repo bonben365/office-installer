@@ -13,6 +13,7 @@ $Form.Size = New-Object System.Drawing.Size(640,455)
 $Form.StartPosition = "CenterScreen"
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow
 $Form.Text = "Microsoft Office Installation Toool - www.bonguides.com"
+$Form.Font = New-Object System.Drawing.Font("Consolas",8,[System.Drawing.FontStyle]::Regular)
 $Form.ShowInTaskbar = $True
 $Form.KeyPreview = $True
 $Form.AutoSize = $True

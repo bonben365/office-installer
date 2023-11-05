@@ -13,6 +13,7 @@ $Form.Size = New-Object System.Drawing.Size(1000,480)
 $Form.StartPosition = "CenterScreen"
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow 
 $Form.Text = "Microsoft Office Download Tool - www.msgang.com"
+$Form.Font = New-Object System.Drawing.Font("Consolas",8,[System.Drawing.FontStyle]::Regular)
 $Form.ShowInTaskbar = $True
 $Form.KeyPreview = $True
 $Form.AutoSize = $True
