@@ -2,8 +2,10 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
     Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
     break
 }
+
 Write-Host
-$Confirm= Read-Host Are you sure you want to uninstall all Office apps? [Y] Yes [N] No
+$Confirm = $(Write-Host -NoNewLine) + $(Write-Host "Are you sure you want to uninstall all Office apps? [Y] Yes [N] No:" -ForegroundColor Green -NoNewLine; Read-Host)
+
 if($Confirm -match "[yY]") {
     $null = New-Item -Path $env:temp\SaRA -ItemType Directory -Force
     Set-Location $env:temp\SaRA
