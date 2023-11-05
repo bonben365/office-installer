@@ -124,12 +124,20 @@ $uninstall = {
   if ($2016ProjectPro.Checked -eq $true) {$productId = 'VisioProRetail';Invoke-Command $install}
   if ($2016VisioPro.Checked -eq $true) {$productId = 'ProjectProRetail';Invoke-Command $install}
   if ($2016OneNote.Checked -eq $true) {$productId = 'OneNoteRetail';Invoke-Command $install}
+  } catch {
 
-  if ($uninstallcb.Checked -eq $true) {Invoke-Command $uninstall}
-
-  } catch {}
+  }
 } 
 
+function Uninstall-AllOffice {
+  try {
+    if ($uninstallcb.Checked -eq $true) {Invoke-Command $uninstall}
+  }
+  catch {
+    
+  }
+  
+}
 ############################################## Start group boxes
 
   $arch = New-Object System.Windows.Forms.GroupBox
@@ -180,13 +188,30 @@ $uninstall = {
   $groupBox2019.ForeColor = [System.Drawing.Color]::DarkRed
   $Form.Controls.Add($groupBox2019)
 
+  $removeButton = New-Object System.Windows.Forms.Button 
+  $removeButton.Cursor = [System.Windows.Forms.Cursors]::Hand
+  $removeButton.Location = New-Object System.Drawing.Size(500,345) 
+  $removeButton.Size = New-Object System.Drawing.Size(90,30) 
+  $removeButton.Text = "Remove All"
+  $removeButton.BackColor = [System.Drawing.Color]::Red
+  $removeButton.ForeColor = [System.Drawing.Color]::White
+  $removeButton.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+  $removeButton.Add_Click({Uninstall-AllOffice})
+  $Form.Controls.Add($removeButton)
+
   $groupBoxUninstall = New-Object System.Windows.Forms.GroupBox
   $groupBoxUninstall.Location = New-Object System.Drawing.Size(290,330) 
-  $groupBoxUninstall.size = New-Object System.Drawing.Size(320,50) 
+  $groupBoxUninstall.size = New-Object System.Drawing.Size(320,55) 
   $groupBoxUninstall.text = "Remove All Office Apps:"
   $groupBoxUninstall.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $groupBoxUninstall.ForeColor = [System.Drawing.Color]::Red
   $Form.Controls.Add($groupBoxUninstall)
+
+  $RemoveLable = New-Object System.Windows.Forms.Label
+  $RemoveLable.Location = New-Object System.Drawing.Size(290,390)
+  $RemoveLable.AutoSize = $True 
+  $RemoveLable.Text = "(*) This option removes all installed Office apps."
+  $Form.Controls.Add($RemoveLable)
 
   $submitButton = New-Object System.Windows.Forms.Button 
   $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
@@ -194,11 +219,12 @@ $uninstall = {
   $submitButton.Location = New-Object System.Drawing.Size(10,290) 
   $submitButton.Size = New-Object System.Drawing.Size(110,40) 
   $submitButton.Text = "Submit" 
-  $submitButton.BackColor = [System.Drawing.Color]::DarkOrange
+  $submitButton.BackColor = [System.Drawing.Color]::DarkGreen
   $submitButton.ForeColor = [System.Drawing.Color]::White
   $submitButton.Font = New-Object System.Drawing.Font("Consolas",11,[System.Drawing.FontStyle]::Bold)
   $submitButton.Add_Click({microsoftInstaller}) 
   $Form.Controls.Add($submitButton)
+
 
   $AboutLabel = New-Object System.Windows.Forms.Label
   $AboutLabel.Location = New-Object System.Drawing.Size(10,350)
@@ -230,6 +256,8 @@ $uninstall = {
   })
   
   $form.Controls.Add($linklabel)
+
+
 ############################################## end group boxes
 
 ############################################## Start Arch checkboxes
@@ -525,7 +553,7 @@ $uninstall = {
 ############################################## Start uninstall checkbox
 
   $uninstallcb = New-Object System.Windows.Forms.RadioButton
-  $uninstallcb.Location = New-Object System.Drawing.Size(10,20)
+  $uninstallcb.Location = New-Object System.Drawing.Size(10,25)
   $uninstallcb.Size = New-Object System.Drawing.Size(200,20)
   $uninstallcb.Text = "I Agree (Be careful)"
   $groupBoxUninstall.Controls.Add($uninstallcb)

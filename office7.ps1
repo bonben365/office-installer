@@ -179,7 +179,7 @@ $install2013 = {
    $AboutLabel = New-Object System.Windows.Forms.Label
    $AboutLabel.Location = New-Object System.Drawing.Size(430,135) 
    $AboutLabel.AutoSize = $True 
-   $AboutLabel.Text = "(*) Default: Office 64-bit English."
+   $AboutLabel.Text = "(*) Default: Office 32-bit English."
    $Form.Controls.Add($AboutLabel)
 
    $linklabel = New-Object System.Windows.Forms.LinkLabel
@@ -213,14 +213,14 @@ $install2013 = {
    $arch64 = New-Object System.Windows.Forms.RadioButton
    $arch64.Location = New-Object System.Drawing.Size(10,20)
    $arch64.Size = New-Object System.Drawing.Size(100,20)
-   $arch64.Checked = $true
+   $arch64.Checked = $False
    $arch64.Text = "64 bit"
    $arch.Controls.Add($arch64)
 
    $arch32 = New-Object System.Windows.Forms.RadioButton
    $arch32.Location = New-Object System.Drawing.Size(10,40)
    $arch32.Size = New-Object System.Drawing.Size(100,20)
-   $arch32.Checked = $false
+   $arch32.Checked = $True
    $arch32.Text = "32 bit"
    $arch.Controls.Add($arch32)
 
