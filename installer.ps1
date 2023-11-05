@@ -321,13 +321,13 @@ function Uninstall-AllOffice {
   $AboutLabel = New-Object System.Windows.Forms.Label
   $AboutLabel.Location = New-Object System.Drawing.Size(10,340)
   $AboutLabel.AutoSize = $True 
-  $AboutLabel.Text = "(*) Default mode is Install. You want to download only, select the Download mode."
+  $AboutLabel.Text = "(*) Default mode is Install. If you want to download only, select the Download mode."
   $Form.Controls.Add($AboutLabel)
 
   $AboutLabel = New-Object System.Windows.Forms.Label
   $AboutLabel.Location = New-Object System.Drawing.Size(10,360)
   $AboutLabel.AutoSize = $True 
-  $AboutLabel.Text = "(*) By default, this script installs Microsoft Office 64-bit English."
+  $AboutLabel.Text = "(*) By default, this script installs the 64-bit version in English."
   $Form.Controls.Add($AboutLabel)
 
   $AboutLabel2 = New-Object System.Windows.Forms.Label
