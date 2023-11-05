@@ -9,7 +9,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
 
 $Form = New-Object System.Windows.Forms.Form    
-$Form.Size = New-Object System.Drawing.Size(640,455)
+$Form.Size = New-Object System.Drawing.Size(650,460)
 $Form.StartPosition = "CenterScreen"
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow
 $Form.Text = "Microsoft Office Installation Toool - www.bonguides.com"
@@ -131,7 +131,7 @@ function Uninstall-AllOffice {
 
  $arch = New-Object System.Windows.Forms.GroupBox
  $arch.Location = New-Object System.Drawing.Size(10,10) 
- $arch.size = New-Object System.Drawing.Size(130,90)
+ $arch.size = New-Object System.Drawing.Size(140,90)
  $arch.text = "Arch:"
  $arch.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
  $arch.ForeColor = [System.Drawing.Color]::DarkBlue
@@ -139,14 +139,14 @@ function Uninstall-AllOffice {
 
  $language = New-Object System.Windows.Forms.GroupBox
  $language.Location = New-Object System.Drawing.Size(10,110) 
- $language.size = New-Object System.Drawing.Size(130,170) 
+ $language.size = New-Object System.Drawing.Size(140,170) 
  $language.text = "Language:"
  $language.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
  $language.ForeColor = [System.Drawing.Color]::DarkBlue
  $Form.Controls.Add($language) 
 
  $groupBox365 = New-Object System.Windows.Forms.GroupBox
- $groupBox365.Location = New-Object System.Drawing.Size(150,10) 
+ $groupBox365.Location = New-Object System.Drawing.Size(160,10) 
  $groupBox365.size = New-Object System.Drawing.Size(140,90) 
  $groupBox365.text = "Microsoft 365:"
  $groupBox365.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
@@ -154,15 +154,15 @@ function Uninstall-AllOffice {
  $Form.Controls.Add($groupBox365)
 
  $groupBox2016 = New-Object System.Windows.Forms.GroupBox
- $groupBox2016.Location = New-Object System.Drawing.Size(150,110) 
- $groupBox2016.size = New-Object System.Drawing.Size(140,170) 
+ $groupBox2016.Location = New-Object System.Drawing.Size(160,110) 
+ $groupBox2016.size = New-Object System.Drawing.Size(140,130) 
  $groupBox2016.text = "Office 2016 Apps:"
  $groupBox2016.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
  $groupBox2016.ForeColor = [System.Drawing.Color]::DarkRed
  $Form.Controls.Add($groupBox2016)
 
  $groupBox2021 = New-Object System.Windows.Forms.GroupBox
- $groupBox2021.Location = New-Object System.Drawing.Size(300,10) 
+ $groupBox2021.Location = New-Object System.Drawing.Size(310,10) 
  $groupBox2021.size = New-Object System.Drawing.Size(150,310) 
  $groupBox2021.text = "Office 2021 Apps:"
  $groupBox2021.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
@@ -170,7 +170,7 @@ function Uninstall-AllOffice {
  $Form.Controls.Add($groupBox2021)
 
  $groupBox2019 = New-Object System.Windows.Forms.GroupBox
- $groupBox2019.Location = New-Object System.Drawing.Size(460,10) 
+ $groupBox2019.Location = New-Object System.Drawing.Size(470,10) 
  $groupBox2019.size = New-Object System.Drawing.Size(150,310) 
  $groupBox2019.text = "Office 2019 Apps:"
  $groupBox2019.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
@@ -184,20 +184,20 @@ function Uninstall-AllOffice {
  $removeButton.Text = "Remove All"
  $removeButton.BackColor = [System.Drawing.Color]::Red
  $removeButton.ForeColor = [System.Drawing.Color]::White
- $removeButton.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+ $removeButton.Font = New-Object System.Drawing.Font("Consolas",10,[System.Drawing.FontStyle]::Bold)
  $removeButton.Add_Click({Uninstall-AllOffice})
  $Form.Controls.Add($removeButton)
 
  $groupBoxUninstall = New-Object System.Windows.Forms.GroupBox
- $groupBoxUninstall.Location = New-Object System.Drawing.Size(290,330) 
- $groupBoxUninstall.size = New-Object System.Drawing.Size(320,55) 
+ $groupBoxUninstall.Location = New-Object System.Drawing.Size(310,330) 
+ $groupBoxUninstall.size = New-Object System.Drawing.Size(310,55) 
  $groupBoxUninstall.text = "Remove All Office Apps:"
- $groupBoxUninstall.Font = New-Object System.Drawing.Font("Tahoma",8,[System.Drawing.FontStyle]::Regular)
+ $groupBoxUninstall.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
  $groupBoxUninstall.ForeColor = [System.Drawing.Color]::Red
  $Form.Controls.Add($groupBoxUninstall)
 
  $RemoveLable = New-Object System.Windows.Forms.Label
- $RemoveLable.Location = New-Object System.Drawing.Size(290,390)
+ $RemoveLable.Location = New-Object System.Drawing.Size(310,390)
  $RemoveLable.AutoSize = $True 
  $RemoveLable.Text = "(*) This option removes all installed Office apps."
  $Form.Controls.Add($RemoveLable)
@@ -218,7 +218,7 @@ function Uninstall-AllOffice {
  $AboutLabel = New-Object System.Windows.Forms.Label
  $AboutLabel.Location = New-Object System.Drawing.Size(10,350)
  $AboutLabel.AutoSize = $True 
- $AboutLabel.Text = "(*) This tool installs the RETAIL version only."
+ $AboutLabel.Text = "(*) This tool installs RETAIL version only."
  $Form.Controls.Add($AboutLabel)
 
 ########################################
