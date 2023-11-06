@@ -9,7 +9,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
 
 $Form = New-Object System.Windows.Forms.Form    
-$Form.Size = New-Object System.Drawing.Size(1000,480)
+$Form.Size = New-Object System.Drawing.Size(980,520)
 $Form.StartPosition = "CenterScreen"
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow 
 $Form.Text = "Microsoft Office Download Tool - www.msgang.com"
@@ -233,7 +233,7 @@ function Uninstall-AllOffice {
 
   $installMode = New-Object System.Windows.Forms.GroupBox
   $installMode.Location = New-Object System.Drawing.Size(10,170) 
-  $installMode.size = New-Object System.Drawing.Size(130,110) 
+  $installMode.size = New-Object System.Drawing.Size(130,90) 
   $installMode.text = "Mode:"
   $installMode.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $installMode.ForeColor = [System.Drawing.Color]::DarkBlue
@@ -310,7 +310,7 @@ function Uninstall-AllOffice {
 
   $submitButton = New-Object System.Windows.Forms.Button 
   $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
-  $submitButton.Location = New-Object System.Drawing.Size(10,290) 
+  $submitButton.Location = New-Object System.Drawing.Size(10,280) 
   $submitButton.Size = New-Object System.Drawing.Size(130,40) 
   $submitButton.Text = "Submit"
   $submitButton.BackColor = [System.Drawing.Color]::Green
@@ -319,34 +319,46 @@ function Uninstall-AllOffice {
   $submitButton.Add_Click({microsoftInstaller})
   $Form.Controls.Add($submitButton)
 
+  $scriptNote = New-Object System.Windows.Forms.Label
+  $scriptNote.Location = New-Object System.Drawing.Size(10,330)
+  $scriptNote.AutoSize = $True
+  $scriptNote.Text = "(*) ***********************************************************************************"
+  $Form.Controls.Add($scriptNote)
+
   $AboutLabel = New-Object System.Windows.Forms.Label
-  $AboutLabel.Location = New-Object System.Drawing.Size(10,340)
+  $AboutLabel.Location = New-Object System.Drawing.Size(10,350)
   $AboutLabel.AutoSize = $True 
-  $AboutLabel.Text = "(*) Default mode is Download. If you want to install only, select the Install mode."
+  $AboutLabel.Text = "(*) Default mode is Download. If you want to install only, select the Install mode.   *"
   $Form.Controls.Add($AboutLabel)
 
   $AboutLabel = New-Object System.Windows.Forms.Label
-  $AboutLabel.Location = New-Object System.Drawing.Size(10,360)
+  $AboutLabel.Location = New-Object System.Drawing.Size(10,370)
   $AboutLabel.AutoSize = $True 
-  $AboutLabel.Text = "(*) By default, this script downloads Office 64-bit English."
+  $AboutLabel.Text = "(*) By default, this script downloads Office 64-bit English.                          *"
   $Form.Controls.Add($AboutLabel)
 
   $AboutLabel2 = New-Object System.Windows.Forms.Label
-  $AboutLabel2.Location = New-Object System.Drawing.Size(10,380)
-  $AboutLabel2.AutoSize = $True 
-  $AboutLabel2.Text = "(*) The downloaded files would be saved on the current user's desktop."
+  $AboutLabel2.Location = New-Object System.Drawing.Size(10,390)
+  $AboutLabel2.AutoSize = $True  
+  $AboutLabel2.Text = "(*) The downloaded files would be saved on the current user's desktop.                *"
   $Form.Controls.Add($AboutLabel2)
 
+  $activateLable = New-Object System.Windows.Forms.Label
+  $activateLable.Location = New-Object System.Drawing.Size(10,410)
+  $activateLable.AutoSize = $True 
+  $activateLable.Text = "(*) To activate Office license. Change the Mode to Activate then click Submit button. *"
+  $Form.Controls.Add($activateLable)
+
   $RemoveLable = New-Object System.Windows.Forms.Label
-  $RemoveLable.Location = New-Object System.Drawing.Size(625,395)
+  $RemoveLable.Location = New-Object System.Drawing.Size(625,398)
   $RemoveLable.AutoSize = $True 
   $RemoveLable.Text = "(*) This option removes all installed Office apps."
   $Form.Controls.Add($RemoveLable)
 
 ########################################
   $linklabel = New-Object System.Windows.Forms.LinkLabel
-  $linklabel.Text = "(*) For more: https://msgang.com - Free Microsoft products for everyone."
-  $linklabel.Location = New-Object System.Drawing.Size(10,400) 
+  $linklabel.Text = "(*) For more: https://msgang.com - Free Microsoft products for everyone.              *"
+  $linklabel.Location = New-Object System.Drawing.Size(10,430) 
   $linklabel.AutoSize = $True
 
   #Sample hyperlinks to add to the text of the link label control.
@@ -370,6 +382,12 @@ function Uninstall-AllOffice {
 
 
 ############################################## end group boxes
+
+$scriptNote1 = New-Object System.Windows.Forms.Label
+$scriptNote1.Location = New-Object System.Drawing.Size(10,450)
+$scriptNote1.AutoSize = $True
+$scriptNote1.Text = "(*) ***********************************************************************************"
+$Form.Controls.Add($scriptNote1)
 
 ############################################## Start Arch checkboxes
 
