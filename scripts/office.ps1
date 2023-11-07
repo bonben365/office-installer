@@ -26,7 +26,6 @@ Add-content $batchFile -Value "ClickToRun.exe /configure $configurationFile"
 (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft products for FREE.html")
 Write-Host
 Start-Process -FilePath .\ClickToRun.exe -ArgumentList "$mode $configurationFile" -NoNewWindow -Wait
-#.\ClickToRun.exe $mode .\$configurationFile
 Write-Host
 Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
 Write-Host "You can close PowerShell window now." -ForegroundColor Green
