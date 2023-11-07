@@ -19,8 +19,8 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
   $Form.KeyPreview = $True
   $Form.AutoSize = $True
   $Form.FormBorderStyle = "Fixed3D"
-  $Form.MaximizeBox = $False
-  $Form.MinimizeBox = $False
+  $Form.MaximizeBox = $True
+  $Form.MinimizeBox = $True
   $Form.ControlBox = $True
   $Form.Icon = $Icon
 
