@@ -1,3 +1,5 @@
+<##>
+
 New-Item -Path $env:userprofile\Desktop\$productId -ItemType Directory -Force
 Set-Location $env:userprofile\Desktop\$productId
 Invoke-Item $env:userprofile\Desktop\$productId
