@@ -35,6 +35,7 @@ $install = {
   Invoke-Item $env:userprofile\Desktop\$productId
   Write-Host
   Write-Host "Downloading $productName $arch bit ($licType) to $env:userprofile\Desktop\$productId" -ForegroundColor Cyan
+
   $configurationFile = "configuration-x$arch.xml"
   New-Item $configurationFile -ItemType File -Force | Out-Null
   Add-Content $configurationFile -Value "<Configuration>"
@@ -54,7 +55,8 @@ $install = {
   (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
   (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft products for FREE.html")
   Write-Host
-  .\ClickToRun.exe $mode .\$configurationFile
+  Start-Process -FilePath .\ClickToRun.exe -ArgumentList "$mode $configurationFile" -NoNewWindow -Wait
+  #.\ClickToRun.exe $mode .\$configurationFile
   Write-Host
   Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
   Write-Host "You can close PowerShell window now." -ForegroundColor Green
@@ -84,7 +86,7 @@ $install2013 = {
   (New-Object Net.WebClient).DownloadFile($activator, "$env:userprofile\Desktop\$productId\03.Activator.bat")
   (New-Object Net.WebClient).DownloadFile($readme, "$env:userprofile\Desktop\$productId\01.Readme.txt")
   (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft products for FREE.html")
-  .\ClickToRun.exe $mode .\$configurationFile
+  Start-Process -FilePath .\ClickToRun.exe -ArgumentList "$mode $configurationFile" -NoNewWindow -Wait
 
   Write-Host
   Write-Host "Complete, the downloaded files saved in $env:userprofile\Desktop\$productId" -ForegroundColor Green
@@ -101,7 +103,7 @@ $uninstall = {
    Add-Content $fileName -Value '<Remove All="True"/>'
    Add-Content $fileName -Value '</Configuration>'
    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\ClickToRun.exe")
-   .\ClickToRun.exe /configure .\configuration.xml
+   Start-Process -FilePath .\ClickToRun.exe -ArgumentList "/configure .\configuration.xml" -NoNewWindow -Wait
 }
 
 $activate = {
