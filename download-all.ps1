@@ -25,7 +25,7 @@ $archs = @('32';'64')
 $languageId = 'en-US'
 $mode = '/download'
 
-function Download-MSOffice {
+function DownloadMSOffice {
     New-Item -Path $env:userprofile\Desktop\Source\$productId$edition-x$arch -ItemType Directory -Force | Out-Null
     Set-Location $env:userprofile\Desktop\Source\$productId$edition-x$arch
     $totalItems = ($productIds.Count)*2
@@ -51,7 +51,7 @@ function Download-MSOffice {
     .\ClickToRun.exe $mode .\$configurationFile
 }
 
-function Download-MSOfficeX {
+function DownloadMSOfficeX {
     New-Item -Path $env:userprofile\Desktop\Source\$productId$edition-x$arch -ItemType Directory -Force | Out-Null
     Set-Location $env:userprofile\Desktop\Source\$productId$edition-x$arch
     $totalItems = ($productIds.Count)*2
@@ -94,7 +94,7 @@ if ($edition -match '2013' -or $edition -match '2016'){
     )
     foreach ($productId in $productIds) {
         foreach ($arch in $archs){
-            Download-MSOfficeX
+            DownloadMSOfficeX
             $i++
         }
     }
@@ -119,7 +119,7 @@ if ($edition -match '2019' -or $edition -match '2021'){
     )
     foreach ($productId in $productIds) {
         foreach ($arch in $archs){
-            Download-MSOffice
+            DownloadMSOffice
             $i++
         }
     }
@@ -133,7 +133,7 @@ if ($edition -match '365'){
     )
     foreach ($productId in $productIds) {
         foreach ($arch in $archs){
-            Download-MSOffice
+            DownloadMSOffice
             $i++
         }
     }
