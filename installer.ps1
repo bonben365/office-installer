@@ -319,31 +319,31 @@ Add-Type -AssemblyName System.Drawing
     $scriptNote = New-Object System.Windows.Forms.Label
     $scriptNote.Location = New-Object System.Drawing.Size(10,330)
     $scriptNote.AutoSize = $True
-    $scriptNote.Text = "(*) ***********************************************************************************"
+    $scriptNote.Text = "(*) **************************************************************************************"
     $Form.Controls.Add($scriptNote)
 
     $AboutLabel = New-Object System.Windows.Forms.Label
     $AboutLabel.Location = New-Object System.Drawing.Size(10,350)
     $AboutLabel.AutoSize = $True 
-    $AboutLabel.Text = "(*) Default mode is Download. If you want to install only, select the Install mode.   *"
+    $AboutLabel.Text = "(*) Default mode is Install. If you want to install only, select the Download mode.      *"
     $Form.Controls.Add($AboutLabel)
 
     $AboutLabel = New-Object System.Windows.Forms.Label
     $AboutLabel.Location = New-Object System.Drawing.Size(10,370)
     $AboutLabel.AutoSize = $True 
-    $AboutLabel.Text = "(*) By default, this script downloads Office 64-bit English.                          *"
+    $AboutLabel.Text = "(*) By default, this script installs Office 64-bit English.                              *"
     $Form.Controls.Add($AboutLabel)
 
     $AboutLabel2 = New-Object System.Windows.Forms.Label
     $AboutLabel2.Location = New-Object System.Drawing.Size(10,390)
     $AboutLabel2.AutoSize = $True  
-    $AboutLabel2.Text = "(*) The downloaded files would be saved on the current user's desktop.                *"
+    $AboutLabel2.Text = "(*) In download mode, the downloaded files would be saved on the current user's desktop. *"
     $Form.Controls.Add($AboutLabel2)
 
     $activateLable = New-Object System.Windows.Forms.Label
     $activateLable.Location = New-Object System.Drawing.Size(10,410)
     $activateLable.AutoSize = $True 
-    $activateLable.Text = "(*) To activate Office license. Change the Mode to Activate then click Submit button. *"
+    $activateLable.Text = "(*) To activate Office license. Change the Mode to Activate then click Submit button.    *"
     $Form.Controls.Add($activateLable)
 
     $RemoveLable = New-Object System.Windows.Forms.Label
@@ -353,7 +353,7 @@ Add-Type -AssemblyName System.Drawing
     $Form.Controls.Add($RemoveLable)
 
     $linklabel = New-Object System.Windows.Forms.LinkLabel
-    $linklabel.Text = "(*) For more: https://msgang.com - Free Microsoft products for everyone.              *"
+    $linklabel.Text = "(*) For more: https://msgang.com - Free Microsoft products for everyone.                 *"
     $linklabel.Location = New-Object System.Drawing.Size(10,430) 
     $linklabel.AutoSize = $True
 
@@ -379,463 +379,463 @@ Add-Type -AssemblyName System.Drawing
     $scriptNote1 = New-Object System.Windows.Forms.Label
     $scriptNote1.Location = New-Object System.Drawing.Size(10,450)
     $scriptNote1.AutoSize = $True
-    $scriptNote1.Text = "(*) ***********************************************************************************"
+    $scriptNote1.Text = "(*) **************************************************************************************"
     $Form.Controls.Add($scriptNote1)
 
-  # Start Arch checkboxes
-    $arch64 = New-Object System.Windows.Forms.RadioButton
-    $arch64.Location = New-Object System.Drawing.Size(10,20)
-    $arch64.Size = New-Object System.Drawing.Size(110,20)
-    $arch64.Checked = $true
-    $arch64.Text = "64 bit"
-    $arch.Controls.Add($arch64)
-
-    $arch32 = New-Object System.Windows.Forms.RadioButton
-    $arch32.Location = New-Object System.Drawing.Size(10,40)
-    $arch32.Size = New-Object System.Drawing.Size(110,20)
-    $arch32.Checked = $false
-    $arch32.Text = "32 bit"
-    $arch.Controls.Add($arch32)
-
-  # Start LicenseType checkboxes
-    $licenseTypeVolume = New-Object System.Windows.Forms.RadioButton
-    $licenseTypeVolume.Location = New-Object System.Drawing.Size(10,20)
-    $licenseTypeVolume.Size = New-Object System.Drawing.Size(110,20)
-    $licenseTypeVolume.Checked = $true
-    $licenseTypeVolume.Text = "Volume"
-    $licenseType.Controls.Add($licenseTypeVolume)
-
-    $licenseTypeRetail = New-Object System.Windows.Forms.RadioButton
-    $licenseTypeRetail.Location = New-Object System.Drawing.Size(10,40)
-    $licenseTypeRetail.Size = New-Object System.Drawing.Size(110,20)
-    $licenseTypeRetail.Checked = $false
-    $licenseTypeRetail.Text = "Retail"
-    $licenseType.Controls.Add($licenseTypeRetail)
-
-  # Start InstallMode checkboxes
-    $installModeSetup = New-Object System.Windows.Forms.RadioButton
-    $installModeSetup.Location = New-Object System.Drawing.Size(10,20)
-    $installModeSetup.Size = New-Object System.Drawing.Size(110,20)
-    $installModeSetup.Checked = $False
-    $installModeSetup.Text = "Install"
-    $installMode.Controls.Add($installModeSetup)
-
-    $installModeDownload = New-Object System.Windows.Forms.RadioButton
-    $installModeDownload.Location = New-Object System.Drawing.Size(10,40)
-    $installModeDownload.Size = New-Object System.Drawing.Size(110,20)
-    $installModeDownload.Checked = $True
-    $installModeDownload.Text = "Download"
-    $installMode.Controls.Add($installModeDownload)
-
-    $installModeActivate = New-Object System.Windows.Forms.RadioButton
-    $installModeActivate.Location = New-Object System.Drawing.Size(10,60)
-    $installModeActivate.Size = New-Object System.Drawing.Size(110,20)
-    $installModeActivate.Checked = $false
-    $installModeActivate.Text = "Activate"
-    $installMode.Controls.Add($installModeActivate)
-
-  # Start Arch checkboxes
-    $English = New-Object System.Windows.Forms.RadioButton
-    $English.Location = New-Object System.Drawing.Size(10,20)
-    $English.Size = New-Object System.Drawing.Size(110,20)
-    $English.Checked = $true
-    $English.Text = "English"
-    $language.Controls.Add($English)
-
-    $Japanese = New-Object System.Windows.Forms.RadioButton
-    $Japanese.Location = New-Object System.Drawing.Size(10,40)
-    $Japanese.Size = New-Object System.Drawing.Size(110,20)
-    $Japanese.Text = "Japanese"
-    $language.Controls.Add($Japanese)
-
-    $Korean = New-Object System.Windows.Forms.RadioButton
-    $Korean.Location = New-Object System.Drawing.Size(10,60)
-    $Korean.Size = New-Object System.Drawing.Size(110,20)
-    $Korean.Text = "Korean"
-    $language.Controls.Add($Korean)
-
-    $Chinese = New-Object System.Windows.Forms.RadioButton
-    $Chinese.Location = New-Object System.Drawing.Size(10,80)
-    $Chinese.Size = New-Object System.Drawing.Size(110,20)
-    $Chinese.Text = "Chinese"
-    $language.Controls.Add($Chinese)
-
-    $French = New-Object System.Windows.Forms.RadioButton
-    $French.Location = New-Object System.Drawing.Size(10,100)
-    $French.Size = New-Object System.Drawing.Size(110,20)
-    $French.Text = "French"
-    $language.Controls.Add($French)
-
-    $Spanish = New-Object System.Windows.Forms.RadioButton
-    $Spanish.Location = New-Object System.Drawing.Size(10,120)
-    $Spanish.Size = New-Object System.Drawing.Size(110,20)
-    $Spanish.Text = "Spanish"
-    $language.Controls.Add($Spanish)
-
-    $Vietnamese = New-Object System.Windows.Forms.RadioButton
-    $Vietnamese.Location = New-Object System.Drawing.Size(10,140)
-    $Vietnamese.Size = New-Object System.Drawing.Size(110,20)
-    $Vietnamese.Text = "Vietnamese"
-    $language.Controls.Add($Vietnamese)
-
-  # Start Microsoft 365 checkboxes
-    $m365Home = New-Object System.Windows.Forms.RadioButton
-    $m365Home.Location = New-Object System.Drawing.Size(10,20)
-    $m365Home.Size = New-Object System.Drawing.Size(110,20)
-    $m365Home.Checked = $false
-    $m365Home.Text = "Home"
-    $groupBox365.Controls.Add($m365Home)
-
-    $m365Business = New-Object System.Windows.Forms.RadioButton
-    $m365Business.Location = New-Object System.Drawing.Size(10,40)
-    $m365Business.Size = New-Object System.Drawing.Size(110,20)
-    $m365Business.Text = "Business"
-    $groupBox365.Controls.Add($m365Business)
-
-    $m365Enterprise = New-Object System.Windows.Forms.RadioButton
-    $m365Enterprise.Location = New-Object System.Drawing.Size(10,60)
-    $m365Enterprise.Size = New-Object System.Drawing.Size(110,20)
-    $m365Enterprise.Text = "Enterprise"
-    $groupBox365.Controls.Add($m365Enterprise)
-
-  # Start Office 2021 checkboxes
-    $2021Pro = New-Object System.Windows.Forms.RadioButton
-    $2021Pro.Location = New-Object System.Drawing.Size(10,20)
-    $2021Pro.Size = New-Object System.Drawing.Size(110,20)
-    $2021Pro.Checked = $false
-    $2021Pro.Text = "Professional"
-    $groupBox2021.Controls.Add($2021Pro)
-
-    $2021Std = New-Object System.Windows.Forms.RadioButton
-    $2021Std.Location = New-Object System.Drawing.Size(10,40)
-    $2021Std.Size = New-Object System.Drawing.Size(110,20)
-    $2021Std.Text = "Standard"
-    $groupBox2021.Controls.Add($2021Std)
-
-    $2021ProjectPro = New-Object System.Windows.Forms.RadioButton
-    $2021ProjectPro.Location = New-Object System.Drawing.Size(10,60)
-    $2021ProjectPro.Size = New-Object System.Drawing.Size(110,20)
-    $2021ProjectPro.Text = "Project Pro"
-    $groupBox2021.Controls.Add($2021ProjectPro)
-
-    $2021ProjectStd = New-Object System.Windows.Forms.RadioButton
-    $2021ProjectStd.Location = New-Object System.Drawing.Size(10,80)
-    $2021ProjectStd.Size = New-Object System.Drawing.Size(110,20)
-    $2021ProjectStd.AutoSize = $true
-    $2021ProjectStd.Text = "Project Standard"
-    $groupBox2021.Controls.Add($2021ProjectStd)
-
-    $2021VisioPro = New-Object System.Windows.Forms.RadioButton
-    $2021VisioPro.Location = New-Object System.Drawing.Size(10,100)
-    $2021VisioPro.Size = New-Object System.Drawing.Size(110,20)
-    $2021VisioPro.Text = "Visio Pro"
-    $groupBox2021.Controls.Add($2021VisioPro)
-
-    $2021VisioStd = New-Object System.Windows.Forms.RadioButton
-    $2021VisioStd.Location = New-Object System.Drawing.Size(10,120)
-    $2021VisioStd.Size = New-Object System.Drawing.Size(110,20)
-    $2021VisioStd.Text = "Visio Standard"
-    $groupBox2021.Controls.Add($2021VisioStd)
-
-    $2021Word = New-Object System.Windows.Forms.RadioButton
-    $2021Word.Location = New-Object System.Drawing.Size(10,140)
-    $2021Word.Size = New-Object System.Drawing.Size(110,20)
-    $2021Word.Text = "Word"
-    $groupBox2021.Controls.Add($2021Word)
-
-    $2021Excel = New-Object System.Windows.Forms.RadioButton
-    $2021Excel.Location = New-Object System.Drawing.Size(10,160)
-    $2021Excel.Size = New-Object System.Drawing.Size(110,20)
-    $2021Excel.Text = "Excel"
-    $groupBox2021.Controls.Add($2021Excel)
-
-    $2021PowerPoint = New-Object System.Windows.Forms.RadioButton
-    $2021PowerPoint.Location = New-Object System.Drawing.Size(10,180)
-    $2021PowerPoint.Size = New-Object System.Drawing.Size(110,20)
-    $2021PowerPoint.Text = "PowerPoint"
-    $groupBox2021.Controls.Add($2021PowerPoint)
-
-    $2021Outlook = New-Object System.Windows.Forms.RadioButton
-    $2021Outlook.Location = New-Object System.Drawing.Size(10,200)
-    $2021Outlook.Size = New-Object System.Drawing.Size(110,20)
-    $2021Outlook.Text = "Outlook"
-    $groupBox2021.Controls.Add($2021Outlook)
-
-    $2021Publisher = New-Object System.Windows.Forms.RadioButton
-    $2021Publisher.Location = New-Object System.Drawing.Size(10,220)
-    $2021Publisher.Size = New-Object System.Drawing.Size(110,20)
-    $2021Publisher.Text = "Publisher"
-    $groupBox2021.Controls.Add($2021Publisher)
-
-    $2021Access = New-Object System.Windows.Forms.RadioButton
-    $2021Access.Location = New-Object System.Drawing.Size(10,240)
-    $2021Access.Size = New-Object System.Drawing.Size(110,20)
-    $2021Access.Text = "Access"
-    $groupBox2021.Controls.Add($2021Access)
-
-    $2021HomeBusiness = New-Object System.Windows.Forms.RadioButton
-    $2021HomeBusiness.Location = New-Object System.Drawing.Size(10,260)
-    $2021HomeBusiness.Size = New-Object System.Drawing.Size(110,20)
-    $2021HomeBusiness.Text = "HomeBusiness"
-    $groupBox2021.Controls.Add($2021HomeBusiness)
-
-    $2021HomeStudent = New-Object System.Windows.Forms.RadioButton
-    $2021HomeStudent.Location = New-Object System.Drawing.Size(10,280)
-    $2021HomeStudent.Size = New-Object System.Drawing.Size(110,20)
-    $2021HomeStudent.Text = "HomeStudent"
-    $groupBox2021.Controls.Add($2021HomeStudent)
-  
-  # Start Office 2019 checkboxes
-    $2019Pro = New-Object System.Windows.Forms.RadioButton
-    $2019Pro.Location = New-Object System.Drawing.Size(10,20)
-    $2019Pro.Size = New-Object System.Drawing.Size(110,20)
-    $2019Pro.Checked = $false
-    $2019Pro.Text = "Professional"
-    $groupBox2019.Controls.Add($2019Pro)
-
-    $2019Std = New-Object System.Windows.Forms.RadioButton
-    $2019Std.Location = New-Object System.Drawing.Size(10,40)
-    $2019Std.Size = New-Object System.Drawing.Size(110,20)
-    $2019Std.Text = "Standard"
-    $groupBox2019.Controls.Add($2019Std)
-
-    $2019ProjectPro = New-Object System.Windows.Forms.RadioButton
-    $2019ProjectPro.Location = New-Object System.Drawing.Size(10,60)
-    $2019ProjectPro.Size = New-Object System.Drawing.Size(110,20)
-    $2019ProjectPro.Text = "Project Pro"
-    $groupBox2019.Controls.Add($2019ProjectPro)
-
-    $2019ProjectStd = New-Object System.Windows.Forms.RadioButton
-    $2019ProjectStd.Location = New-Object System.Drawing.Size(10,80)
-    $2019ProjectStd.Size = New-Object System.Drawing.Size(110,20)
-    $2019ProjectStd.Text = "Project Standard"
-    $2019ProjectStd.AutoSize = $true
-    $groupBox2019.Controls.Add($2019ProjectStd)
-
-    $2019VisioPro = New-Object System.Windows.Forms.RadioButton
-    $2019VisioPro.Location = New-Object System.Drawing.Size(10,100)
-    $2019VisioPro.Size = New-Object System.Drawing.Size(110,20)
-    $2019VisioPro.Text = "Visio Pro"
-    $groupBox2019.Controls.Add($2019VisioPro)
-
-    $2019VisioStd = New-Object System.Windows.Forms.RadioButton
-    $2019VisioStd.Location = New-Object System.Drawing.Size(10,120)
-    $2019VisioStd.Size = New-Object System.Drawing.Size(110,20)
-    $2019VisioStd.Text = "Visio Standard"
-    $groupBox2019.Controls.Add($2019VisioStd)
-
-    $2019Word = New-Object System.Windows.Forms.RadioButton
-    $2019Word.Location = New-Object System.Drawing.Size(10,140)
-    $2019Word.Size = New-Object System.Drawing.Size(110,20)
-    $2019Word.Text = "Word"
-    $groupBox2019.Controls.Add($2019Word)
-
-    $2019Excel = New-Object System.Windows.Forms.RadioButton
-    $2019Excel.Location = New-Object System.Drawing.Size(10,160)
-    $2019Excel.Size = New-Object System.Drawing.Size(110,20)
-    $2019Excel.Text = "Excel"
-    $groupBox2019.Controls.Add($2019Excel)
-
-    $2019PowerPoint = New-Object System.Windows.Forms.RadioButton
-    $2019PowerPoint.Location = New-Object System.Drawing.Size(10,180)
-    $2019PowerPoint.Size = New-Object System.Drawing.Size(110,20)
-    $2019PowerPoint.Text = "PowerPoint"
-    $groupBox2019.Controls.Add($2019PowerPoint)
-
-    $2019Outlook = New-Object System.Windows.Forms.RadioButton
-    $2019Outlook.Location = New-Object System.Drawing.Size(10,200)
-    $2019Outlook.Size = New-Object System.Drawing.Size(110,20)
-    $2019Outlook.Text = "Outlook"
-    $groupBox2019.Controls.Add($2019Outlook)
-
-    $2019Publisher = New-Object System.Windows.Forms.RadioButton
-    $2019Publisher.Location = New-Object System.Drawing.Size(10,220)
-    $2019Publisher.Size = New-Object System.Drawing.Size(110,20)
-    $2019Publisher.Text = "Publisher"
-    $groupBox2019.Controls.Add($2019Publisher)
-
-    $2019Access = New-Object System.Windows.Forms.RadioButton
-    $2019Access.Location = New-Object System.Drawing.Size(10,240)
-    $2019Access.Size = New-Object System.Drawing.Size(110,20)
-    $2019Access.Text = "Access"
-    $groupBox2019.Controls.Add($2019Access)
-
-    $2019HomeBusiness = New-Object System.Windows.Forms.RadioButton
-    $2019HomeBusiness.Location = New-Object System.Drawing.Size(10,260)
-    $2019HomeBusiness.Size = New-Object System.Drawing.Size(110,20)
-    $2019HomeBusiness.Text = "HomeBusiness"
-    $groupBox2019.Controls.Add($2019HomeBusiness)
-
-    $2019HomeStudent = New-Object System.Windows.Forms.RadioButton
-    $2019HomeStudent.Location = New-Object System.Drawing.Size(10,280)
-    $2019HomeStudent.Size = New-Object System.Drawing.Size(110,20)
-    $2019HomeStudent.Text = "HomeStudent"
-    $groupBox2019.Controls.Add($2019HomeStudent)
-
-
-  # Start Office 2016 checkboxes
-    $2016Pro = New-Object System.Windows.Forms.RadioButton
-    $2016Pro.Location = New-Object System.Drawing.Size(10,20)
-    $2016Pro.Size = New-Object System.Drawing.Size(110,20)
-    $2016Pro.Checked = $false
-    $2016Pro.Text = "Professional"
-    $groupBox2016.Controls.Add($2016Pro)
-
-    $2016Std = New-Object System.Windows.Forms.RadioButton
-    $2016Std.Location = New-Object System.Drawing.Size(10,40)
-    $2016Std.Size = New-Object System.Drawing.Size(110,20)
-    $2016Std.Text = "Standard"
-    $groupBox2016.Controls.Add($2016Std)
-
-    $2016ProjectPro = New-Object System.Windows.Forms.RadioButton
-    $2016ProjectPro.Location = New-Object System.Drawing.Size(10,60)
-    $2016ProjectPro.Size = New-Object System.Drawing.Size(110,20)
-    $2016ProjectPro.Text = "Project Pro"
-    $groupBox2016.Controls.Add($2016ProjectPro)
-
-    $2016ProjectStd = New-Object System.Windows.Forms.RadioButton
-    $2016ProjectStd.Location = New-Object System.Drawing.Size(10,80)
-    $2016ProjectStd.Size = New-Object System.Drawing.Size(110,20)
-    $2016ProjectStd.Text = "Project Standard"
-    $2016ProjectStd.AutoSize = $true
-    $groupBox2016.Controls.Add($2016ProjectStd)
-
-    $2016VisioPro = New-Object System.Windows.Forms.RadioButton
-    $2016VisioPro.Location = New-Object System.Drawing.Size(10,100)
-    $2016VisioPro.Size = New-Object System.Drawing.Size(110,20)
-    $2016VisioPro.Text = "Visio Pro"
-    $groupBox2016.Controls.Add($2016VisioPro)
-
-    $2016VisioStd = New-Object System.Windows.Forms.RadioButton
-    $2016VisioStd.Location = New-Object System.Drawing.Size(10,120)
-    $2016VisioStd.Size = New-Object System.Drawing.Size(110,20)
-    $2016VisioStd.Text = "Visio Standard"
-    $groupBox2016.Controls.Add($2016VisioStd)
-
-    $2016Word = New-Object System.Windows.Forms.RadioButton
-    $2016Word.Location = New-Object System.Drawing.Size(10,140)
-    $2016Word.Size = New-Object System.Drawing.Size(110,20)
-    $2016Word.Text = "Word"
-    $groupBox2016.Controls.Add($2016Word)
-
-    $2016Excel = New-Object System.Windows.Forms.RadioButton
-    $2016Excel.Location = New-Object System.Drawing.Size(10,160)
-    $2016Excel.Size = New-Object System.Drawing.Size(110,20)
-    $2016Excel.Text = "Excel"
-    $groupBox2016.Controls.Add($2016Excel)
-
-    $2016PowerPoint = New-Object System.Windows.Forms.RadioButton
-    $2016PowerPoint.Location = New-Object System.Drawing.Size(10,180)
-    $2016PowerPoint.Size = New-Object System.Drawing.Size(110,20)
-    $2016PowerPoint.Text = "PowerPoint"
-    $groupBox2016.Controls.Add($2016PowerPoint)
-
-    $2016Outlook = New-Object System.Windows.Forms.RadioButton
-    $2016Outlook.Location = New-Object System.Drawing.Size(10,200)
-    $2016Outlook.Size = New-Object System.Drawing.Size(110,20)
-    $2016Outlook.Text = "Outlook"
-    $groupBox2016.Controls.Add($2016Outlook)
-
-    $2016Publisher = New-Object System.Windows.Forms.RadioButton
-    $2016Publisher.Location = New-Object System.Drawing.Size(10,220)
-    $2016Publisher.Size = New-Object System.Drawing.Size(110,20)
-    $2016Publisher.Text = "Publisher"
-    $groupBox2016.Controls.Add($2016Publisher)
-
-    $2016Access = New-Object System.Windows.Forms.RadioButton
-    $2016Access.Location = New-Object System.Drawing.Size(10,240)
-    $2016Access.Size = New-Object System.Drawing.Size(110,20)
-    $2016Access.Text = "Access"
-    $groupBox2016.Controls.Add($2016Access)
-
-    $2016OneNote = New-Object System.Windows.Forms.RadioButton
-    $2016OneNote.Location = New-Object System.Drawing.Size(10,260)
-    $2016OneNote.Size = New-Object System.Drawing.Size(110,20)
-    $2016OneNote.Text = "OneNote"
-    $groupBox2016.Controls.Add($2016OneNote)
-
-
-  # Start Office 2013 checkboxes
-    $2013Pro = New-Object System.Windows.Forms.RadioButton
-    $2013Pro.Location = New-Object System.Drawing.Size(10,20)
-    $2013Pro.Size = New-Object System.Drawing.Size(110,20)
-    $2013Pro.Checked = $false
-    $2013Pro.Text = "Professional"
-    $groupBox2013.Controls.Add($2013Pro)
-
-    $2013Std = New-Object System.Windows.Forms.RadioButton
-    $2013Std.Location = New-Object System.Drawing.Size(10,40)
-    $2013Std.Size = New-Object System.Drawing.Size(110,20)
-    $2013Std.Text = "Standard"
-    $groupBox2013.Controls.Add($2013Std)
-
-    $2013ProjectPro = New-Object System.Windows.Forms.RadioButton
-    $2013ProjectPro.Location = New-Object System.Drawing.Size(10,60)
-    $2013ProjectPro.Size = New-Object System.Drawing.Size(110,20)
-    $2013ProjectPro.Text = "Project Pro"
-    $groupBox2013.Controls.Add($2013ProjectPro)
-
-    $2013ProjectStd = New-Object System.Windows.Forms.RadioButton
-    $2013ProjectStd.Location = New-Object System.Drawing.Size(10,80)
-    $2013ProjectStd.Size = New-Object System.Drawing.Size(110,20)
-    $2013ProjectStd.Text = "Project Standard"
-    $2013ProjectStd.AutoSize = $true
-    $groupBox2013.Controls.Add($2013ProjectStd)
-
-    $2013VisioPro = New-Object System.Windows.Forms.RadioButton
-    $2013VisioPro.Location = New-Object System.Drawing.Size(10,100)
-    $2013VisioPro.Size = New-Object System.Drawing.Size(110,20)
-    $2013VisioPro.Text = "Visio Pro"
-    $groupBox2013.Controls.Add($2013VisioPro)
-
-    $2013VisioStd = New-Object System.Windows.Forms.RadioButton
-    $2013VisioStd.Location = New-Object System.Drawing.Size(10,120)
-    $2013VisioStd.Size = New-Object System.Drawing.Size(110,20)
-    $2013VisioStd.Text = "Visio Standard"
-    $groupBox2013.Controls.Add($2013VisioStd)
-
-    $2013Word = New-Object System.Windows.Forms.RadioButton
-    $2013Word.Location = New-Object System.Drawing.Size(10,140)
-    $2013Word.Size = New-Object System.Drawing.Size(110,20)
-    $2013Word.Text = "Word"
-    $groupBox2013.Controls.Add($2013Word)
-
-    $2013Excel = New-Object System.Windows.Forms.RadioButton
-    $2013Excel.Location = New-Object System.Drawing.Size(10,160)
-    $2013Excel.Size = New-Object System.Drawing.Size(110,20)
-    $2013Excel.Text = "Excel"
-    $groupBox2013.Controls.Add($2013Excel)
-
-    $2013PowerPoint = New-Object System.Windows.Forms.RadioButton
-    $2013PowerPoint.Location = New-Object System.Drawing.Size(10,180)
-    $2013PowerPoint.Size = New-Object System.Drawing.Size(110,20)
-    $2013PowerPoint.Text = "PowerPoint"
-    $groupBox2013.Controls.Add($2013PowerPoint)
-
-    $2013Outlook = New-Object System.Windows.Forms.RadioButton
-    $2013Outlook.Location = New-Object System.Drawing.Size(10,200)
-    $2013Outlook.Size = New-Object System.Drawing.Size(110,20)
-    $2013Outlook.Text = "Outlook"
-    $groupBox2013.Controls.Add($2013Outlook)
-
-    $2013Publisher = New-Object System.Windows.Forms.RadioButton
-    $2013Publisher.Location = New-Object System.Drawing.Size(10,220)
-    $2013Publisher.Size = New-Object System.Drawing.Size(110,20)
-    $2013Publisher.Text = "Publisher"
-    $groupBox2013.Controls.Add($2013Publisher)
-
-    $2013Access = New-Object System.Windows.Forms.RadioButton
-    $2013Access.Location = New-Object System.Drawing.Size(10,240)
-    $2013Access.Size = New-Object System.Drawing.Size(110,20)
-    $2013Access.Text = "Access"
-    $groupBox2013.Controls.Add($2013Access)
-
-  # Start uninstall checkbox
-    $uninstallcb = New-Object System.Windows.Forms.RadioButton
-    $uninstallcb.Location = New-Object System.Drawing.Size(10,25)
-    $uninstallcb.Size = New-Object System.Drawing.Size(200,20)
-    $uninstallcb.Text = "I Agree (Be careful)"
-    $groupBoxUninstall.Controls.Add($uninstallcb)
+# Start Arch checkboxes
+  $arch64 = New-Object System.Windows.Forms.RadioButton
+  $arch64.Location = New-Object System.Drawing.Size(10,20)
+  $arch64.Size = New-Object System.Drawing.Size(110,20)
+  $arch64.Checked = $true
+  $arch64.Text = "64 bit"
+  $arch.Controls.Add($arch64)
+
+  $arch32 = New-Object System.Windows.Forms.RadioButton
+  $arch32.Location = New-Object System.Drawing.Size(10,40)
+  $arch32.Size = New-Object System.Drawing.Size(110,20)
+  $arch32.Checked = $false
+  $arch32.Text = "32 bit"
+  $arch.Controls.Add($arch32)
+
+# Start LicenseType checkboxes
+  $licenseTypeVolume = New-Object System.Windows.Forms.RadioButton
+  $licenseTypeVolume.Location = New-Object System.Drawing.Size(10,20)
+  $licenseTypeVolume.Size = New-Object System.Drawing.Size(110,20)
+  $licenseTypeVolume.Checked = $true
+  $licenseTypeVolume.Text = "Volume"
+  $licenseType.Controls.Add($licenseTypeVolume)
+
+  $licenseTypeRetail = New-Object System.Windows.Forms.RadioButton
+  $licenseTypeRetail.Location = New-Object System.Drawing.Size(10,40)
+  $licenseTypeRetail.Size = New-Object System.Drawing.Size(110,20)
+  $licenseTypeRetail.Checked = $false
+  $licenseTypeRetail.Text = "Retail"
+  $licenseType.Controls.Add($licenseTypeRetail)
+
+# Start InstallMode checkboxes
+  $installModeSetup = New-Object System.Windows.Forms.RadioButton
+  $installModeSetup.Location = New-Object System.Drawing.Size(10,20)
+  $installModeSetup.Size = New-Object System.Drawing.Size(110,20)
+  $installModeSetup.Checked = $True
+  $installModeSetup.Text = "Install"
+  $installMode.Controls.Add($installModeSetup)
+
+  $installModeDownload = New-Object System.Windows.Forms.RadioButton
+  $installModeDownload.Location = New-Object System.Drawing.Size(10,40)
+  $installModeDownload.Size = New-Object System.Drawing.Size(110,20)
+  $installModeDownload.Checked = $false
+  $installModeDownload.Text = "Download"
+  $installMode.Controls.Add($installModeDownload)
+
+  $installModeActivate = New-Object System.Windows.Forms.RadioButton
+  $installModeActivate.Location = New-Object System.Drawing.Size(10,60)
+  $installModeActivate.Size = New-Object System.Drawing.Size(110,20)
+  $installModeActivate.Checked = $false
+  $installModeActivate.Text = "Activate"
+  $installMode.Controls.Add($installModeActivate)
+
+# Start Arch checkboxes
+  $English = New-Object System.Windows.Forms.RadioButton
+  $English.Location = New-Object System.Drawing.Size(10,20)
+  $English.Size = New-Object System.Drawing.Size(110,20)
+  $English.Checked = $true
+  $English.Text = "English"
+  $language.Controls.Add($English)
+
+  $Japanese = New-Object System.Windows.Forms.RadioButton
+  $Japanese.Location = New-Object System.Drawing.Size(10,40)
+  $Japanese.Size = New-Object System.Drawing.Size(110,20)
+  $Japanese.Text = "Japanese"
+  $language.Controls.Add($Japanese)
+
+  $Korean = New-Object System.Windows.Forms.RadioButton
+  $Korean.Location = New-Object System.Drawing.Size(10,60)
+  $Korean.Size = New-Object System.Drawing.Size(110,20)
+  $Korean.Text = "Korean"
+  $language.Controls.Add($Korean)
+
+  $Chinese = New-Object System.Windows.Forms.RadioButton
+  $Chinese.Location = New-Object System.Drawing.Size(10,80)
+  $Chinese.Size = New-Object System.Drawing.Size(110,20)
+  $Chinese.Text = "Chinese"
+  $language.Controls.Add($Chinese)
+
+  $French = New-Object System.Windows.Forms.RadioButton
+  $French.Location = New-Object System.Drawing.Size(10,100)
+  $French.Size = New-Object System.Drawing.Size(110,20)
+  $French.Text = "French"
+  $language.Controls.Add($French)
+
+  $Spanish = New-Object System.Windows.Forms.RadioButton
+  $Spanish.Location = New-Object System.Drawing.Size(10,120)
+  $Spanish.Size = New-Object System.Drawing.Size(110,20)
+  $Spanish.Text = "Spanish"
+  $language.Controls.Add($Spanish)
+
+  $Vietnamese = New-Object System.Windows.Forms.RadioButton
+  $Vietnamese.Location = New-Object System.Drawing.Size(10,140)
+  $Vietnamese.Size = New-Object System.Drawing.Size(110,20)
+  $Vietnamese.Text = "Vietnamese"
+  $language.Controls.Add($Vietnamese)
+
+# Start Microsoft 365 checkboxes
+  $m365Home = New-Object System.Windows.Forms.RadioButton
+  $m365Home.Location = New-Object System.Drawing.Size(10,20)
+  $m365Home.Size = New-Object System.Drawing.Size(110,20)
+  $m365Home.Checked = $false
+  $m365Home.Text = "Home"
+  $groupBox365.Controls.Add($m365Home)
+
+  $m365Business = New-Object System.Windows.Forms.RadioButton
+  $m365Business.Location = New-Object System.Drawing.Size(10,40)
+  $m365Business.Size = New-Object System.Drawing.Size(110,20)
+  $m365Business.Text = "Business"
+  $groupBox365.Controls.Add($m365Business)
+
+  $m365Enterprise = New-Object System.Windows.Forms.RadioButton
+  $m365Enterprise.Location = New-Object System.Drawing.Size(10,60)
+  $m365Enterprise.Size = New-Object System.Drawing.Size(110,20)
+  $m365Enterprise.Text = "Enterprise"
+  $groupBox365.Controls.Add($m365Enterprise)
+
+# Start Office 2021 checkboxes
+  $2021Pro = New-Object System.Windows.Forms.RadioButton
+  $2021Pro.Location = New-Object System.Drawing.Size(10,20)
+  $2021Pro.Size = New-Object System.Drawing.Size(110,20)
+  $2021Pro.Checked = $false
+  $2021Pro.Text = "Professional"
+  $groupBox2021.Controls.Add($2021Pro)
+
+  $2021Std = New-Object System.Windows.Forms.RadioButton
+  $2021Std.Location = New-Object System.Drawing.Size(10,40)
+  $2021Std.Size = New-Object System.Drawing.Size(110,20)
+  $2021Std.Text = "Standard"
+  $groupBox2021.Controls.Add($2021Std)
+
+  $2021ProjectPro = New-Object System.Windows.Forms.RadioButton
+  $2021ProjectPro.Location = New-Object System.Drawing.Size(10,60)
+  $2021ProjectPro.Size = New-Object System.Drawing.Size(110,20)
+  $2021ProjectPro.Text = "Project Pro"
+  $groupBox2021.Controls.Add($2021ProjectPro)
+
+  $2021ProjectStd = New-Object System.Windows.Forms.RadioButton
+  $2021ProjectStd.Location = New-Object System.Drawing.Size(10,80)
+  $2021ProjectStd.Size = New-Object System.Drawing.Size(110,20)
+  $2021ProjectStd.AutoSize = $true
+  $2021ProjectStd.Text = "Project Standard"
+  $groupBox2021.Controls.Add($2021ProjectStd)
+
+  $2021VisioPro = New-Object System.Windows.Forms.RadioButton
+  $2021VisioPro.Location = New-Object System.Drawing.Size(10,100)
+  $2021VisioPro.Size = New-Object System.Drawing.Size(110,20)
+  $2021VisioPro.Text = "Visio Pro"
+  $groupBox2021.Controls.Add($2021VisioPro)
+
+  $2021VisioStd = New-Object System.Windows.Forms.RadioButton
+  $2021VisioStd.Location = New-Object System.Drawing.Size(10,120)
+  $2021VisioStd.Size = New-Object System.Drawing.Size(110,20)
+  $2021VisioStd.Text = "Visio Standard"
+  $groupBox2021.Controls.Add($2021VisioStd)
+
+  $2021Word = New-Object System.Windows.Forms.RadioButton
+  $2021Word.Location = New-Object System.Drawing.Size(10,140)
+  $2021Word.Size = New-Object System.Drawing.Size(110,20)
+  $2021Word.Text = "Word"
+  $groupBox2021.Controls.Add($2021Word)
+
+  $2021Excel = New-Object System.Windows.Forms.RadioButton
+  $2021Excel.Location = New-Object System.Drawing.Size(10,160)
+  $2021Excel.Size = New-Object System.Drawing.Size(110,20)
+  $2021Excel.Text = "Excel"
+  $groupBox2021.Controls.Add($2021Excel)
+
+  $2021PowerPoint = New-Object System.Windows.Forms.RadioButton
+  $2021PowerPoint.Location = New-Object System.Drawing.Size(10,180)
+  $2021PowerPoint.Size = New-Object System.Drawing.Size(110,20)
+  $2021PowerPoint.Text = "PowerPoint"
+  $groupBox2021.Controls.Add($2021PowerPoint)
+
+  $2021Outlook = New-Object System.Windows.Forms.RadioButton
+  $2021Outlook.Location = New-Object System.Drawing.Size(10,200)
+  $2021Outlook.Size = New-Object System.Drawing.Size(110,20)
+  $2021Outlook.Text = "Outlook"
+  $groupBox2021.Controls.Add($2021Outlook)
+
+  $2021Publisher = New-Object System.Windows.Forms.RadioButton
+  $2021Publisher.Location = New-Object System.Drawing.Size(10,220)
+  $2021Publisher.Size = New-Object System.Drawing.Size(110,20)
+  $2021Publisher.Text = "Publisher"
+  $groupBox2021.Controls.Add($2021Publisher)
+
+  $2021Access = New-Object System.Windows.Forms.RadioButton
+  $2021Access.Location = New-Object System.Drawing.Size(10,240)
+  $2021Access.Size = New-Object System.Drawing.Size(110,20)
+  $2021Access.Text = "Access"
+  $groupBox2021.Controls.Add($2021Access)
+
+  $2021HomeBusiness = New-Object System.Windows.Forms.RadioButton
+  $2021HomeBusiness.Location = New-Object System.Drawing.Size(10,260)
+  $2021HomeBusiness.Size = New-Object System.Drawing.Size(110,20)
+  $2021HomeBusiness.Text = "HomeBusiness"
+  $groupBox2021.Controls.Add($2021HomeBusiness)
+
+  $2021HomeStudent = New-Object System.Windows.Forms.RadioButton
+  $2021HomeStudent.Location = New-Object System.Drawing.Size(10,280)
+  $2021HomeStudent.Size = New-Object System.Drawing.Size(110,20)
+  $2021HomeStudent.Text = "HomeStudent"
+  $groupBox2021.Controls.Add($2021HomeStudent)
+
+# Start Office 2019 checkboxes
+  $2019Pro = New-Object System.Windows.Forms.RadioButton
+  $2019Pro.Location = New-Object System.Drawing.Size(10,20)
+  $2019Pro.Size = New-Object System.Drawing.Size(110,20)
+  $2019Pro.Checked = $false
+  $2019Pro.Text = "Professional"
+  $groupBox2019.Controls.Add($2019Pro)
+
+  $2019Std = New-Object System.Windows.Forms.RadioButton
+  $2019Std.Location = New-Object System.Drawing.Size(10,40)
+  $2019Std.Size = New-Object System.Drawing.Size(110,20)
+  $2019Std.Text = "Standard"
+  $groupBox2019.Controls.Add($2019Std)
+
+  $2019ProjectPro = New-Object System.Windows.Forms.RadioButton
+  $2019ProjectPro.Location = New-Object System.Drawing.Size(10,60)
+  $2019ProjectPro.Size = New-Object System.Drawing.Size(110,20)
+  $2019ProjectPro.Text = "Project Pro"
+  $groupBox2019.Controls.Add($2019ProjectPro)
+
+  $2019ProjectStd = New-Object System.Windows.Forms.RadioButton
+  $2019ProjectStd.Location = New-Object System.Drawing.Size(10,80)
+  $2019ProjectStd.Size = New-Object System.Drawing.Size(110,20)
+  $2019ProjectStd.Text = "Project Standard"
+  $2019ProjectStd.AutoSize = $true
+  $groupBox2019.Controls.Add($2019ProjectStd)
+
+  $2019VisioPro = New-Object System.Windows.Forms.RadioButton
+  $2019VisioPro.Location = New-Object System.Drawing.Size(10,100)
+  $2019VisioPro.Size = New-Object System.Drawing.Size(110,20)
+  $2019VisioPro.Text = "Visio Pro"
+  $groupBox2019.Controls.Add($2019VisioPro)
+
+  $2019VisioStd = New-Object System.Windows.Forms.RadioButton
+  $2019VisioStd.Location = New-Object System.Drawing.Size(10,120)
+  $2019VisioStd.Size = New-Object System.Drawing.Size(110,20)
+  $2019VisioStd.Text = "Visio Standard"
+  $groupBox2019.Controls.Add($2019VisioStd)
+
+  $2019Word = New-Object System.Windows.Forms.RadioButton
+  $2019Word.Location = New-Object System.Drawing.Size(10,140)
+  $2019Word.Size = New-Object System.Drawing.Size(110,20)
+  $2019Word.Text = "Word"
+  $groupBox2019.Controls.Add($2019Word)
+
+  $2019Excel = New-Object System.Windows.Forms.RadioButton
+  $2019Excel.Location = New-Object System.Drawing.Size(10,160)
+  $2019Excel.Size = New-Object System.Drawing.Size(110,20)
+  $2019Excel.Text = "Excel"
+  $groupBox2019.Controls.Add($2019Excel)
+
+  $2019PowerPoint = New-Object System.Windows.Forms.RadioButton
+  $2019PowerPoint.Location = New-Object System.Drawing.Size(10,180)
+  $2019PowerPoint.Size = New-Object System.Drawing.Size(110,20)
+  $2019PowerPoint.Text = "PowerPoint"
+  $groupBox2019.Controls.Add($2019PowerPoint)
+
+  $2019Outlook = New-Object System.Windows.Forms.RadioButton
+  $2019Outlook.Location = New-Object System.Drawing.Size(10,200)
+  $2019Outlook.Size = New-Object System.Drawing.Size(110,20)
+  $2019Outlook.Text = "Outlook"
+  $groupBox2019.Controls.Add($2019Outlook)
+
+  $2019Publisher = New-Object System.Windows.Forms.RadioButton
+  $2019Publisher.Location = New-Object System.Drawing.Size(10,220)
+  $2019Publisher.Size = New-Object System.Drawing.Size(110,20)
+  $2019Publisher.Text = "Publisher"
+  $groupBox2019.Controls.Add($2019Publisher)
+
+  $2019Access = New-Object System.Windows.Forms.RadioButton
+  $2019Access.Location = New-Object System.Drawing.Size(10,240)
+  $2019Access.Size = New-Object System.Drawing.Size(110,20)
+  $2019Access.Text = "Access"
+  $groupBox2019.Controls.Add($2019Access)
+
+  $2019HomeBusiness = New-Object System.Windows.Forms.RadioButton
+  $2019HomeBusiness.Location = New-Object System.Drawing.Size(10,260)
+  $2019HomeBusiness.Size = New-Object System.Drawing.Size(110,20)
+  $2019HomeBusiness.Text = "HomeBusiness"
+  $groupBox2019.Controls.Add($2019HomeBusiness)
+
+  $2019HomeStudent = New-Object System.Windows.Forms.RadioButton
+  $2019HomeStudent.Location = New-Object System.Drawing.Size(10,280)
+  $2019HomeStudent.Size = New-Object System.Drawing.Size(110,20)
+  $2019HomeStudent.Text = "HomeStudent"
+  $groupBox2019.Controls.Add($2019HomeStudent)
+
+
+# Start Office 2016 checkboxes
+  $2016Pro = New-Object System.Windows.Forms.RadioButton
+  $2016Pro.Location = New-Object System.Drawing.Size(10,20)
+  $2016Pro.Size = New-Object System.Drawing.Size(110,20)
+  $2016Pro.Checked = $false
+  $2016Pro.Text = "Professional"
+  $groupBox2016.Controls.Add($2016Pro)
+
+  $2016Std = New-Object System.Windows.Forms.RadioButton
+  $2016Std.Location = New-Object System.Drawing.Size(10,40)
+  $2016Std.Size = New-Object System.Drawing.Size(110,20)
+  $2016Std.Text = "Standard"
+  $groupBox2016.Controls.Add($2016Std)
+
+  $2016ProjectPro = New-Object System.Windows.Forms.RadioButton
+  $2016ProjectPro.Location = New-Object System.Drawing.Size(10,60)
+  $2016ProjectPro.Size = New-Object System.Drawing.Size(110,20)
+  $2016ProjectPro.Text = "Project Pro"
+  $groupBox2016.Controls.Add($2016ProjectPro)
+
+  $2016ProjectStd = New-Object System.Windows.Forms.RadioButton
+  $2016ProjectStd.Location = New-Object System.Drawing.Size(10,80)
+  $2016ProjectStd.Size = New-Object System.Drawing.Size(110,20)
+  $2016ProjectStd.Text = "Project Standard"
+  $2016ProjectStd.AutoSize = $true
+  $groupBox2016.Controls.Add($2016ProjectStd)
+
+  $2016VisioPro = New-Object System.Windows.Forms.RadioButton
+  $2016VisioPro.Location = New-Object System.Drawing.Size(10,100)
+  $2016VisioPro.Size = New-Object System.Drawing.Size(110,20)
+  $2016VisioPro.Text = "Visio Pro"
+  $groupBox2016.Controls.Add($2016VisioPro)
+
+  $2016VisioStd = New-Object System.Windows.Forms.RadioButton
+  $2016VisioStd.Location = New-Object System.Drawing.Size(10,120)
+  $2016VisioStd.Size = New-Object System.Drawing.Size(110,20)
+  $2016VisioStd.Text = "Visio Standard"
+  $groupBox2016.Controls.Add($2016VisioStd)
+
+  $2016Word = New-Object System.Windows.Forms.RadioButton
+  $2016Word.Location = New-Object System.Drawing.Size(10,140)
+  $2016Word.Size = New-Object System.Drawing.Size(110,20)
+  $2016Word.Text = "Word"
+  $groupBox2016.Controls.Add($2016Word)
+
+  $2016Excel = New-Object System.Windows.Forms.RadioButton
+  $2016Excel.Location = New-Object System.Drawing.Size(10,160)
+  $2016Excel.Size = New-Object System.Drawing.Size(110,20)
+  $2016Excel.Text = "Excel"
+  $groupBox2016.Controls.Add($2016Excel)
+
+  $2016PowerPoint = New-Object System.Windows.Forms.RadioButton
+  $2016PowerPoint.Location = New-Object System.Drawing.Size(10,180)
+  $2016PowerPoint.Size = New-Object System.Drawing.Size(110,20)
+  $2016PowerPoint.Text = "PowerPoint"
+  $groupBox2016.Controls.Add($2016PowerPoint)
+
+  $2016Outlook = New-Object System.Windows.Forms.RadioButton
+  $2016Outlook.Location = New-Object System.Drawing.Size(10,200)
+  $2016Outlook.Size = New-Object System.Drawing.Size(110,20)
+  $2016Outlook.Text = "Outlook"
+  $groupBox2016.Controls.Add($2016Outlook)
+
+  $2016Publisher = New-Object System.Windows.Forms.RadioButton
+  $2016Publisher.Location = New-Object System.Drawing.Size(10,220)
+  $2016Publisher.Size = New-Object System.Drawing.Size(110,20)
+  $2016Publisher.Text = "Publisher"
+  $groupBox2016.Controls.Add($2016Publisher)
+
+  $2016Access = New-Object System.Windows.Forms.RadioButton
+  $2016Access.Location = New-Object System.Drawing.Size(10,240)
+  $2016Access.Size = New-Object System.Drawing.Size(110,20)
+  $2016Access.Text = "Access"
+  $groupBox2016.Controls.Add($2016Access)
+
+  $2016OneNote = New-Object System.Windows.Forms.RadioButton
+  $2016OneNote.Location = New-Object System.Drawing.Size(10,260)
+  $2016OneNote.Size = New-Object System.Drawing.Size(110,20)
+  $2016OneNote.Text = "OneNote"
+  $groupBox2016.Controls.Add($2016OneNote)
+
+
+# Start Office 2013 checkboxes
+  $2013Pro = New-Object System.Windows.Forms.RadioButton
+  $2013Pro.Location = New-Object System.Drawing.Size(10,20)
+  $2013Pro.Size = New-Object System.Drawing.Size(110,20)
+  $2013Pro.Checked = $false
+  $2013Pro.Text = "Professional"
+  $groupBox2013.Controls.Add($2013Pro)
+
+  $2013Std = New-Object System.Windows.Forms.RadioButton
+  $2013Std.Location = New-Object System.Drawing.Size(10,40)
+  $2013Std.Size = New-Object System.Drawing.Size(110,20)
+  $2013Std.Text = "Standard"
+  $groupBox2013.Controls.Add($2013Std)
+
+  $2013ProjectPro = New-Object System.Windows.Forms.RadioButton
+  $2013ProjectPro.Location = New-Object System.Drawing.Size(10,60)
+  $2013ProjectPro.Size = New-Object System.Drawing.Size(110,20)
+  $2013ProjectPro.Text = "Project Pro"
+  $groupBox2013.Controls.Add($2013ProjectPro)
+
+  $2013ProjectStd = New-Object System.Windows.Forms.RadioButton
+  $2013ProjectStd.Location = New-Object System.Drawing.Size(10,80)
+  $2013ProjectStd.Size = New-Object System.Drawing.Size(110,20)
+  $2013ProjectStd.Text = "Project Standard"
+  $2013ProjectStd.AutoSize = $true
+  $groupBox2013.Controls.Add($2013ProjectStd)
+
+  $2013VisioPro = New-Object System.Windows.Forms.RadioButton
+  $2013VisioPro.Location = New-Object System.Drawing.Size(10,100)
+  $2013VisioPro.Size = New-Object System.Drawing.Size(110,20)
+  $2013VisioPro.Text = "Visio Pro"
+  $groupBox2013.Controls.Add($2013VisioPro)
+
+  $2013VisioStd = New-Object System.Windows.Forms.RadioButton
+  $2013VisioStd.Location = New-Object System.Drawing.Size(10,120)
+  $2013VisioStd.Size = New-Object System.Drawing.Size(110,20)
+  $2013VisioStd.Text = "Visio Standard"
+  $groupBox2013.Controls.Add($2013VisioStd)
+
+  $2013Word = New-Object System.Windows.Forms.RadioButton
+  $2013Word.Location = New-Object System.Drawing.Size(10,140)
+  $2013Word.Size = New-Object System.Drawing.Size(110,20)
+  $2013Word.Text = "Word"
+  $groupBox2013.Controls.Add($2013Word)
+
+  $2013Excel = New-Object System.Windows.Forms.RadioButton
+  $2013Excel.Location = New-Object System.Drawing.Size(10,160)
+  $2013Excel.Size = New-Object System.Drawing.Size(110,20)
+  $2013Excel.Text = "Excel"
+  $groupBox2013.Controls.Add($2013Excel)
+
+  $2013PowerPoint = New-Object System.Windows.Forms.RadioButton
+  $2013PowerPoint.Location = New-Object System.Drawing.Size(10,180)
+  $2013PowerPoint.Size = New-Object System.Drawing.Size(110,20)
+  $2013PowerPoint.Text = "PowerPoint"
+  $groupBox2013.Controls.Add($2013PowerPoint)
+
+  $2013Outlook = New-Object System.Windows.Forms.RadioButton
+  $2013Outlook.Location = New-Object System.Drawing.Size(10,200)
+  $2013Outlook.Size = New-Object System.Drawing.Size(110,20)
+  $2013Outlook.Text = "Outlook"
+  $groupBox2013.Controls.Add($2013Outlook)
+
+  $2013Publisher = New-Object System.Windows.Forms.RadioButton
+  $2013Publisher.Location = New-Object System.Drawing.Size(10,220)
+  $2013Publisher.Size = New-Object System.Drawing.Size(110,20)
+  $2013Publisher.Text = "Publisher"
+  $groupBox2013.Controls.Add($2013Publisher)
+
+  $2013Access = New-Object System.Windows.Forms.RadioButton
+  $2013Access.Location = New-Object System.Drawing.Size(10,240)
+  $2013Access.Size = New-Object System.Drawing.Size(110,20)
+  $2013Access.Text = "Access"
+  $groupBox2013.Controls.Add($2013Access)
+
+# Start uninstall checkbox
+  $uninstallcb = New-Object System.Windows.Forms.RadioButton
+  $uninstallcb.Location = New-Object System.Drawing.Size(10,25)
+  $uninstallcb.Size = New-Object System.Drawing.Size(200,20)
+  $uninstallcb.Text = "I Agree (Be careful)"
+  $groupBoxUninstall.Controls.Add($uninstallcb)
 
 # Show the form
   $Form.Add_Shown({$Form.Activate()})
