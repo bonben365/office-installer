@@ -3,14 +3,17 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
   break
 }
 
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName System.Drawing
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 [void] [System.Reflection.Assembly]::LoadWithPartialName("PresentationFramework")
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
+[System.Windows.Forms.Application]::EnableVisualStyles()
 
 # Create a WinForms
   $Form = New-Object System.Windows.Forms.Form    
-  $Form.Size = New-Object System.Drawing.Size(980,520)
+  $Form.Size = New-Object System.Drawing.Size(980,525)
   $Form.StartPosition = "CenterScreen"
   $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow 
   $Form.Text = "Microsoft Office Download Tool - www.msgang.com"
@@ -22,7 +25,6 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
   $Form.MaximizeBox = $True
   $Form.MinimizeBox = $True
   $Form.ControlBox = $True
-  $Form.Icon = $Icon
 
 # Download links
   $uri = "https://github.com/bonben365/office-installer/raw/main/setup.exe"
@@ -58,19 +60,65 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
     (New-Object Net.WebClient).DownloadFile($link, "$env:userprofile\Desktop\$productId\Microsoft products for FREE.html")
   }
 
+
+  $Label = New-Object System.Windows.Forms.Label
+  $Label.Font = New-Object System.Drawing.Font("Consolas", 8, [System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+  $Label.ForeColor = 'DarkGreen'
+  $Label.Location = New-Object System.Drawing.Size(160,285)
+  $Label.Size = New-Object System.Drawing.Size(130,20)
+  $Form.Controls.Add($Label);
+
 # Install/ Download Microsoft Office  
   function InstallOffice {
     PreparingOffice
+    $ProgressBar = New-Object System.Windows.Forms.ProgressBar
+    $ProgressBar.Location = New-Object System.Drawing.Size(160,300)
+    $ProgressBar.Size = New-Object System.Drawing.Size(110, 10)
+    $ProgressBar.Style = "Marquee"
+    $ProgressBar.MarqueeAnimationSpeed = 10
+    $Form.Controls.Add($ProgressBar);
+
+    $Label.Text = "$status ..."
+    $ProgressBar.Visible
+
     $job = Start-Job -ScriptBlock {
     Set-Location -LiteralPath ($using:PWD).ProviderPath
     Start-Process -FilePath .\ClickToRun.exe -ArgumentList "$using:mode .\$using:configurationFile" -NoNewWindow -Wait
     }
     do { [System.Windows.Forms.Application]::DoEvents() } until ($job.State -eq "Completed")
     Remove-Job -Job $job -Force
+    $Label.Location = New-Object System.Drawing.Size(160,295)
+    $Label.Text = "Completed!"
+    $ProgressBar.Hide()
+
     Write-Host "Done. You can close the PowerShell window." -ForegroundColor Green
   }
+
+  function ActivateOffice {
+    $ProgressBar = New-Object System.Windows.Forms.ProgressBar
+    $ProgressBar.Location = New-Object System.Drawing.Size(160,300)
+    $ProgressBar.Size = New-Object System.Drawing.Size(110, 10)
+    $ProgressBar.Style = "Marquee"
+    $ProgressBar.MarqueeAnimationSpeed = 10
+    $Form.Controls.Add($ProgressBar);
+
+    $Label.Text = "$status ..."
+    $ProgressBar.Visible
+    Write-Host "Activating Microsoft Office ..." -ForegroundColor Green
+    $job = Start-Job -ScriptBlock {
+      irm msgang.com/office | iex
+    }
+    do { [System.Windows.Forms.Application]::DoEvents() } until ($job.State -eq "Completed")
+    Remove-Job -Job $job -Force
+    $Label.Location = New-Object System.Drawing.Size(160,295)
+    $Label.Text = "Completed!"
+    $ProgressBar.Hide()
+
+    Write-Host "Done. You can close the PowerShell window." -ForegroundColor Green
+    
+  }
 # Remove all installed Office apps and acticate license.
-  $uninstall = {irm msgang.com/uninstaller | iex}
+  $uninstall = {Invoke-RestMethod msgang.com/uninstaller | Invoke-Expression}
   $activate = {irm msgang.com/office | iex}
 
 #Start functions
@@ -82,9 +130,9 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
       if ($licenseTypeVolume.Checked -eq $true) {$licType="Volume"}
       if ($licenseTypeRetail.Checked -eq $true) {$licType="Retail"}
 
-      if ($installModeSetup.Checked -eq $true) {$mode='/configure'}
-      if ($installModeDownload.Checked -eq $true) {$mode='/download'}
-      if ($installModeActivate.Checked -eq $true) {Invoke-Command $activate}
+      if ($installModeSetup.Checked -eq $true) {$mode='/configure'; $status = "Installing"}
+      if ($installModeDownload.Checked -eq $true) {$mode='/download'; $status = "Downoading"}
+      if ($installModeActivate.Checked -eq $true) {$status = "Activating"; ActivateOffice}
 
       if ($English.Checked -eq $true) {$languageId="en-US"}
       if ($Japanese.Checked -eq $true) {$languageId="ja-JP"}
@@ -166,72 +214,72 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 #Start group boxes
   $arch = New-Object System.Windows.Forms.GroupBox
   $arch.Location = New-Object System.Drawing.Size(10,10) 
-  $arch.size = New-Object System.Drawing.Size(130,70) 
-  $arch.text = "Arch:"
+  $arch.Size = New-Object System.Drawing.Size(130,70)
+  $arch.Text = "Arch:"
   $arch.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $arch.ForeColor = [System.Drawing.Color]::DarkBlue
   $Form.Controls.Add($arch)
 
   $licenseType = New-Object System.Windows.Forms.GroupBox
   $licenseType.Location = New-Object System.Drawing.Size(10,90) 
-  $licenseType.size = New-Object System.Drawing.Size(130,70) 
-  $licenseType.text = "License Type:"
+  $licenseType.Size = New-Object System.Drawing.Size(130,70) 
+  $licenseType.Text = "License Type:"
   $licenseType.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $licenseType.ForeColor = [System.Drawing.Color]::DarkBlue
   $Form.Controls.Add($licenseType)
 
   $installMode = New-Object System.Windows.Forms.GroupBox
   $installMode.Location = New-Object System.Drawing.Size(10,170) 
-  $installMode.size = New-Object System.Drawing.Size(130,90) 
-  $installMode.text = "Mode:"
+  $installMode.Size = New-Object System.Drawing.Size(130,90) 
+  $installMode.Text = "Mode:"
   $installMode.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $installMode.ForeColor = [System.Drawing.Color]::DarkBlue
   $Form.Controls.Add($installMode) 
 
   $language = New-Object System.Windows.Forms.GroupBox
   $language.Location = New-Object System.Drawing.Size(155,110) 
-  $language.size = New-Object System.Drawing.Size(130,170) 
-  $language.text = "Language:"
+  $language.Size = New-Object System.Drawing.Size(130,170) 
+  $language.Text = "Language:"
   $language.ForeColor = [System.Drawing.Color]::DarkBlue
   $language.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $Form.Controls.Add($language) 
 
   $groupBox365 = New-Object System.Windows.Forms.GroupBox
   $groupBox365.Location = New-Object System.Drawing.Size(155,10) 
-  $groupBox365.size = New-Object System.Drawing.Size(130,90) 
-  $groupBox365.text = "Microsoft 365:"
+  $groupBox365.Size = New-Object System.Drawing.Size(130,90) 
+  $groupBox365.Text = "Microsoft 365:"
   $groupBox365.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $groupBox365.ForeColor = [System.Drawing.Color]::DarkRed
   $Form.Controls.Add($groupBox365) 
 
   $groupBox2021 = New-Object System.Windows.Forms.GroupBox
   $groupBox2021.Location = New-Object System.Drawing.Size(300,10) 
-  $groupBox2021.size = New-Object System.Drawing.Size(150,310) 
-  $groupBox2021.text = "Office 2021 Apps:"
+  $groupBox2021.Size = New-Object System.Drawing.Size(150,310) 
+  $groupBox2021.Text = "Office 2021 Apps:"
   $groupBox2021.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $groupBox2021.ForeColor = [System.Drawing.Color]::DarkRed
   $Form.Controls.Add($groupBox2021)
 
   $groupBox2019 = New-Object System.Windows.Forms.GroupBox
   $groupBox2019.Location = New-Object System.Drawing.Size(465,10) 
-  $groupBox2019.size = New-Object System.Drawing.Size(150,310) 
-  $groupBox2019.text = "Office 2019 Apps:"
+  $groupBox2019.Size = New-Object System.Drawing.Size(150,310) 
+  $groupBox2019.Text = "Office 2019 Apps:"
   $groupBox2019.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $groupBox2019.ForeColor = [System.Drawing.Color]::DarkRed
   $Form.Controls.Add($groupBox2019)
 
   $groupBox2016 = New-Object System.Windows.Forms.GroupBox
   $groupBox2016.Location = New-Object System.Drawing.Size(630,10) 
-  $groupBox2016.size = New-Object System.Drawing.Size(150,310) 
-  $groupBox2016.text = "Office 2016 Apps:"
+  $groupBox2016.Size = New-Object System.Drawing.Size(150,310) 
+  $groupBox2016.Text = "Office 2016 Apps:"
   $groupBox2016.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $groupBox2016.ForeColor = [System.Drawing.Color]::DarkRed
   $Form.Controls.Add($groupBox2016)
 
   $groupBox2013 = New-Object System.Windows.Forms.GroupBox
   $groupBox2013.Location = New-Object System.Drawing.Size(795,10) 
-  $groupBox2013.size = New-Object System.Drawing.Size(150,310)
-  $groupBox2013.text = "Office 2013 Apps:"
+  $groupBox2013.Size = New-Object System.Drawing.Size(150,310)
+  $groupBox2013.Text = "Office 2013 Apps:"
   $groupBox2013.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $groupBox2013.ForeColor = [System.Drawing.Color]::DarkRed
   $Form.Controls.Add($groupBox2013)
@@ -249,24 +297,25 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 
   $groupBoxUninstall = New-Object System.Windows.Forms.GroupBox
   $groupBoxUninstall.Location = New-Object System.Drawing.Size(630,330) 
-  $groupBoxUninstall.size = New-Object System.Drawing.Size(315,60) 
-  $groupBoxUninstall.text = "Remove All Office Apps:"
+  $groupBoxUninstall.Size = New-Object System.Drawing.Size(315,60) 
+  $groupBoxUninstall.Text = "Remove All Office Apps:"
   $groupBoxUninstall.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $groupBoxUninstall.ForeColor = [System.Drawing.Color]::Red
   $Form.Controls.Add($groupBoxUninstall)
 
-  #Start buttons and notes
-    $submitButton = New-Object System.Windows.Forms.Button 
-    $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
-    $submitButton.Location = New-Object System.Drawing.Size(10,280) 
-    $submitButton.Size = New-Object System.Drawing.Size(130,40) 
-    $submitButton.Text = "Submit"
-    $submitButton.BackColor = [System.Drawing.Color]::Green
-    $submitButton.ForeColor = [System.Drawing.Color]::White
-    $submitButton.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
-    $submitButton.Add_Click({microsoftInstaller})
-    $Form.Controls.Add($submitButton)
+#Start buttons and notes
+  $submitButton = New-Object System.Windows.Forms.Button 
+  $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
+  $submitButton.Location = New-Object System.Drawing.Size(10,280) 
+  $submitButton.Size = New-Object System.Drawing.Size(130,40) 
+  $submitButton.Text = "Submit"
+  $submitButton.BackColor = [System.Drawing.Color]::Green
+  $submitButton.ForeColor = [System.Drawing.Color]::White
+  $submitButton.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Bold)
+  $submitButton.Add_Click({microsoftInstaller})
+  $Form.Controls.Add($submitButton)
 
+#Start lables
     $scriptNote = New-Object System.Windows.Forms.Label
     $scriptNote.Location = New-Object System.Drawing.Size(10,330)
     $scriptNote.AutoSize = $True
