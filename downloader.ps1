@@ -86,8 +86,6 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
       if ($installModeDownload.Checked -eq $true) {$mode='/download'}
       if ($installModeActivate.Checked -eq $true) {Invoke-Command $activate}
 
-      if ($uninstallcb.Checked -eq $true) {Invoke-Command $uninstall}
-
       if ($English.Checked -eq $true) {$languageId="en-US"}
       if ($Japanese.Checked -eq $true) {$languageId="ja-JP"}
       if ($Korean.Checked -eq $true) {$languageId="ko-KR"}
@@ -161,6 +159,9 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
     catch {}
   }
 
+  function Uninstall-AllOffice {
+    if ($uninstallcb.Checked -eq $true) {Invoke-Command $uninstall}
+  }
 
 #Start group boxes
   $arch = New-Object System.Windows.Forms.GroupBox
