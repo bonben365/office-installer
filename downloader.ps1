@@ -322,68 +322,7 @@ Add-Type -AssemblyName System.Drawing
   $Form.Controls.Add($submitButton)
 
 #Start lables
-    $scriptNote = New-Object System.Windows.Forms.Label
-    $scriptNote.Location = New-Object System.Drawing.Size(10,330)
-    $scriptNote.AutoSize = $True
-    $scriptNote.Text = "(*) ***********************************************************************************"
-    $Form.Controls.Add($scriptNote)
-
-    $AboutLabel = New-Object System.Windows.Forms.Label
-    $AboutLabel.Location = New-Object System.Drawing.Size(10,350)
-    $AboutLabel.AutoSize = $True 
-    $AboutLabel.Text = "(*) Default mode is Install. If you want to download only, select the Download mode.  *"
-    $Form.Controls.Add($AboutLabel)
-
-    $AboutLabel = New-Object System.Windows.Forms.Label
-    $AboutLabel.Location = New-Object System.Drawing.Size(10,370)
-    $AboutLabel.AutoSize = $True 
-    $AboutLabel.Text = "(*) By default, this script installs Office 64-bit English.                           *"
-    $Form.Controls.Add($AboutLabel)
-
-    $AboutLabel2 = New-Object System.Windows.Forms.Label
-    $AboutLabel2.Location = New-Object System.Drawing.Size(10,390)
-    $AboutLabel2.AutoSize = $True  
-    $AboutLabel2.Text = "(*) In download mode, the downloaded files would be saved on current user's desktop.  *"
-    $Form.Controls.Add($AboutLabel2)
-
-    $activateLable = New-Object System.Windows.Forms.Label
-    $activateLable.Location = New-Object System.Drawing.Size(10,410)
-    $activateLable.AutoSize = $True 
-    $activateLable.Text = "(*) To activate Office license. Change the Mode to Activate then click Submit button. *"
-    $Form.Controls.Add($activateLable)
-
-    $linklabel = New-Object System.Windows.Forms.LinkLabel
-    $linklabel.Text = "(*) For more: https://msgang.com - Free Microsoft products for everyone.              *"
-    $linklabel.Location = New-Object System.Drawing.Size(10,430) 
-    $linklabel.AutoSize = $True
-
-    #Sample hyperlinks to add to the text of the link label control.
-    $URLInfo = [pscustomobject]@{
-      StartPos = 14;
-      LinkLength = 18;
-      Url = 'http://msgang.com'
-    }
-    #Add them.
-    foreach ($URL in $URLinfo) {
-      $null = $linklabel.Links.Add($URL.StartPos, $URL.LinkLength, $URL.URL)
-    }
-    #Register a handler for when the user clicks a link.
-    $linklabel.add_LinkClicked({
-      param($evtSender, $evtArgs)
-      #Launch the default browser with the target URL.
-      Start-Process $evtArgs.Link.LinkData
-    })
-
-    $form.Controls.Add($linklabel)
-
-    $scriptNote1 = New-Object System.Windows.Forms.Label
-    $scriptNote1.Location = New-Object System.Drawing.Size(10,450)
-    $scriptNote1.AutoSize = $True
-    $scriptNote1.Text = "(*) ***********************************************************************************"
-    $Form.Controls.Add($scriptNote1)
-
-
-<# #Download label (backup)
+#Download label (backup)
   $scriptNote = New-Object System.Windows.Forms.Label
   $scriptNote.Location = New-Object System.Drawing.Size(10,330)
   $scriptNote.AutoSize = $True
@@ -449,7 +388,7 @@ Add-Type -AssemblyName System.Drawing
   $scriptNote1.AutoSize = $True
   $scriptNote1.Text = "(*) ***********************************************************************************"
   $Form.Controls.Add($scriptNote1)
- #>
+
 
 # Start Arch checkboxes
   $arch64 = New-Object System.Windows.Forms.RadioButton
@@ -485,14 +424,14 @@ Add-Type -AssemblyName System.Drawing
   $installModeSetup = New-Object System.Windows.Forms.RadioButton
   $installModeSetup.Location = New-Object System.Drawing.Size(10,20)
   $installModeSetup.Size = New-Object System.Drawing.Size(110,20)
-  $installModeSetup.Checked = $True
+  $installModeSetup.Checked = $false
   $installModeSetup.Text = "Install"
   $installMode.Controls.Add($installModeSetup)
 
   $installModeDownload = New-Object System.Windows.Forms.RadioButton
   $installModeDownload.Location = New-Object System.Drawing.Size(10,40)
   $installModeDownload.Size = New-Object System.Drawing.Size(110,20)
-  $installModeDownload.Checked = $false
+  $installModeDownload.Checked = $True
   $installModeDownload.Text = "Download"
   $installMode.Controls.Add($installModeDownload)
 
