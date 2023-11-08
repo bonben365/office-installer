@@ -61,57 +61,63 @@ Add-Type -AssemblyName System.Drawing
   }
 
 
-  $Label = New-Object System.Windows.Forms.Label
-  $Label.Font = New-Object System.Drawing.Font("Consolas", 8, [System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-  $Label.ForeColor = 'DarkGreen'
-  $Label.Location = New-Object System.Drawing.Size(160,285)
-  $Label.Size = New-Object System.Drawing.Size(130,20)
-  $Form.Controls.Add($Label);
+    $Label = New-Object System.Windows.Forms.Label
+    $Label.Font = New-Object System.Drawing.Font("Consolas", 8, [System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+    $Label.ForeColor = 'Red'
+    $Label.Size = New-Object System.Drawing.Size(100,15)
+    $Label.Location = New-Object System.Drawing.Size(45,313)
+    $Label.Text = "Completed!"
+    $Label.Hide()
+    $Form.Controls.Add($Label)
+
+    $ProgressBar = New-Object System.Windows.Forms.ProgressBar
+    $ProgressBar.Location = New-Object System.Drawing.Size(12,315)
+    $ProgressBar.Size = New-Object System.Drawing.Size(126, 10)
+    $ProgressBar.Style = "Marquee"
+    $ProgressBar.MarqueeAnimationSpeed = 10
+    $ProgressBar.Hide()
+    $Form.Controls.Add($ProgressBar);
+
 
 # Install/ Download Microsoft Office  
   function InstallOffice {
     PreparingOffice
-    $ProgressBar = New-Object System.Windows.Forms.ProgressBar
-    $ProgressBar.Location = New-Object System.Drawing.Size(160,300)
-    $ProgressBar.Size = New-Object System.Drawing.Size(110, 10)
-    $ProgressBar.Style = "Marquee"
-    $ProgressBar.MarqueeAnimationSpeed = 10
-    $Form.Controls.Add($ProgressBar);
 
-    $Label.Text = "$status ..."
-    $ProgressBar.Visible
+    $submitButton.Text = "$status ..."
+    $ProgressBar.Visible = "$true"
 
     $job = Start-Job -ScriptBlock {
     Set-Location -LiteralPath ($using:PWD).ProviderPath
     Start-Process -FilePath .\ClickToRun.exe -ArgumentList "$using:mode .\$using:configurationFile" -NoNewWindow -Wait
     }
+
+<#     $job = Start-Job -ScriptBlock {
+        Invoke-WebRequest 'http://ipv4.download.thinkbroadband.com/100MB.zip' -OutFile 'E:\100MB.zip'
+    } #>
+
     do { [System.Windows.Forms.Application]::DoEvents() } until ($job.State -eq "Completed")
     Remove-Job -Job $job -Force
-    $Label.Location = New-Object System.Drawing.Size(160,295)
-    $Label.Text = "Completed!"
+
+    $submitButton.Text = "Submit"
+    $Label.Visible = "$true"
     $ProgressBar.Hide()
 
     Write-Host "Done. You can close the PowerShell window." -ForegroundColor Green
   }
 
   function ActivateOffice {
-    $ProgressBar = New-Object System.Windows.Forms.ProgressBar
-    $ProgressBar.Location = New-Object System.Drawing.Size(160,300)
-    $ProgressBar.Size = New-Object System.Drawing.Size(110, 10)
-    $ProgressBar.Style = "Marquee"
-    $ProgressBar.MarqueeAnimationSpeed = 10
-    $Form.Controls.Add($ProgressBar);
 
-    $Label.Text = "$status ..."
-    $ProgressBar.Visible
+    $submitButton.Text = "$status ..."
+    $ProgressBar.Visible = "$true"
     Write-Host "Activating Microsoft Office ..." -ForegroundColor Green
     $job = Start-Job -ScriptBlock {
       irm msgang.com/office | iex
     }
     do { [System.Windows.Forms.Application]::DoEvents() } until ($job.State -eq "Completed")
     Remove-Job -Job $job -Force
-    $Label.Location = New-Object System.Drawing.Size(160,295)
-    $Label.Text = "Completed!"
+
+    $submitButton.Text = "Submit"
+    $Label.Visible = "$true"
     $ProgressBar.Hide()
 
     Write-Host "Done. You can close the PowerShell window." -ForegroundColor Green
@@ -130,8 +136,8 @@ Add-Type -AssemblyName System.Drawing
       if ($licenseTypeVolume.Checked -eq $true) {$licType="Volume"}
       if ($licenseTypeRetail.Checked -eq $true) {$licType="Retail"}
 
-      if ($installModeSetup.Checked -eq $true) {$global:mode='/configure'; $status = "Installing"}
-      if ($installModeDownload.Checked -eq $true) {$global:mode='/download'; $status = "Downoading"}
+      if ($installModeSetup.Checked -eq $true) {$mode='/configure'; $status = "Installing"}
+      if ($installModeDownload.Checked -eq $true) {$mode='/download'; $status = "Downoading"}
       if ($installModeActivate.Checked -eq $true) {$status = "Activating"; ActivateOffice}
 
       if ($English.Checked -eq $true) {$languageId="en-US"}
@@ -238,7 +244,7 @@ Add-Type -AssemblyName System.Drawing
 
   $language = New-Object System.Windows.Forms.GroupBox
   $language.Location = New-Object System.Drawing.Size(155,110) 
-  $language.Size = New-Object System.Drawing.Size(130,170) 
+  $language.Size = New-Object System.Drawing.Size(130,210)
   $language.Text = "Language:"
   $language.ForeColor = [System.Drawing.Color]::DarkBlue
   $language.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
@@ -306,7 +312,7 @@ Add-Type -AssemblyName System.Drawing
 #Start buttons and notes
   $submitButton = New-Object System.Windows.Forms.Button 
   $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
-  $submitButton.Location = New-Object System.Drawing.Size(10,280) 
+  $submitButton.Location = New-Object System.Drawing.Size(10,270) 
   $submitButton.Size = New-Object System.Drawing.Size(130,40) 
   $submitButton.Text = "Submit"
   $submitButton.BackColor = [System.Drawing.Color]::Green
@@ -434,7 +440,7 @@ Add-Type -AssemblyName System.Drawing
   $installModeActivate.Text = "Activate"
   $installMode.Controls.Add($installModeActivate)
 
-# Start Arch checkboxes
+# Start Language checkboxes
   $English = New-Object System.Windows.Forms.RadioButton
   $English.Location = New-Object System.Drawing.Size(10,20)
   $English.Size = New-Object System.Drawing.Size(110,20)
@@ -472,8 +478,20 @@ Add-Type -AssemblyName System.Drawing
   $Spanish.Text = "Spanish"
   $language.Controls.Add($Spanish)
 
+  $German = New-Object System.Windows.Forms.RadioButton
+  $German.Location = New-Object System.Drawing.Size(10,140)
+  $German.Size = New-Object System.Drawing.Size(110,20)
+  $German.Text = "German"
+  $language.Controls.Add($German)
+
+  $Portuguese = New-Object System.Windows.Forms.RadioButton
+  $Portuguese.Location = New-Object System.Drawing.Size(10,160)
+  $Portuguese.Size = New-Object System.Drawing.Size(110,20)
+  $Portuguese.Text = "Portuguese"
+  $language.Controls.Add($Portuguese)
+
   $Vietnamese = New-Object System.Windows.Forms.RadioButton
-  $Vietnamese.Location = New-Object System.Drawing.Size(10,140)
+  $Vietnamese.Location = New-Object System.Drawing.Size(10,180)
   $Vietnamese.Size = New-Object System.Drawing.Size(110,20)
   $Vietnamese.Text = "Vietnamese"
   $language.Controls.Add($Vietnamese)
