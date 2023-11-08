@@ -130,8 +130,8 @@ Add-Type -AssemblyName System.Drawing
       if ($licenseTypeVolume.Checked -eq $true) {$licType="Volume"}
       if ($licenseTypeRetail.Checked -eq $true) {$licType="Retail"}
 
-      if ($installModeSetup.Checked -eq $true) {$mode='/configure'; $status = "Installing"}
-      if ($installModeDownload.Checked -eq $true) {$mode='/download'; $status = "Downoading"}
+      if ($installModeSetup.Checked -eq $true) {$global:mode='/configure'; $status = "Installing"}
+      if ($installModeDownload.Checked -eq $true) {$global:mode='/download'; $status = "Downoading"}
       if ($installModeActivate.Checked -eq $true) {$status = "Activating"; ActivateOffice}
 
       if ($English.Checked -eq $true) {$languageId="en-US"}
