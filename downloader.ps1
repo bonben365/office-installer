@@ -1,11 +1,22 @@
+if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+  Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
+  break
+}
 
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName System.Drawing
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
+[void] [System.Reflection.Assembly]::LoadWithPartialName("PresentationFramework")
+[void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
+[System.Windows.Forms.Application]::EnableVisualStyles()
 
 # Create a WinForms
   $Form = New-Object System.Windows.Forms.Form    
   $Form.Size = New-Object System.Drawing.Size(980,525)
   $Form.StartPosition = "CenterScreen"
   $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow 
-  $Form.Text = "Microsoft Office Installation Tool - www.msgang.com"
+  $Form.Text = "Microsoft Office Download Tool - www.msgang.com"
   $Form.Font = New-Object System.Drawing.Font("Consolas",8,[System.Drawing.FontStyle]::Regular)
   $Form.ShowInTaskbar = $True
   $Form.KeyPreview = $True
