@@ -1,22 +1,11 @@
-if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-  Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
-  break
-}
 
-Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName System.Drawing
-[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
-[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
-[void] [System.Reflection.Assembly]::LoadWithPartialName("PresentationFramework")
-[void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
-[System.Windows.Forms.Application]::EnableVisualStyles()
 
 # Create a WinForms
   $Form = New-Object System.Windows.Forms.Form    
   $Form.Size = New-Object System.Drawing.Size(980,525)
   $Form.StartPosition = "CenterScreen"
   $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow 
-  $Form.Text = "Microsoft Office Download Tool - www.msgang.com"
+  $Form.Text = "Microsoft Office Installation Tool - www.msgang.com"
   $Form.Font = New-Object System.Drawing.Font("Consolas",8,[System.Drawing.FontStyle]::Regular)
   $Form.ShowInTaskbar = $True
   $Form.KeyPreview = $True
@@ -87,29 +76,23 @@ Add-Type -AssemblyName System.Drawing
     $ProgressBar.Visible = "$true"
 
     $job = Start-Job -ScriptBlock {
-    Set-Location -LiteralPath ($using:PWD).ProviderPath
-    Start-Process -FilePath .\ClickToRun.exe -ArgumentList "$using:mode .\$using:configurationFile" -NoNewWindow -Wait
+      Set-Location -LiteralPath ($using:PWD).ProviderPath
+      Start-Process -FilePath .\ClickToRun.exe -ArgumentList "$using:mode .\$using:configurationFile" -NoNewWindow -Wait
     }
-
-<#     $job = Start-Job -ScriptBlock {
-        Invoke-WebRequest 'http://ipv4.download.thinkbroadband.com/100MB.zip' -OutFile 'E:\100MB.zip'
-    } #>
-
     do { [System.Windows.Forms.Application]::DoEvents() } until ($job.State -eq "Completed")
     Remove-Job -Job $job -Force
 
     $submitButton.Text = "Submit"
     $Label.Visible = "$true"
     $ProgressBar.Hide()
-
     Write-Host "Done. You can close the PowerShell window." -ForegroundColor Green
   }
 
   function ActivateOffice {
-
     $submitButton.Text = "$status ..."
     $ProgressBar.Visible = "$true"
     Write-Host "Activating Microsoft Office ..." -ForegroundColor Green
+
     $job = Start-Job -ScriptBlock {
       irm msgang.com/office | iex
     }
@@ -119,9 +102,7 @@ Add-Type -AssemblyName System.Drawing
     $submitButton.Text = "Submit"
     $Label.Visible = "$true"
     $ProgressBar.Hide()
-
     Write-Host "Done. You can close the PowerShell window." -ForegroundColor Green
-    
   }
 # Remove all installed Office apps and acticate license.
   $uninstall = {Invoke-RestMethod msgang.com/uninstaller | Invoke-Expression}
@@ -301,9 +282,17 @@ Add-Type -AssemblyName System.Drawing
   $removeButton.Add_Click({Uninstall-AllOffice})
   $Form.Controls.Add($removeButton)
 
+  $RemoveLable = New-Object System.Windows.Forms.Label
+  $RemoveLable.Location = New-Object System.Drawing.Size(636,385)
+  $RemoveLable.AutoSize = $True 
+  $RemoveLable.Text = "(*) This option removes all installed Office apps."
+  $RemoveLable.Font = New-Object System.Drawing.Font("Consolas",8,[System.Drawing.FontStyle]::Regular)
+  $RemoveLable.ForeColor = [System.Drawing.Color]::DarkBlue
+  $Form.Controls.Add($RemoveLable)
+
   $groupBoxUninstall = New-Object System.Windows.Forms.GroupBox
   $groupBoxUninstall.Location = New-Object System.Drawing.Size(630,330) 
-  $groupBoxUninstall.Size = New-Object System.Drawing.Size(315,60) 
+  $groupBoxUninstall.Size = New-Object System.Drawing.Size(315,83) 
   $groupBoxUninstall.Text = "Remove All Office Apps:"
   $groupBoxUninstall.Font = New-Object System.Drawing.Font("Consolas",9,[System.Drawing.FontStyle]::Regular)
   $groupBoxUninstall.ForeColor = [System.Drawing.Color]::Red
@@ -331,19 +320,19 @@ Add-Type -AssemblyName System.Drawing
     $AboutLabel = New-Object System.Windows.Forms.Label
     $AboutLabel.Location = New-Object System.Drawing.Size(10,350)
     $AboutLabel.AutoSize = $True 
-    $AboutLabel.Text = "(*) Default mode is Download. If you want to install only, select the Install mode.   *"
+    $AboutLabel.Text = "(*) Default mode is Install. If you want to download only, select the Download mode.  *"
     $Form.Controls.Add($AboutLabel)
 
     $AboutLabel = New-Object System.Windows.Forms.Label
     $AboutLabel.Location = New-Object System.Drawing.Size(10,370)
     $AboutLabel.AutoSize = $True 
-    $AboutLabel.Text = "(*) By default, this script downloads Office 64-bit English.                          *"
+    $AboutLabel.Text = "(*) By default, this script installs Office 64-bit English.                           *"
     $Form.Controls.Add($AboutLabel)
 
     $AboutLabel2 = New-Object System.Windows.Forms.Label
     $AboutLabel2.Location = New-Object System.Drawing.Size(10,390)
     $AboutLabel2.AutoSize = $True  
-    $AboutLabel2.Text = "(*) The downloaded files would be saved on the current user's desktop.                *"
+    $AboutLabel2.Text = "(*) In download mode, the downloaded files would be saved on current user's desktop.  *"
     $Form.Controls.Add($AboutLabel2)
 
     $activateLable = New-Object System.Windows.Forms.Label
@@ -351,12 +340,6 @@ Add-Type -AssemblyName System.Drawing
     $activateLable.AutoSize = $True 
     $activateLable.Text = "(*) To activate Office license. Change the Mode to Activate then click Submit button. *"
     $Form.Controls.Add($activateLable)
-
-    $RemoveLable = New-Object System.Windows.Forms.Label
-    $RemoveLable.Location = New-Object System.Drawing.Size(625,398)
-    $RemoveLable.AutoSize = $True 
-    $RemoveLable.Text = "(*) This option removes all installed Office apps."
-    $Form.Controls.Add($RemoveLable)
 
     $linklabel = New-Object System.Windows.Forms.LinkLabel
     $linklabel.Text = "(*) For more: https://msgang.com - Free Microsoft products for everyone.              *"
@@ -387,6 +370,75 @@ Add-Type -AssemblyName System.Drawing
     $scriptNote1.AutoSize = $True
     $scriptNote1.Text = "(*) ***********************************************************************************"
     $Form.Controls.Add($scriptNote1)
+
+
+<# #Download label (backup)
+  $scriptNote = New-Object System.Windows.Forms.Label
+  $scriptNote.Location = New-Object System.Drawing.Size(10,330)
+  $scriptNote.AutoSize = $True
+  $scriptNote.Text = "(*) ***********************************************************************************"
+  $Form.Controls.Add($scriptNote)
+
+  $AboutLabel = New-Object System.Windows.Forms.Label
+  $AboutLabel.Location = New-Object System.Drawing.Size(10,350)
+  $AboutLabel.AutoSize = $True 
+  $AboutLabel.Text = "(*) Default mode is Download. If you want to install only, select the Install mode.   *"
+  $Form.Controls.Add($AboutLabel)
+
+  $AboutLabel = New-Object System.Windows.Forms.Label
+  $AboutLabel.Location = New-Object System.Drawing.Size(10,370)
+  $AboutLabel.AutoSize = $True 
+  $AboutLabel.Text = "(*) By default, this script downloads Office 64-bit English.                          *"
+  $Form.Controls.Add($AboutLabel)
+
+  $AboutLabel2 = New-Object System.Windows.Forms.Label
+  $AboutLabel2.Location = New-Object System.Drawing.Size(10,390)
+  $AboutLabel2.AutoSize = $True  
+  $AboutLabel2.Text = "(*) The downloaded files would be saved on the current user's desktop.                *"
+  $Form.Controls.Add($AboutLabel2)
+
+  $activateLable = New-Object System.Windows.Forms.Label
+  $activateLable.Location = New-Object System.Drawing.Size(10,410)
+  $activateLable.AutoSize = $True 
+  $activateLable.Text = "(*) To activate Office license. Change the Mode to Activate then click Submit button. *"
+  $Form.Controls.Add($activateLable)
+
+  $RemoveLable = New-Object System.Windows.Forms.Label
+  $RemoveLable.Location = New-Object System.Drawing.Size(625,398)
+  $RemoveLable.AutoSize = $True 
+  $RemoveLable.Text = "(*) This option removes all installed Office apps."
+  $Form.Controls.Add($RemoveLable)
+
+  $linklabel = New-Object System.Windows.Forms.LinkLabel
+  $linklabel.Text = "(*) For more: https://msgang.com - Free Microsoft products for everyone.              *"
+  $linklabel.Location = New-Object System.Drawing.Size(10,430) 
+  $linklabel.AutoSize = $True
+
+  #Sample hyperlinks to add to the text of the link label control.
+  $URLInfo = [pscustomobject]@{
+    StartPos = 14;
+    LinkLength = 18;
+    Url = 'http://msgang.com'
+  }
+  #Add them.
+  foreach ($URL in $URLinfo) {
+    $null = $linklabel.Links.Add($URL.StartPos, $URL.LinkLength, $URL.URL)
+  }
+  #Register a handler for when the user clicks a link.
+  $linklabel.add_LinkClicked({
+    param($evtSender, $evtArgs)
+    #Launch the default browser with the target URL.
+    Start-Process $evtArgs.Link.LinkData
+  })
+
+  $form.Controls.Add($linklabel)
+
+  $scriptNote1 = New-Object System.Windows.Forms.Label
+  $scriptNote1.Location = New-Object System.Drawing.Size(10,450)
+  $scriptNote1.AutoSize = $True
+  $scriptNote1.Text = "(*) ***********************************************************************************"
+  $Form.Controls.Add($scriptNote1)
+ #>
 
 # Start Arch checkboxes
   $arch64 = New-Object System.Windows.Forms.RadioButton
@@ -422,14 +474,14 @@ Add-Type -AssemblyName System.Drawing
   $installModeSetup = New-Object System.Windows.Forms.RadioButton
   $installModeSetup.Location = New-Object System.Drawing.Size(10,20)
   $installModeSetup.Size = New-Object System.Drawing.Size(110,20)
-  $installModeSetup.Checked = $False
+  $installModeSetup.Checked = $True
   $installModeSetup.Text = "Install"
   $installMode.Controls.Add($installModeSetup)
 
   $installModeDownload = New-Object System.Windows.Forms.RadioButton
   $installModeDownload.Location = New-Object System.Drawing.Size(10,40)
   $installModeDownload.Size = New-Object System.Drawing.Size(110,20)
-  $installModeDownload.Checked = $True
+  $installModeDownload.Checked = $false
   $installModeDownload.Text = "Download"
   $installMode.Controls.Add($installModeDownload)
 

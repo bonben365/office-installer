@@ -1,4 +1,15 @@
+if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+  Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
+  break
+}
 
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName System.Drawing
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
+[void] [System.Reflection.Assembly]::LoadWithPartialName("PresentationFramework")
+[void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
+[System.Windows.Forms.Application]::EnableVisualStyles()
 
 # Create a WinForms
   $Form = New-Object System.Windows.Forms.Form    
