@@ -3,8 +3,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
   break
 }
 
-Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName System.Drawing
+Add-Type -AssemblyName PresentationFramework, System.Drawing, PresentationFramework, System.Windows.Forms, WindowsFormsIntegration
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 [void] [System.Reflection.Assembly]::LoadWithPartialName("PresentationFramework")
@@ -76,7 +75,7 @@ Add-Type -AssemblyName System.Drawing
     $ProgressBar.Style = "Marquee"
     $ProgressBar.MarqueeAnimationSpeed = 10
     $ProgressBar.Hide()
-    $Form.Controls.Add($ProgressBar);
+    $Form.Controls.Add($ProgressBar)
 
 
 # Install/ Download Microsoft Office  
