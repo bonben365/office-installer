@@ -4,13 +4,13 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 }
 
 Write-Host
-$method = $(Write-Host -NoNewLine) + $(Write-Host "Select the method for uninstallation (Enter either 1 or 2):`n
-1 = Office Deployment Tool (ODT) (Recommended)
-2 = Microsoft Support and Recovery Assistant (SaRA) `n
+$method = $(Write-Host -NoNewLine) + $(Write-Host " Select the method for uninstallation (Enter either 1 or 2):`n
+ 1 = Office Deployment Tool (ODT) (Recommended)
+ 2 = Microsoft Support and Recovery Assistant (SaRA) `n
 Your option: " -ForegroundColor Cyan -NoNewLine; Read-Host)
 Write-Host
 function Uninstall-ODT {
-    Write-Host 'Downloading Office Deployment Tool...' -ForegroundColor Green
+    Write-Host 'Downloading Office Deployment Tool...'
     $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
     Set-Location $env:temp\c2r
     $fileName = 'configuration.xml'
@@ -21,19 +21,18 @@ function Uninstall-ODT {
     $uri = 'https://github.com/bonben365/office-installer/raw/main/setup.exe'
     (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
     .\setup.exe /configure .\configuration.xml
-    Write-Host 'Done. You can close this PowerShell window.' -ForegroundColor Green
-}
+    Write-Host 'Done. You can close this PowerShell window.'
 
 function Uninstall-SaRA {
     $null = New-Item -Path $env:temp\SaRA -ItemType Directory -Force
     Set-Location $env:temp\SaRA
-    Write-Host 'Downloading Microsoft Support and Recovery Assistant........' -ForegroundColor Green
+    Write-Host 'Downloading Microsoft Support and Recovery Assistant........'
     #$null = Invoke-WebRequest -Uri "https://aka.ms/SaRA_EnterpriseVersionFiles" -OutFile $env:temp\SaRA\SaRAcmd.zip
     (New-Object Net.WebClient).DownloadFile("https://aka.ms/SaRA_EnterpriseVersionFiles", "$env:temp\SaRA\SaRAcmd.zip")
     $null = Expand-Archive .\SaRAcmd.zip SaRAcmd -Force
     Set-Location SaRAcmd
 
-    Write-Host 'Removing Micorosft Office Application........' -ForegroundColor Yellow
+    Write-Host 'Removing Micorosft Office Application........'
     $closingApps = Get-Process -ProcessName lync, winword, excel, msaccess, mstore, infopath, setlang, msouc, ois, onenote, outlook, powerpnt, mspub, groove, visio, winproj, graph, teams -ErrorAction SilentlyContinue
     $closingApps | Stop-Process -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
     .\SaRAcmd.exe -S OfficeScrubScenario -AcceptEula -Officeversion All > result.txt
@@ -41,10 +40,10 @@ function Uninstall-SaRA {
     #Grab the result then print the output
     $result = Get-Content .\result.txt
     if (($result | Select-String -SimpleMatch "something went wrong" | Measure-Object).Count -gt 0){
-        Write-Host "Unintall failed. Re-run the script then select another method." -ForegroundColor Red
+        Write-Host "Unintall failed. Re-run the script then select another method."
         Write-Host 
     } else {
-        Write-Host 'Done. You can close this PowerShell window.' -ForegroundColor Green
+        Write-Host 'Done. You can close this PowerShell window.'
         Write-Host 
     }
     #Cleanup
