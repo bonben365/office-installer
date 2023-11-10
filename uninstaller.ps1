@@ -57,13 +57,13 @@ function Uninstall-SaRA {
 }
 
 if($method -match "[1]") {
-    Write-Host "Uninstaling using Office Deployment Tool..." -ForegroundColor Green
+    Write-Host "Uninstaling using Office Deployment Tool..." 
     Start-Sleep -Seconds 1
     Uninstall-ODT
 }
 
 if($method -match "[2]") {
-    Write-Host "Uninstaling using Microsoft Support and Recovery Assistant (SaRA)..." -ForegroundColor Green
+    Write-Host "Uninstaling using Microsoft Support and Recovery Assistant (SaRA)..."
     Start-Sleep -Seconds 1
     Uninstall-SaRA
 }
