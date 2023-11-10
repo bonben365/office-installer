@@ -9,7 +9,7 @@ Write-Host
 $method = $(Write-Host -NoNewLine) + $(Write-Host " Select the method for uninstallation (Enter either 1 or 2):`n
  1 = Office Deployment Tool (ODT) (Recommended)
  2 = Microsoft Support and Recovery Assistant (SaRA) `n
-Your option: " -ForegroundColor Cyan -NoNewLine; Read-Host)
+Your option: " -NoNewLine; Read-Host)
 
 Write-Host
 
