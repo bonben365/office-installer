@@ -5,11 +5,14 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 }
 
 Write-Host
+
 $method = $(Write-Host -NoNewLine) + $(Write-Host " Select the method for uninstallation (Enter either 1 or 2):`n
  1 = Office Deployment Tool (ODT) (Recommended)
  2 = Microsoft Support and Recovery Assistant (SaRA) `n
 Your option: " -ForegroundColor Cyan -NoNewLine; Read-Host)
+
 Write-Host
+
 function Uninstall-ODT {
     Write-Host 'Downloading Office Deployment Tool...'
     $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
@@ -23,10 +26,12 @@ function Uninstall-ODT {
     (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
     .\setup.exe /configure .\configuration.xml
     Write-Host 'Done. You can close this PowerShell window.'
+}
 
 function Uninstall-SaRA {
     $null = New-Item -Path $env:temp\SaRA -ItemType Directory -Force
     Set-Location $env:temp\SaRA
+    
     Write-Host 'Downloading Microsoft Support and Recovery Assistant........'
     #$null = Invoke-WebRequest -Uri "https://aka.ms/SaRA_EnterpriseVersionFiles" -OutFile $env:temp\SaRA\SaRAcmd.zip
     (New-Object Net.WebClient).DownloadFile("https://aka.ms/SaRA_EnterpriseVersionFiles", "$env:temp\SaRA\SaRAcmd.zip")
