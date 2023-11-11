@@ -160,10 +160,8 @@ $Link1.Add_PreviewMouseDown({[system.Diagnostics.Process]::start('https://bongui
 # Download links
     $uri = "https://github.com/bonben365/office-installer/raw/main/setup.exe"
     $uri2013 = "https://github.com/bonben365/office-installer/raw/main/bin2013.exe"
-    $activator = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/activator.bat'
     $uninstall = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/uninstall.bat'
     $readme = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/Readme.txt'
-    $link = 'https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/Microsoft%20products%20for%20FREE.html'
 
 # Prepiaration for download and install
     function PreparingOffice {
@@ -193,9 +191,7 @@ $Link1.Add_PreviewMouseDown({[system.Diagnostics.Process]::start('https://bongui
         Add-content $batchFile -Value "ClickToRun.exe /configure $configurationFile"
 
         (New-Object Net.WebClient).DownloadFile($uri, "$workingDir\ClickToRun.exe")
-        (New-Object Net.WebClient).DownloadFile($activator, "$workingDir\03.Activator.bat")
         (New-Object Net.WebClient).DownloadFile($readme, "$workingDir\01.Readme.txt")
-        (New-Object Net.WebClient).DownloadFile($link, "$workingDir\Microsoft products for FREE.html")
 
         $sync.configurationFile = $configurationFile
         $sync.workingDir = $workingDir
@@ -278,43 +274,7 @@ $Link1.Add_PreviewMouseDown({[system.Diagnostics.Process]::start('https://bongui
 
 # INSTALL/DOWNLOAD/ACTIVATE Microsoft Office with a runspace
 
-    $ActivateOffice = {
-        $sync.Form.Dispatcher.Invoke([action] { $sync.textbox.Text = "Activating Microsoft Office..." })
-        $sync.Form.Dispatcher.Invoke([action] { $sync.buttonSubmit.Visibility = "Hidden" })
-        $sync.Form.Dispatcher.Invoke([action] { $sync.ProgressBar.BorderBrush = "#FF707070" })
-        $sync.Form.Dispatcher.Invoke([action] { $sync.ProgressBar.IsIndeterminate = $true })
-        $sync.Form.Dispatcher.Invoke([action] { $sync.image.Visibility = "Visible" })
-
-        Set-Location -Path $($sync.workingDir)
-        (New-Object Net.WebClient).DownloadFile($($sync.activator), "$($sync.workingDir)\03.Activator.bat")
-        Start-Process -FilePath .\03.Activator.bat -Wait
-
-        $sync.Form.Dispatcher.Invoke([action] { $sync.image.Visibility = "Hidden" })
-        $sync.Form.Dispatcher.Invoke([action] { $sync.buttonSubmit.Visibility = 'Visible' })
-        $sync.Form.Dispatcher.Invoke([action] { $sync.buttonSubmit.Content = 'Submit' })
-        $sync.Form.Dispatcher.Invoke([action] { $sync.textbox.Text = 'Completed' })
-        $sync.Form.Dispatcher.Invoke([action] { $sync.ProgressBar.IsIndeterminate = $false })
-        $sync.Form.Dispatcher.Invoke([action] { $sync.ProgressBar.Value = '100' })
-
-        # Cleanup
-        Set-Location ..
-        Remove-Item ClickToRunA -Recurse -Force
-    }
-
     $buttonSubmit.Add_Click( {
-
-        if ($radioButtonActivate.IsChecked) {
-
-            $workingDir = New-Item -Path $env:temp\ClickToRunA -ItemType Directory -Force
-            Set-Location $workingDir
-            $sync.workingDir = $workingDir
-            $sync.activator = $activator
-
-            $PSIinstance = [powershell]::Create().AddScript($ActivateOffice)
-            $PSIinstance.Runspace = $runspace
-            $PSIinstance.BeginInvoke()
-
-        } else {
             $i = 0
             if ($radioButtonArch32.IsChecked) {$arch = '32'}
             if ($radioButtonArch64.IsChecked) {$arch = '64'}
@@ -415,8 +375,7 @@ $Link1.Add_PreviewMouseDown({[system.Diagnostics.Process]::start('https://bongui
                 $sync.Form.Dispatcher.Invoke([action] { $sync.textbox.Foreground = "Red" })
                 $sync.Form.Dispatcher.Invoke([action] { $sync.textbox.FontWeight = "Bold" })
                 $sync.Form.Dispatcher.Invoke([action] { $sync.textbox.Text = "Please select an Office version." })
-            } 
-        }
+            }
     })
 
 # Uninstall all installed Microsoft Office apps.
