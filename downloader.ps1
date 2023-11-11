@@ -102,26 +102,26 @@ $xamlInput = @'
                 <Image x:Name="image" Height="81" Width="78" Canvas.Left="40" Canvas.Top="112" Source="https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/Temp/download.png" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
             </Canvas>
         </GroupBox>
-        <GroupBox x:Name="groupBoxArch" Header="Arch" Margin="10,10,0,0" BorderBrush="#FF0D4261" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Consolas" FontSize="11" Width="104">
+        <GroupBox x:Name="groupBoxArch" Header="Arch:" Margin="10,10,0,0" BorderBrush="#FF0D4261" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Consolas" FontSize="11" Width="104">
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                 <RadioButton x:Name="radioButtonArch64" Content="x64" Width="37" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,0,0" VerticalContentAlignment="Center" IsChecked="True"/>
                 <RadioButton x:Name="radioButtonArch32" Content="x32" Width="37" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,5" VerticalContentAlignment="Center"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox x:Name="groupBoxLicenseType" Header="LicenseType" Margin="10,87,0,0" BorderBrush="#FF0D4261" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Consolas" FontSize="11" Width="104" Height="65">
+        <GroupBox x:Name="groupBoxLicenseType" Header="LicenseType:" Margin="10,87,0,0" BorderBrush="#FF0D4261" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Consolas" FontSize="11" Width="104" Height="65">
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                 <RadioButton x:Name="radioButtonVolume" Content="Volume" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" IsChecked="True" Margin="5,8,0,0"/>
                 <RadioButton x:Name="radioButtonRetail" Content="Retail" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="5,5,0,0"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox x:Name="groupBoxMode" Header="LicenseType" Margin="10,164,0,0" BorderBrush="#FF0D4261" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Consolas" FontSize="11" Width="104" Height="89" ToolTip="When selecting the Activate mode...">
+        <GroupBox x:Name="groupBoxMode" Header="Mode:" Margin="10,164,0,0" BorderBrush="#FF0D4261" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Consolas" FontSize="11" Width="104" Height="89" ToolTip="When selecting the Activate mode...">
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                 <RadioButton x:Name="radioButtonDownload" Content="Download" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,0,0" VerticalContentAlignment="Center" IsChecked="True"/>
                 <RadioButton x:Name="radioButtonInstall" Content="Install" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" VerticalContentAlignment="Center"/>
                 <RadioButton x:Name="radioButtonActivate" Content="Activate" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" VerticalContentAlignment="Center"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox x:Name="groupBoxLanguage" Header="Language" Margin="10,259,0,0" BorderBrush="#FF0D4261" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Consolas" FontSize="11" Width="104" Height="209">
+        <GroupBox x:Name="groupBoxLanguage" Header="Language:" Margin="10,259,0,0" BorderBrush="#FF0D4261" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Consolas" FontSize="11" Width="104" Height="209">
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                 <RadioButton x:Name="radioButtonEnglish" Content="English" VerticalContentAlignment="Center" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,0,0"/>
                 <RadioButton x:Name="radioButtonJapanese" Content="Japanese" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,6,0,0"/>
