@@ -1,6 +1,6 @@
 if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
    Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
-   Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "irm msgang.com/install | iex"
+   Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "irm bonguides.com/officeretail | iex"
    break
 }
 
@@ -154,7 +154,7 @@ $Form = [Windows.Markup.XamlReader]::Load( $xmlReader )
        Set-Variable -Name ($_.Name) -Value $Form.FindName($_.Name)
    }
 
-$Link1.Add_PreviewMouseDown({[system.Diagnostics.Process]::start('https://msgang.com')})
+$Link1.Add_PreviewMouseDown({[system.Diagnostics.Process]::start('https://bonguides.com')})
 
 # Download links
    $uri = "https://github.com/bonben365/office-installer/raw/main/setup.exe"
