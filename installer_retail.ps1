@@ -143,7 +143,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
  
      </Grid>
  </Window>
- '@
+'@
  
  [xml]$xaml = $xamlInput -replace '^<Window.*', '<Window' -replace 'mc:Ignorable="d"','' -replace "x:Name",'Name'
  $xmlReader = (New-Object System.Xml.XmlNodeReader $xaml)
