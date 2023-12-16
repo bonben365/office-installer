@@ -17,9 +17,7 @@
 irm bonguides.com/office | iex
 ```
 
-![App Screenshot](https://s3.amazonaws.com/s3.bonben365.com/files/2023/Wdmum4Ka0fCuwVNa4lyq6cKFVDgDpVUdq8PzvCwfRgvx4ra9IoWORpnMf3qY.jpg)
-
-![App Screenshot](https://s3.amazonaws.com/s3.bonben365.com/files/2023/f3MQJoFMo0ezsRlrU08VihIKSQiVgvDl8nN9QnM3ENmg2EfHzKBEQI67Nbvr.jpg)
+![App Screenshot](https://s3.amazonaws.com/s3.bonben365.com/files/2023/HyDZjoJGXF27BNIYB2Ggx9Eo7uSyZ8YHQGWH0cPmmo9erFNtQ2RoqU0737YF.jpg)
 
 
 ➡️Please inspect [bonguides.com/office]([bonguides.com/office](https://raw.githubusercontent.com/bonben365/office-installer/main/installer.ps1)) prior to running any of these scripts to ensure safety. We already know it's safe, but you should verify the security and contents of any script from the internet you are not familiar with.
